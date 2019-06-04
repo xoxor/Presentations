@@ -68,7 +68,7 @@
 
 \begin{document}
 	
-\maketitle[titletotopverticalspace=10cm]
+\maketitle[titletotopverticalspace=11cm]
 
 \begin{columns}
 	\column{0.5}
@@ -81,17 +81,17 @@
 						\includegraphics[height=7cm]{LAMSADE95.jpg}
 					};
 				\end{tikzpicture}
-		%
-		%
-%			\begin{tikzpicture}[remember picture,overlay]
-%				\path (current page.south west) ++(1.5cm, 1.5cm) node[anchor=south west, text width=27cm] {
-%					Olivier Cailloux and Yves Meinard. \emph{A formal framework for deliberated judgment}. Under revision at Theory and Decision. \href{https://arxiv.org/abs/1801.05644}{arXiv:1801.05644 [cs.AI]}.
-%				};
-%			\end{tikzpicture}%
-		%
+				
+		
+%				\begin{tikzpicture}[remember picture,overlay]
+%					\path (current page.south west) ++(1.5cm, 3cm) node[anchor=south west, text width=35cm] {
+%						Beatrice Napolitano, Olivier Cailloux and Paolo Viappiani. \emph{Simultaneous Elicitation of Committee and Voters' Preferences}. Proceedings of RJCIA 2019.
+%					};
+%				\end{tikzpicture}%
+	
 			\textbf{Incompletely specified profile and positional scoring rule \\}
 			\begin{tikzfigure}
-				\includegraphics[scale=0.975]{setting.png}
+				\includegraphics[scale=0.93]{setting.png}
 				%		\caption{.}
 				%		\label{fig:b1}
 			\end{tikzfigure}
@@ -102,68 +102,46 @@
 			\end{itemize}
 		}
 		\block{Framework}{
-		
 			\begin{align*}
 				\color{blue}{|N|=n, |A|=m} \quad &\text{voters, alternatives} \\
-				\color{blue}{v_j =  {\succ_j}} \quad &\text{real preference order of the voter $j \in N$ }\\ 
-				%	& \text{(connex,transitive, asymmetric relation)} \\
-				\color{blue}{V=\{\profile \mid \profile=(v_1, \dots, v_n)\}} \quad & \text{set of complete preference profiles} \\
-				\color{blue}{W=\{\w \mid \w=(w_1, \dots, w_m)\}} \quad & \text{set of scoring vectors} \\
-				\color{blue}{s^{\profile, \w}(x) = \sum_{j \in N} w_{v_j(x)}} \quad & \text{score of alternative \textit{x} under the profile $\profile$ and weights $\w$} \\
 				\color{blue}{\ppref_j} \quad & \text{partial preference order of the voter $j \in N$} \\
-				\color{blue}{C(\ppref_j)=\set{{\succ} \mid {\ppref_j} \subseteq {\succ}}} \quad & \text{set of possible completions of $\ppref_j$} \\
-				\color{blue}{\Co_W} \quad& \text{set of linear constraints given by the committee about $\w$}
-%				 \\ &\text{the scoring vector $\w$}
+				\color{blue}{\Co_W} \quad& \text{set of linear  constraints given by the committee about $\w$} \\
 			\end{align*}
-%			\begin{align*}
-%			\Regret^{\profile,\w}(x) & = \max_{y \in A} s^{\profile,\w}(y) - s^{\profile, \w}(x) \\
-%			\PMR^{\pprofile,W}(x,y) & = \max_{\w \in W} \max_{\profile \in C(\pprofile)}s^{\profile,\w}(y) - s^{\profile, \w}(x) \\
-%			\MR^{\pprofile,W}(x) & = \max_{y \in A} \PMR^{\pprofile,W}(x,y)\\
-%			%& = \max_{\w \in W} \max_{\profile \in C(\profile)} \Regret(x, \profile, \w) \\
-%			\MMR(\pprofile,W) & = \min_{x \in A} \MR^{\pprofile,W}(x) \\
-%			x^{*}_{\pprofile,W} \in A^*_{\pprofile, W} & = \argmin_{x \in A}\MR^{\pprofile,W}(x)
-%			\end{align*}
+			Given complete voters preferences $\profile$, a specific positional scoring rule, defined by a scoring vector $\w$, attributes a score {\color{blue} $s^{\profile, \w}$} to each alternative.
+			\bigskip \medskip
 		}
-		\block{Minimax Regret}{
-			
-%			\begin{align*}
-%			|N|=n, |A|=m \quad &\text{voters, alternatives} \\
-%			v_j = \succ_j \quad &\text{real preference order of the voter $j \in N$ }\\ 
-%			& \text{(connex,transitive, asymmetric relation)} \\
-%			V=\{\profile|\profile=(v_1, \dots, v_n)\} \quad & \text{set of complete preference profiles} \\
-%			W=\{\w|\w=(w_1, \dots, w_m)\} \quad & \text{set of scoring vectors} \\
-%			s^{\profile, \w}(x) = \sum_{j \in N} w_{v_j(x)} \quad & \text{score of alternative \textit{x} under the profile $\profile$ and weights $\w$} \\
-%			\ppref_j \quad & \text{partial preference order of the voter $j \in N$} \\
-%			C(\ppref_j)=\set{{\succ} \suchthat {\ppref_j} \subseteq {\succ}} \quad & \text{set of possible completions of $\ppref_j$} \\
-%			\Co_W \quad& \text{set of linear constraints given by the committee about} \\ &\text{the scoring vector $\w$}
-%			\end{align*}
-			\begin{align*}
-				\color{red}{\Regret^{\profile,\w}(x)} & = \max_{y \in A} s^{\profile,\w}(y) - s^{\profile, \w}(x) \\
-				\text{is the regret of selecting $x$ as a winner} & \text{ instead of the optimal alternative under $\profile$ and $\w$}\\ 
-%				\text{is the regret of selecting $x$ as a winner} & \text{ instead of choosing the optimal alternative}\\ \text{considering all possible} & \text{ realizations of $\profile$ and $\w$}\\
-				\color{red}{\PMR^{\pprofile,W}(x,y)} & = \max_{\w \in W} \max_{\profile \in C(\pprofile)}s^{\profile,\w}(y) - s^{\profile, \w}(x) \\
-				\text{is the worst-case } &	\text{loss of choosing $x$ instead of $y$} \\
-%				\MR^{\pprofile,W}(x) & = \max_{y \in A} \PMR^{\pprofile,W}(x,y)\\
-%%				\text{is the worst-case } &	\text{loss of $x$} \\
-%				%& = \max_{\w \in W} \max_{\profile \in C(\profile)} \Regret(x, \profile, \w) \\
-%				\MMR(\pprofile,W) & = \min_{x \in A} \MR^{\pprofile,W}(x) \\
-			%	x^{*}_{\pprofile,W} \in A^*_{\pprofile, W} & = \argmin_{x \in A}\MR^{\pprofile,W}(x)
-			\end{align*}
-			\centering Max regret {\color{red}{$\MR^{\pprofile,W}(x)$}} is the worst-case loss of $x$ and the minimal max regret {\color{red}{$\MMR^{\pprofile,W}$}} is the regret associated to an optimal alternative.
-		}
-		
-		\block{Elicitation strategies}{
-			A function that, given our partial knowledge so far, returns a question that should be asked. 
+		\block{Question Types}{	
+			\textbf{Questions to the voters}
 			\begin{itemize}
-				\item \textbf{Random}: it decides, with $1/2$ probability, whether to ask a question to the voters or to the committee, then it equiprobably draws one among the set of the possible questions;
-			
-				\item \textbf{Extreme completions}: it asks a question to the committee or to the voters depending on which uncertainty contributes the most to the regret;
-			
-				\item \textbf{Pessimistic}: it selects the question that leads to minimal regret in the worst case considering, and aggregating, both possible answers to each question; 
-			
-				\item \textbf{Two phase}: it asks a predefined, non adaptive sequence of $m-2$ questions to the committee and then it only asks questions about the voters.
+				\item[] Comparison queries that ask a particular voter to compare two alternatives
+				\[x \pref_j y \quad ?\]
+			\end{itemize}
+			\textbf{Questions to the committee}
+			\begin{itemize}
+				\item[] Queries relating the difference between the importance of consecutive ranks $r$ and $r+1$
+				\[ w_{r} - w_{r+1} \geq \lambda (w_{r+1} - w_{r+2}) \quad ? \] 
 			\end{itemize}
 		}
+			
+			\block{Elicitation strategies}{
+				A function that, given our partial knowledge so far, returns a question that should be asked. 
+				\begin{itemize}
+					\item \textbf{Random}: it decides, with $1/2$ probability, whether to ask a question to the voters or to the committee, then it equiprobably draws one among the set of the possible questions;
+					
+					\item \textbf{Extreme completions}: it asks a question to the committee or to the voters depending on which uncertainty contributes the most to the regret;
+					
+					\item \textbf{Pessimistic}: it selects the question that leads to minimal regret in the worst case considering, and aggregating, both possible answers to each question; 
+					
+					\item \textbf{Two phase}: it asks a predefined, non adaptive sequence of $m-2$ questions to the committee and then it only asks questions about the voters.
+				\end{itemize}
+				\bigskip
+			}
+%			\begin{tikzpicture}[remember picture,overlay]
+%				\path (current page.south west) ++(1.5cm, 1.5cm) node[anchor=south west, text width=27cm] {
+%					Olivier Cailloux and Yves Meinard. \emph{A formal framework for deliberated judgment}. Under revision at Theory and Decision. \href{https://arxiv.org/abs/1801.05644}{arXiv:1801.05644 [cs.AI]}.
+%				};
+%			\end{tikzpicture}
+		
 	\column{0.5}
 		\block{Motivation and approach}{
 				\textbf{Who?}
@@ -173,9 +151,7 @@
 				\textbf{Why?}
 				\begin{itemize}
 					\item Voters: difficult or costly to order \emph{all} alternatives
-%					Requiring voters to express \emph{full preference} orderings can be prohibitively \emph{costly}, especially for decisions with lots of alternatives
-					\item Committee: difficult to specify a voting rule \emph{precisely} and abstractly
-%					\emph{Difficult} for non-expert users \emph{to formalize} a voting rule on the basis of some generic preferences over a desired aggregation method
+					\item Committee: difficult to \emph{specify} a voting rule precisely and abstractly
 				\end{itemize}
 				\textbf{How?}
 				\begin{itemize}
@@ -184,33 +160,31 @@
 				\textbf{Assumptions}
 				\begin{itemize}
 					\item Voters and committee have true preferences in mind
-					\item The voting rule is a Positional Scoring Rule where the scoring vector $(w_1, \dots , w_m)$ is a convex sequence of weights and $w_1=1$, $w_m=0$ 
+					\item The voting rule is a Positional Scoring Rule where the scoring vector $\w=(w_1, \dots , w_m)$ is a convex sequence of weights and $w_1=1$, $w_m=0$ 
 				\end{itemize}
 		}
-		\block{Question Types}{	
-			\textbf{Questions to the voters}
-			\begin{itemize}
-				\item[] Comparison queries that ask a particular voter to compare two alternatives
-				\[a \pref_j b \quad ?\]
-			\end{itemize}
-			\textbf{Questions to the committee}
-			\begin{itemize}
-				\item[] Queries relating the difference between the importance of consecutive ranks $r$ and $r+1$
-				\[ w_{r} - w_{r+1} \geq \lambda (w_{r+1} - w_{r+2}) \quad ? \] 
-			\end{itemize}
-		}
+		\block{Minimax Regret}{
+			Given partially specified positional scoring rule and voters preferences
+			\bigskip
+			\coloredbox{the pairwise max regret $\color{red}{\PMR^{\pprofile,W}(x,y)}$ is the maximum difference of score between $x$ and $y$ under all possible realizations of the full profile {\em and} weights.}
+			\medskip
+			We care about the worst case loss: \emph{maximal regret} between a chosen alternative x and best real alternative y. \bigskip
+			
+			\centerline{\textbf{We select the alternative which \emph{minimizes} the maximal regret}}
+		}	
 		\block{Pairwise Max Regret Computation}{
-			The computation of $\PMR^{\pprofile,W}(x,y)$ can be seen as a game in which an adversary can both:
+			The computation of $\PMR^{\pprofile,W}(x,y)$ can be seen as a game in which an adversary can both
 			\begin{itemize}
 				\item \textbf{complete the partial profile}\\
-					\begin{center}
-						\includegraphics[scale=1.015]{completion.png}
-					\end{center}
-					
+				\begin{center}
+					\includegraphics[scale=0.92]{completion.png}
+				\end{center}
+				
 				\item \textbf{choose a feasible weight vector}\\
 				\centerline{\color{red}$\mathbf{(1,0,0)}$}
 			\end{itemize}
-			}
+			in order to maximize the difference of scores. 
+		}
 			\block{References}{
 				\small{
 					\bibliography{biblio}
