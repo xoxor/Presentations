@@ -177,11 +177,14 @@
 			\item [$A$] Alternatives, $|A|=m$
 			\item [$N$] Voters 
 			\item [$P = (\pref_j, \ j \in N ), \ P \in \mathcal{P} $] complete preferences profile 
-			\item [$W=(\w_k,\ 1\leq k \leq m), \ W \in \mathcal{W}$] (convex) scoring vector that the committee has in mind
+			\item [$W=(\w_r,\ 1\leq r \leq m), \ W \in \mathcal{W}$] (convex) scoring vector that the committee has in mind
 		\end{description}
 		\bigskip
 		\begin{block}{}
 			$W$ defines a Positional Scoring Rule $f_W(P)\subseteq A$ using scores \color{blue}$s^{W,P}(a), \ \forall \ a \in A$
+		\end{block}
+		\begin{block}{}
+			$P$ and $W$ exist in the minds of voters and committee but unknown to us
 		\end{block}
 		
 \end{frame}
@@ -191,12 +194,12 @@
 	\frametitle{Questions}
 	\textbf{Questions to the voters}
 	\begin{itemize}
-		\item[] Comparison queries that ask a particular voter to compare two alternatives $a$ and $b$
+		\item[] Comparison queries that ask a particular voter to compare two alternatives $a, b \in A$
 		\color{blue}\[a \pref_j b \quad ?\]
 	\end{itemize}
 	\textbf{Questions to the committee}
 	\begin{itemize}
-		\item[] Queries relating the difference between the importance of consecutive ranks $r$ and $r+1$
+		\item[] Queries relating the difference between the importance of consecutive ranks from $r$ to $r+2$
 		\color{blue} \[ w_{r} - w_{r+1} \geq \lambda (w_{r+1} - w_{r+2}) \quad ? \] 
 	\end{itemize}
 \end{frame}
@@ -216,7 +219,7 @@
 \subsection{Definition}
 \begin{frame}
 	\frametitle{Minimax Regret}
-	Given $C_P$ and $C_W$:
+	Given $C_P \subseteq \mathcal{P}$ and $C_W \subseteq \mathcal{W}$:
 	
 	\begin{block}{}
 		\[\color{red}{\PMR^{C_P,C_W}(a,b)}= \max_{P\in C_P, W \in C_W} s^{P,W}(b)-s^{P,W}(a) \]
