@@ -114,7 +114,7 @@
 	
 			\textbf{Incompletely specified profile and positional scoring rule \\}
 			\begin{tikzfigure}
-				\includegraphics[scale=1.095]{setting3.png}
+				\includegraphics[scale=1.097]{setting3.png}
 				%		\caption{.}
 				%		\label{fig:b1}
 			\end{tikzfigure}
@@ -133,16 +133,19 @@
 %			Given complete voters preferences $\profile$, a specific positional scoring rule, defined by a scoring vector $\w$, attributes a score {\color{blue} $s^{\profile, \w}$} to each alternative.
 %			\bigskip \medskip
 %		}
-		\block{Questions}{	
-			\textbf{Questions to the voters}
+		\block{Questions}{
+			$P$ and $W$ exist but they are unknown to us. They can be elicited by asking: 
 			\begin{itemize}
-				\item[] Comparison queries that ask a particular voter to compare two alternatives $a$ and $b$
-				\[a \pref_j b \quad ?\]
-			\end{itemize}
-			\textbf{Questions to the committee}
-			\begin{itemize}
-				\item[] Queries relating the difference between the importance of consecutive ranks $r$ and $r+1$
-				\[ w_{r} - w_{r+1} \geq \lambda (w_{r+1} - w_{r+2}) \quad ? \] 
+				\item \textbf{Questions to the voters}
+				\begin{itemize}
+					\item[] Comparison queries that ask a particular voter to compare two alternatives $a, b \in A$
+					\[a \pref_j b \quad ?\]
+				\end{itemize}
+				\item \textbf{Questions to the committee}
+				\begin{itemize}
+					\item[] Queries relating the difference between the importance of ranks $r$ to $r+2$
+					\[ w_{r} - w_{r+1} \geq \lambda (w_{r+1} - w_{r+2}) \quad ? \] 
+				\end{itemize}
 			\end{itemize}
 		}
 			\block{Elicitation strategies}{
@@ -164,6 +167,7 @@
 					\bibliography{biblio}
 					\bibliographystyle{abbrvnat}
 				}
+				\vspace{0.45cm}
 			}
 			
 %			\begin{tikzpicture}[remember picture,overlay]
@@ -190,8 +194,8 @@
 				\textbf{Context}
 				\begin{itemize}
 					\item $A$ Alternatives: $|A|=m$
-					\item $N$ Voters: have a complete preferences profile $P = (\pref_j, \ j \in N ), \ P \in \mathcal{P} $ 
-					\item Committee: has a (convex) scoring vector in mind $W=(\w_k,\ 1\leq k \leq m), \ W \in \mathcal{W}$ 
+					\item $N$ Voters: determine a complete preferences profile $P = (\pref_j, \ j \in N ), \ P \in \mathcal{P} $ 
+					\item Committee: has a (convex) scoring vector in mind $W=(\w_r,\ 1\leq r \leq m), \ W \in \mathcal{W}$ 
 					\item $W$ defines a Positional Scoring Rule $f_W(P)\subseteq A$ using scores $s^{W,P}(a), \ \forall \ a \in A$
 				\end{itemize}
 		}
@@ -204,7 +208,7 @@
 			\end{itemize}
 		}
 	\block{Minimax Regret}{
-		Given $C_P$ and $C_W$:
+		Given $C_P \subseteq \mathcal{P}$ and $C_W \subseteq \mathcal{W}$:
 		\bigskip
 		\coloredbox{the pairwise max regret $\color{red}{\PMR^{C_P,C_W}(a,b)}= \max_{P\in C_P, W \in C_W} s^{P,W}(b)-s^{P,W}(a) $ is the maximum difference of score between $a$ and $b$ under all possible realizations of the full profile {\em and} weights}
 		\medskip
