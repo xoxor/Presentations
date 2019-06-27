@@ -20,6 +20,26 @@
 \DeclareMathOperator{\MR}{MR}
 \DeclareMathOperator{\MMR}{MMR}
 
+\newcommand*{\icimg}[1]{%
+	\raisebox{-.3\baselineskip}{%
+		\includegraphics[
+		height=\baselineskip,
+		width=\baselineskip,
+		keepaspectratio,
+		]{#1}%
+	}%
+}
+
+\newcommand*{\icarr}[1]{%
+	\raisebox{-0.4\baselineskip}{%
+		\includegraphics[
+		height=2.5\baselineskip,
+		width=3\baselineskip,
+		keepaspectratio,
+		]{#1}%
+	}%
+}
+
 \makeatletter
 \defbeamertemplate*{title page}{mydefault}[1][]
 {
@@ -98,7 +118,7 @@
 %	\textbf{Setting}: Two kind of players
 \textbf{Setting}: Incompletely specified profile and positional scoring rule
 \begin{figure}
-	\includegraphics[scale=0.35]{setting.png}
+	\includegraphics[scale=0.35]{setting3.png}
 	%		\caption{.}
 	%		\label{fig:b1}
 \end{figure}
@@ -148,75 +168,86 @@
 	\end{itemize}
 \end{frame}
 
-\subsection{Framework}
-\begin{frame}
-	\frametitle{Framework}
-	
-	\begin{description}[$|N|=n, |A|=m$]
-		\item[$|N|=n, |A|=m$] voters, alternatives
-		\item[$\ppref_j$] partial preference order of the voter $j \in N$
-		\item[$\Co_W$] set of linear  constraints given by the committee about $\w$
-	\end{description}
-	\medskip
-	Given complete voters preferences $\profile$, a specific positional scoring rule, defined by a scoring vector $\w$, attributes a score {\color{blue} $s^{\profile, \w}$} to each alternative
-\end{frame}
+\subsection{Context}
 
 \begin{frame}
-	\frametitle{Framework}
-	\begin{block}{Assumptions}
-		\begin{itemize}
-			\item Voters and committee have true preferences in mind
-			\item The voting rule is a Positional Scoring Rule where the scoring vector $\w=(w_1, \dots , w_m)$ is a convex sequence of weights	and $w_1=1$, $w_m=0$ 
-		\end{itemize}
-	\end{block}
+	\frametitle{Context}
+
+		\begin{description}[$W=(\w_k,\ 1\leq k \leq m), \ W \in \mathcal{W}$]
+			\item [$A$] Alternatives, $|A|=m$
+			\item [$N$] Voters 
+			\item [$P = (\pref_j, \ j \in N ), \ P \in \mathcal{P} $] complete preferences profile 
+			\item [$W=(\w_k,\ 1\leq k \leq m), \ W \in \mathcal{W}$] (convex) scoring vector that the committee has in mind
+		\end{description}
+		\bigskip
+		\begin{block}{}
+			$W$ defines a Positional Scoring Rule $f_W(P)\subseteq A$ using scores \color{blue}$s^{W,P}(a), \ \forall \ a \in A$
+		\end{block}
+		
+\end{frame}
+
+\subsection{Questions}
+\begin{frame}
+	\frametitle{Questions}
+	\textbf{Questions to the voters}
+	\begin{itemize}
+		\item[] Comparison queries that ask a particular voter to compare two alternatives $a$ and $b$
+		\color{blue}\[a \pref_j b \quad ?\]
+	\end{itemize}
+	\textbf{Questions to the committee}
+	\begin{itemize}
+		\item[] Queries relating the difference between the importance of consecutive ranks $r$ and $r+1$
+		\color{blue} \[ w_{r} - w_{r+1} \geq \lambda (w_{r+1} - w_{r+2}) \quad ? \] 
+	\end{itemize}
+\end{frame}
+
+\subsection{Our Knowledge}
+\begin{frame}
+	\frametitle{Our Knowledge}
+	The answers to these questions define $C_P$ and $C_W$ that is our knowledge about P and W 
+	\medskip
+	\begin{itemize}
+		\item $C_P \subseteq \mathcal{P}$ constraints on the profile given by the voters
+		\item $C_W \subseteq \mathcal{W}$ constraints on the voting rule given by the committee
+	\end{itemize}
 \end{frame}
 
 \section{Minimax Regret}
 \subsection{Definition}
 \begin{frame}
 	\frametitle{Minimax Regret}
-	\begin{description}[$\mathbf{\PMR^{\pprofile,W}(x,y)}$]
-		\item[$\mathbf{\PMR^{\pprofile,W}(x,y)}$] is the maximum difference of score between $x$ and $y$ under all possible realizations of the full profile {\em and} weights
-		\item[$\mathbf{\MR^{\pprofile,W}(x)}$] represents the worst case loss: the \emph{maximal regret} between a chosen alternative x and best real alternative y
-	\end{description}
-	\bigskip		
-		\centerline{\textbf{We select the alternative which \emph{minimizes} the maximal regret}}
+	Given $C_P$ and $C_W$:
+	
+	\begin{block}{}
+		\[\color{red}{\PMR^{C_P,C_W}(a,b)}= \max_{P\in C_P, W \in C_W} s^{P,W}(b)-s^{P,W}(a) \]
+		is the maximum difference of score between $a$ and $b$ under all possible realizations of the full profile {\em and} weights
+	\end{block}
+	
+	We care about the worst case loss: \emph{maximal regret} between a chosen alternative $a$ and best real alternative $b$. \bigskip
+	
+	\centerline{\textbf{We select the alternative which \emph{minimizes} the maximal regret}}
 \end{frame}
 
 \subsection{Pairwise Max Regret Computation}
 \begin{frame}
 	\frametitle{Pairwise Max Regret Computation}
-	The computation of $\PMR^{\pprofile,W}(x,y)$ can be seen as a game in which an adversary can both
+	The computation of $\PMR^{C_P,C_W}( \icimg{salad.png},\icimg{aubergine.png})$ can be seen as a game in which an adversary both:
 	\begin{itemize}
-		\item \textbf{complete the partial profile}\\
+		\item \textbf{chooses a complete profile $\mathbf{P \in \mathcal{P}}$}\\
 		\medskip
 		\begin{center}
-			\includegraphics[scale=0.35]{completion.png}
+			\includegraphics[scale=0.35]{completion4.png}
 		\end{center}
 		
-		\item \textbf{choose a feasible weight vector}\\
+		\item \textbf{chooses a feasible weight vector $\mathbf{W \in \mathcal{W}}$}\\
 		\medskip
-		\centerline{\color{red}$\mathbf{(1,0,0)}$}
+		\centerline{\color{red}$\mathbf{(1,?,0)}$ \icarr{arrow.png} \color{red}$\mathbf{(1,0,0)}$}
 	\end{itemize}
 	\medskip
 	in order to maximize the difference of scores
 \end{frame}
 
 \section{Elicitation}
-\subsection{Question Types}
-	\begin{frame}
-		\frametitle{Question Types}
-		\textbf{Questions to the voters}
-		\begin{itemize}
-			\item[] Comparison queries that ask a particular voter to compare two alternatives
-			\color{blue}\[x \pref_j y \quad ?\]
-		\end{itemize}
-		\textbf{Questions to the committee}
-		\begin{itemize}
-			\item[] Queries relating the difference between the importance of consecutive ranks $r$ and $r+1$
-			\color{blue} \[ w_{r} - w_{r+1} \geq \lambda (w_{r+1} - w_{r+2}) \quad ? \] 
-		\end{itemize}
-	\end{frame}
 	
 	\subsection{Elicitation strategies}
 	\begin{frame}
