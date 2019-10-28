@@ -1,0 +1,188 @@
+\documentclass{beamer}
+\usetheme{CambridgeUS}
+\usecolortheme{beaver}
+\usepackage{amsmath,amssymb,enumerate,amsthm}
+\usepackage{bm}
+
+\newcommand*{\icimg}[1]{%
+	\raisebox{-.3\baselineskip}{%
+		\includegraphics[
+		height=\baselineskip,
+		width=\baselineskip,
+		keepaspectratio,
+		]{#1}%
+	}%
+}
+
+
+\makeatletter
+\defbeamertemplate*{title page}{mydefault}[1][]
+{
+	\vbox{}
+	\vfill
+	\begin{centering}
+
+%{\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\par}
+		\begin{beamercolorbox}{titlegraphic}
+				\usebeamerfont{titlegraphic}\inserttitlegraphic
+		\end{beamercolorbox}%
+			\vskip1em\par	
+		\begin{beamercolorbox}[rounded=true, center, shadow=true, sep=8pt,#1]{title}
+			\usebeamerfont{title}\inserttitle\par%
+			\ifx\insertsubtitle\@empty%
+			\else%
+			\vskip0.5em%
+			{\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+			\fi%     
+		\end{beamercolorbox}%
+		\vskip1em\par
+		\begin{beamercolorbox}[sep=8pt,center,#1]{author}
+			\usebeamerfont{author}\insertauthor
+		\end{beamercolorbox}
+		\begin{beamercolorbox}[sep=8pt,center,#1]{institute}
+			\usebeamerfont{institute}\insertinstitute
+		\end{beamercolorbox}
+		\begin{beamercolorbox}[sep=8pt,center,#1]{date}
+			\usebeamerfont{date}\insertdate
+		\end{beamercolorbox}\vskip0.5em
+		\begin{beamercolorbox}[sep=8pt,center,#1]{logo}
+			\usebeamerfont{titlegraphic}\insertlogo
+		\end{beamercolorbox}%
+	\end{centering}
+	\vfill
+}
+\setbeamertemplate{title page}[mydefault]
+\makeatother
+
+
+
+\titlegraphic{\includegraphics[width=50mm]{logo_dauphine} \hspace*{5.5cm} \includegraphics[width=7mm]{cnrs}}
+\title[Ex-Ante vs Ex-Post Compromise]{Ex-Ante versus Ex-Post Compromise}
+\institute[]{LAMSADE, Université Paris-Dauphine, Paris, France}
+\author[O. Cailloux, B. Napolitano, R. Sanver]{O. Cailloux, B. Napolitano and R. Sanver}
+\date[31 Oct 2019]{{\small $9th$ Murat Sertel Workshop on Economic Design} \\ \includegraphics[width=35mm]{LOGO_LAMSADE} }
+
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\definecolor{darkred}{rgb}{0.8,0,0}
+
+\begin{document}
+
+\beamertemplatenavigationsymbolsempty
+
+\begin{frame}[plain]
+\maketitle
+\end{frame}
+
+\addtocounter{framenumber}{-1}
+
+
+\section{Introduction}
+\subsection{Problem}
+
+\begin{frame}
+\frametitle{Introducing the problem}
+\textbf{Setting}: Several voters express their preferences over a set of alternatives. 
+\textbf{Goal}: Find a procedure determining a collective choice that promote a notion of compromise.
+\end{frame}
+
+\subsection{Related Works}
+\begin{frame}
+	\frametitle{Compromise rules}
+	\begin{itemize}
+		\item \textbf{plurality}:selects the alternatives considered as best by the highest number of voters. 
+		%	In other words, it insists on a support of first and highest quality, disregarding the quantity of support this may lead to.
+		\item \textbf{MVR}:MVR picks all alternatives receiving a majority support at the highest
+		possible quality
+		\item \textbf{MC}: picks alternatives receiving a majority support at the highest possible quality while ties are broken according to the quantity of support these receive
+		%gives up from the quality of support, in order to ensure a majority support behind the selected alternatives.
+		\item \textbf{FB}: bargainers fall back, in lockstep, to less and	less preferred alternatives until they reach a unanimous agreement. 
+		\item \textbf{q-approval FB}:picks the alternatives which	receive the support of q voters at the highest possible quality – breaking ties according to the quantity of support
+		%	Note that MC and FB winners are	particular cases of q-approval compromises, for q being respectively equal to majority and unanimity. Moreover for q = 1, q-approval compromises	coincide with the plurality rule (PR) winners
+	\end{itemize}
+\end{frame}
+
+\subsection{Ex-Ante vs Ex-Post Perspective}
+\begin{frame}
+	\frametitle{Ex-Ante versus Ex-Post Perspective}
+	\begin{block}{ex-ante compromise}
+		impose over individuals a willingness to compromise but they do not ensure an outcome where everyone has effectively compromised. 
+	\end{block}
+	\begin{block}{ex-post compromise}
+		favoring an outcome	where every voter gives up her most preferred positions if this
+		increases equality. 
+	\end{block}
+\end{frame}
+
+\subsection{Examples}
+\begin{frame}
+	\frametitle{Example 1}
+	\begin{center}
+		$
+		\begin{array}{cccc}
+		\mathbf{51} \quad &a&b&c\\
+		\mathbf{49} \quad &c&b&a\\
+		\end{array}
+		$
+	\end{center}
+	\begin{itemize}
+		\item plurality
+		\item MVR
+		\item MC
+		\item FB
+		\item q-approval FB 	$q\in \left\{ 1,..., \frac{n}{2} +1\right\} $
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Example 2}
+	\begin{center}
+		$
+		\begin{array}{ccccc}
+		\mathbf{26} \quad &a&b&c&d\\
+		\mathbf{25} \quad &c&b&a&d\\
+		\mathbf{z-51} \quad &d&b&a&c\\
+		\mathbf{100-z} \quad &d&a&c&b\\
+		\end{array}
+		$
+	\end{center}
+	\begin{itemize}
+		\item plurality
+		\item MVR
+		\item MC
+		\item FB
+		\item q-approval FB $q\in \left\{ \frac{n}{2},..., z\right\}$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Idea}
+	A social planner must choose between a world $x$ where individuals may sell their organs, and a world $y$ where they do not.
+	\begin{center}
+		$
+		\begin{array}{ccc}
+		& u_1 & u_2 \\
+		\mathbf{x} \ & 1 & 100 \\
+		\mathbf{y} \ & 0 & 0 \\
+		\end{array}
+		$
+	\end{center}
+	Even though $y$ is Pareto dominated in this example, the social planner might prefer $y$ to $x$. 
+\end{frame}
+
+
+\addtocounter{framenumber}{-1}
+\begin{frame}[plain]
+	\centering \color{darkred}\LARGE Thank You!
+\end{frame}
+
+%\addtocounter{framenumber}{-1}
+
+
+\bibliographystyle{plain}
+\scriptsize{\bibliography{biblio} }
+
+
+\end{document}
