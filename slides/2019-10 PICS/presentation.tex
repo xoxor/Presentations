@@ -4,6 +4,15 @@
 \usepackage{amsmath,amssymb,enumerate,amsthm}
 \usepackage{bm}
 
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\paretopt}{\mathit{PO}}
+\newcommand{\SPPd}{\Sigma^\text{PPd}}
+\newcommand{\SAll}{\Sigma^\text{All}}
+\newcommand{\SThreshold}{\Sigma_\text{threshold}}
+\newcommand{\vpr}{\mathbf{v}}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newcommand{\suchthat}{\;\ifnum\currentgrouptype=16 \middle\fi|\;}
+
 \newcommand*{\icimg}[1]{%
 	\raisebox{-.3\baselineskip}{%
 		\includegraphics[
@@ -84,41 +93,30 @@
 
 \begin{frame}
 \frametitle{Introducing the problem}
-\textbf{Setting}: Several voters express their preferences over a set of alternatives. 
-\textbf{Goal}: Find a procedure determining a collective choice that promote a notion of compromise.
+\textbf{Setting}: Several voters express their preferences over a set of alternatives \vspace{6mm}
+
+\onslide<2->{\textbf{Goal}: Find a procedure determining a collective choice that promote a notion of compromise}
 \end{frame}
 
 \subsection{Related Works}
 \begin{frame}
 	\frametitle{Compromise rules}
 	\begin{itemize}
-		\item \textbf{plurality}:selects the alternatives considered as best by the highest number of voters. 
+		\item<1-> \textbf{Plurality}: selects the alternatives considered as best by the highest number of voters 
 		%	In other words, it insists on a support of first and highest quality, disregarding the quantity of support this may lead to.
-		\item \textbf{MVR}:MVR picks all alternatives receiving a majority support at the highest
-		possible quality
-		\item \textbf{MC}: picks alternatives receiving a majority support at the highest possible quality while ties are broken according to the quantity of support these receive
+		\item<2-> \textbf{MVR}: picks all alternatives receiving a majority support at the highest possible quality
+		\item<3-> \textbf{MC}: MVR and ties are broken according to the quantity of support these receive
 		%gives up from the quality of support, in order to ensure a majority support behind the selected alternatives.
-		\item \textbf{FB}: bargainers fall back, in lockstep, to less and	less preferred alternatives until they reach a unanimous agreement. 
-		\item \textbf{q-approval FB}:picks the alternatives which	receive the support of q voters at the highest possible quality – breaking ties according to the quantity of support
+		\item<4-> \textbf{FB}: bargainers fall back to less and	less preferred alternatives until they reach a unanimous agreement 
+		\item<5-> \textbf{q-approval FB}: picks the alternatives which receive the support of q voters at the highest possible quality breaking ties according to the quantity of support
 		%	Note that MC and FB winners are	particular cases of q-approval compromises, for q being respectively equal to majority and unanimity. Moreover for q = 1, q-approval compromises	coincide with the plurality rule (PR) winners
 	\end{itemize}
-\end{frame}
-
-\subsection{Ex-Ante vs Ex-Post Perspective}
-\begin{frame}
-	\frametitle{Ex-Ante versus Ex-Post Perspective}
-	\begin{block}{ex-ante compromise}
-		impose over individuals a willingness to compromise but they do not ensure an outcome where everyone has effectively compromised. 
-	\end{block}
-	\begin{block}{ex-post compromise}
-		favoring an outcome	where every voter gives up her most preferred positions if this
-		increases equality. 
-	\end{block}
 \end{frame}
 
 \subsection{Examples}
 \begin{frame}
 	\frametitle{Example 1}
+	$|N|=100, A=\{a,b,c\}$
 	\begin{center}
 		$
 		\begin{array}{cccc}
@@ -128,16 +126,17 @@
 		$
 	\end{center}
 	\begin{itemize}
-		\item plurality
-		\item MVR
-		\item MC
-		\item FB
-		\item q-approval FB 	$q\in \left\{ 1,..., \frac{n}{2} +1\right\} $
+		\item<1-> Plurality: $\{a\}$
+		\item<2-> MVR: $\{a\}$
+		\item<3-> MC: $\{a\}$
+		\item<4-> FB: $\{b\}$
+		\item<5-> q-approval FB 	$q\in \left\{ 1,..., \frac{n}{2} +1\right\} $: $\{a\}$
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Example 2}
+	$|N|=100, A=\{a,b,c,d\}, z\in \left\{ 64,..., 99\right\}$
 	\begin{center}
 		$
 		\begin{array}{ccccc}
@@ -149,17 +148,334 @@
 		$
 	\end{center}
 	\begin{itemize}
-		\item plurality
-		\item MVR
-		\item MC
-		\item FB
-		\item q-approval FB $q\in \left\{ \frac{n}{2},..., z\right\}$
+		\item<1-> Plurality: $\{d\}$
+		\item<2-> MVR: for $z<76$ $\{a,b\}$ 
+		\only<3-3>{	\begin{center}
+				$
+				\begin{array}{ccc}
+				&1^\circ&2^\circ \\
+				\mathbf{a} \quad &26&126-z\\
+				\mathbf{b} \quad &0&z\\
+				\mathbf{c} \quad &25&25\\
+				\mathbf{d} \quad &49&49\\
+				\end{array}
+				$
+			\end{center} }
+		\only<4-4>{	\begin{center}
+			$
+			\begin{array}{ccc}
+			&1^\circ&2^\circ \\
+			\mathbf{a} \quad &26&51\\
+			\mathbf{b} \quad &0&75\\
+			\mathbf{c} \quad &25&25\\
+			\mathbf{d} \quad &49&49\\
+			\end{array}
+			$
+		\end{center} }
+		\onslide<5->, for $z\geq76$ $\{b\}$ 
+		\only<5-5>{	\begin{center}
+				$
+				\begin{array}{ccc}
+				&1^\circ&2^\circ \\
+				\mathbf{a} \quad &26&50\\
+				\mathbf{b} \quad &0&76\\
+				\mathbf{c} \quad &25&25\\
+				\mathbf{d} \quad &49&49\\
+				\end{array}
+				$
+			\end{center} }	
+		\item<6-> MC: $\{b\}$
+		\item<7-> FB: $\{a\}$
+		\item<8-> q-approval FB $q\in \left\{ \frac{n}{2},..., z\right\}$: $\{b\}$
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Idea}
-	A social planner must choose between a world $x$ where individuals may sell their organs, and a world $y$ where they do not.
+ \frametitle{Motivation}
+ $|N|=2, |A|=2k+2$
+ \begin{center}
+ 	$
+ 	\begin{array}{cc}
+ 	\mathbf{i_1}& \mathbf{i_2} \\
+ 	x &b_1\\
+ 	a_1 &\cdot\\
+ 	\cdot &\cdot\\
+ 	\cdot &b_{k-1}\\
+ 	\cdot &y\\
+ 	a_k &x\\
+ 	y &b_k\\
+ 	b_1 &a_1\\
+ 	\cdot &\cdot\\
+ 	\cdot &\cdot\\
+ 	b_k &a_k\\
+ 	\end{array}
+ 	$
+ 	\end{center}
+\end{frame}
+
+\subsection{Ex-Ante vs Ex-Post Perspective}
+\begin{frame}
+	\frametitle{Ex-Ante versus Ex-Post Perspective}
+	\begin{block}{ex-ante compromise}
+		imposes over individuals a willingness to compromise but it does not ensure an outcome where everyone has effectively compromised 
+	\end{block}
+	\begin{block}{ex-post compromise}
+		favors an outcome where every voter gives up her most preferred positions if this	increases equality 
+	\end{block}
+\end{frame}
+
+\section{Ex-Post Compromise}
+\subsection{Cardinal Compromise}
+\begin{frame}
+	\frametitle{Cardinal Compromise}
+	\framesubtitle{Setting}
+	\begin{description}[$u_i \in U(A) \subseteq \R^A$]
+		\item[$A$] alternatives
+		\item[$N$] voters
+		\item[$u_i \in U(A) \subseteq \R^A$] utility function defined over $A$ by the rank of voter $i$ 
+	\end{description}
+	\onslide<2-> \begin{block}{}
+		{\color{blue}$\lambda_{i}^u(x) = \max_{a \in A} u_i(a) - u_{i}(x)$} represents the loss of utility for the voter $i$ if the alternative $x$ is elected instead of her favorite one; and {\color{blue}$\lambda ^{u}(x)$} represents the vector of these losses
+	\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Spread Measure}
+$\sigma : \R_{+}^{N}\longrightarrow \R_{+}$
+\vspace{5mm}
+\onslide<2-> \begin{block}{Pure Equality Recognition}
+	\[ r_i=r_j \ \forall i,j \in N \Rightarrow \sigma(r)=0 \quad r \in \R_{+}^{N}\]
+\end{block}
+\onslide<3-> \begin{block}{Pairwise Pareto Dominance}
+	\[\left[\left\vert r_{i}-r_{j}\right\vert \leq \left\vert s_{i}-s_{j}\right\vert \ \forall i, j\in N\right] \Rightarrow \sigma (r)\leq \sigma (s) \quad r,s\in \R_{+}^{N}\] 
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Spread Measure}
+	\framesubtitle{Example}
+	\[\bar{r}=\frac{\sum_{i=1}^{n}r_i}{n}\]
+	\[\sigma_{avg}(r)= \sum_{i=1}^{n}|\bar{r}-r_i| \]
+	\onslide<2-> Examples:
+	\begin{align*}
+	s=(3,3,3,3) \qquad & \sigma_{avg}(s)= {\scriptstyle\sum_{i=1}^{4}(3-3)}=0 \\
+	t=(1,2,3,4) \qquad & \sigma_{avg}(t)= {\scriptstyle |2.5-1|+|2.5-2|+|2.5-3|+|2.5-4|}=4 \\
+%	t=(1,1,2,2) \qquad & \sigma_{avg}(t)= {\scriptstyle |1.5-1|+|1.5-1|+|1.5-2|+|1.5-2|}=2 \\
+%	w=(2,2,3,3) \qquad & \sigma_{avg}(w)= |2.5-2|+|2.5-2|+|2.5-3|+|2.5-3|=2 \\
+	w=(1,3,5,7) \qquad & \sigma_{avg}(w)= 
+	{\scriptstyle|4-1|+|4-3|+|4-5|+|4-7|}=8
+	\end{align*}
+\end{frame}
+
+
+%\begin{frame}
+%	\frametitle{Spread Measure}
+%	\framesubtitle{Gini Coefficient}
+%	\[\sigma_{avg}(r)= \frac{\sum_{i=1}^{n}\sum_{j=1}^{n}|r_i-r_j|}{2n\sum_{i=1}^{n}|r_{max}-r_i|}\]
+%	Examples:
+%	\begin{align*}
+%		s=(3,3,3,3) \qquad & \sigma_{G}(s)= \frac{0}{2 \cdot 4 \cdot 12}=0 \\
+%		t=(1,1,2,2) \qquad & \sigma_{G}(t)= \frac{(1+1)\cdot 4}{2 \cdot 4 \cdot 6}=\frac{1}{6} \\
+%		w=(2,2,3,3) \qquad & \sigma_{G}(w)= \frac{(1+1)\cdot 4}{2 \cdot 4 \cdot 10}=\frac{1}{10} \\
+%		w=(1,3,5,7) \qquad & \sigma_{G}(w)= \frac{{\scriptscriptstyle(2+4+6)+(2+2+4)+(4+2+2)+(6+4+2)}}{2 \cdot 4 \cdot 16}=\frac{40}{128}=0.31
+%	\end{align*}
+%\end{frame}
+\begin{frame}
+	\frametitle{Cardinal Compromise}
+	\begin{description}[$PO(u) \qquad $]
+		\item[$U(A)^N$] set of injective utility functions defined	over A
+		\item[$PO(u)$] set of Pareto optimal alternatives at {\color{blue}$u \in U(A)^N$}
+		\item[$\lambda ^{u}(x)$] losses vector when electing the alternative $x$
+		\item[$\sigma$] spread measure
+	\end{description}
+	\onslide<2-> \begin{block}{}
+		\[ C^{\sigma }(u) = \argmin_{x \in \paretopt(u)} (\sigma \circ \lambda^u)(x) = \{ x\in \paretopt(u):\sigma (\lambda ^{u}(x))\leq \sigma (\lambda ^{u}(y)),  \forall y\in A\} \]
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Cardinal Compromise}
+	\framesubtitle{Example}
+	$|N|=100, A=\{a,b,c\}$
+	\begin{center}
+		$
+		\begin{array}{cccc}
+		\mathbf{51} \quad &a&b&c\\
+		\mathbf{49} \quad &c&b&a\\
+		\end{array}
+		$
+	\end{center}
+	\only<2-2>{\begin{center}
+		$
+		\begin{array}{ccccccc}
+		& i_{1}& \dots& i_{51}& i_{52}&\dots&i_{100} \\
+		\mathbf{a} \quad &2&\dots&2&0&\dots&0\\
+		\mathbf{b} \quad &1&\dots&1&1&\dots&1\\
+		\mathbf{c} \quad &0&\dots&0&2&\dots&2
+		\end{array}
+		$
+	\end{center}}
+	\onslide<3->{\begin{center}
+			$
+			\begin{array}{ccccccc}
+			& i_{1}& \dots& i_{51}& i_{52}&\dots&i_{100} \\
+			\lambda(a) = (&0,&\dots&0,&2,&\dots&2)\\
+			\lambda(b) = (&1,&\dots&1,&1,&\dots&1)\\
+			\lambda(c) = (&2,&\dots&2,&0,&\dots&0)
+			\end{array}
+			$
+	\end{center}}
+	\onslide<4->{ $\sigma_{avg}(\lambda(a))=99.96, \quad \sigma_{avg}(\lambda(b))=0, \quad \sigma_{avg}(\lambda(c))=100.04$}
+	\onslide<5->{ \[ C^{\sigma_{avg} }(u) = \argmin_{x \in \paretopt(u)} (\sigma \circ \lambda^u)(x) = b \]}
+\end{frame}
+
+\subsection{Ordinal Compromise}
+\begin{frame}
+	\frametitle{Ordinal Compromise}
+	\begin{description}[$\mathbf{v}: L(A)^N \rightarrow U(A)^N$]
+		\item[$P_i \in L(A)$] linear order over $A$ which represents the preference of $i\in N$
+		\item[$v:\left\{ 1,..., m\right\} \rightarrow \R$] utility assignment
+		\item[$v_{P_{i}}$ $\in U(A)$] utility function for $P_{i}\in L(A)$ induced by $v$
+		\item[$\mathbf{v}: L(A)^N \rightarrow U(A)^N$] function mapping a profile of ordinal preferences to a utility profile 
+	\end{description}
+	\onslide<2-> \begin{block}{}
+		\[(C^{\sigma }\circ \vpr)(\{P_i, i \in N\}) = C^{\sigma}(\{v_{P_i}, i \in N\})\]
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Ordinal Compromise}
+	$\SAll = \R_+^{\R_+^N}$ the set of all spread measures
+	\vspace{5mm}
+	\begin{block}{UA-independence}
+		A class of spread measure $\Sigma \subseteq \SAll$ is UA-independent iff, given any $\sigma \in \Sigma $ and any two UAs $v$ and $v^{\prime }$, there exists a $\sigma^\prime\in \Sigma $ such that $C^{\sigma}\circ \vpr = C^{\sigma ^{\prime}} \circ \vpr^\prime$
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Ordinal Compromise}
+	\framesubtitle{UA-independence}
+	$\SPPd \subseteq \SAll$ the class of spread measures that satisfy PPd
+	\begin{block}{Proposition 1:}
+		$\SPPd$ is not UA-independent
+	\end{block}
+	\only<2-3>{\begin{center}
+			\vspace{5mm}
+		$
+		\begin{array}{ccccccccc}
+		\mathbf{i_1} \quad &x&a_1&a_2&a_3&y&b_1&b_2&b_3\\
+		\mathbf{i_2} \quad &b_1&b_2&y&x&b_3&a_1&a_2&a_3\\
+		\end{array}
+		$
+	\end{center}}
+	\only<3-3>{\begin{center}
+			\vspace{5mm}
+		$
+		\begin{array}{cccccccccc}
+		&k=& 1&2&3&4&5&6&7&8 \vspace{1.5mm}\\
+		v(k) & &7&6&5&4&3&2&1&0\\
+		v^\prime(k) & &1000&999&998&997&3&2&1&0\\
+		\end{array}
+		$
+	\end{center}}
+	\only<4-4>{\begin{center}
+		$
+		\begin{array}{ccccc}
+		& v_{P_1}(\cdot) & v_{P_2}(\cdot) & & \lambda^P(\cdot) \\
+		x \quad &7&4 & \quad & (0,3)\\
+		y \quad &3&5 & \quad & \color{red}(4,2)\\
+		a_1 \quad &6&2 & \quad & (1,5)\\
+		a_2 \quad &5&1 & \quad & (2,6)\\
+		a_3 \quad &4&0 & \quad & (3,7)\\
+		b_1 \quad &2&7 & \quad & (5,0)\\
+		b_2 \quad &1&6 & \quad & (6,1)\\
+		b_3 \quad &0&3 & \quad & (7,4)\\
+		\end{array}
+		$
+	\end{center}
+	$C^{\sigma}(v)\in \{y\}$}
+	\onslide<5->{\begin{center}
+		$
+		\begin{array}{ccccc}
+		& v^\prime_{P_1}(\cdot) & v^\prime_{P_2}(\cdot) & & \lambda^{\prime P}(\cdot) \\
+		x \quad &1000&997 & \quad & \color{red}(0,3)\\
+		y \quad &3&998 & \quad & (997,2)\\
+		a_1 \quad &999&2 & \quad & (1,998)\\
+		a_2 \quad &998&1 & \quad & (2,999)\\
+		a_3 \quad &997&0 & \quad & (3,1000)\\
+		b_1 \quad &2&1000 & \quad & (998,0)\\
+		b_2 \quad &1&999 & \quad & (999,1)\\
+		b_3 \quad &0&3 & \quad & \color{red}(1000,997)\\
+		\end{array}
+		$
+	\end{center}
+	$C^{\sigma}(v^\prime)\in \{x,b_3\}$}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Ordinal Compromise}
+	\framesubtitle{UA-independence}
+	$\SThreshold= \{ \sigma^k , k \in \R\}$
+	where $\sigma^k (\lambda)= \# \{ i \in N \suchthat \lambda_i \geq k\}$
+	\begin{block}{Proposition 2:}
+		$\SThreshold$ is UA-independent
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Ordinal Compromise}
+	\framesubtitle{UA-independence}
+	\begin{block}{Proposition 3:}
+		$\sigma^k \in \SThreshold$ fails Pure Equality Recognition and Pairwise Pareto Dominance
+	\end{block}
+	\only<2-2>{
+		\vspace{5mm}
+		$\lambda(x)=(4,4,4,4) \qquad \sigma^3(\lambda(x))=4$}
+	\onslide<3->{
+	\begin{center}
+		$
+		\begin{array}{ccccc}
+		\mathbf{i_1} \quad &a&d&b&c\\
+		\mathbf{i_2} \quad &b&c&d&a\\
+		\end{array}
+		$
+	\end{center}
+	}
+	\onslide<4->{
+			$v$ assigns the utility values $10,2,1,0$ respectively to the ranks $1,2,3,4$}
+	\onslide<5->{
+		\begin{center}
+			$
+			\begin{array}{ccccccc}
+			&&&&&& \sigma^1(\lambda^P(\cdot))\\
+			\lambda^P(a) \ =  &(&0&10&) & \quad & 1\\
+			\lambda^P(b) \ =  &(&9&0&) &  & 1\\
+			\lambda^P(c) \ =  &(&10&8&) &  & 2\\
+			\lambda^P(d) \ =  &(&8&9&) &  & 2\\
+			\end{array}
+			$
+		\end{center}}
+	
+\end{frame}
+
+\section{Conclusions}
+\begin{frame}
+	\frametitle{Questions}
+	\begin{itemize}
+		\item <1-> Which properties define a "good" spread measure?
+		\item <2-> How to characterize those class of social choice rules? 
+		\item <3-> What are the relationships between them and already existing rules?
+		\item <4-> What are the consequences of allowing the utility assignments to vary among individuals?
+		\item <5-> Is it reasonable to drop the Pareto Optimality constraint?
+		\item <6-> $\dots$
+	\end{itemize}
+\end{frame}
+
+\appendix
+\begin{frame}
+	\frametitle{Appendix I \\ Minimal Liberty}
+	A social planner must choose between a world $x$ where individuals may sell their organs, and a world $y$ where they do not
 	\begin{center}
 		$
 		\begin{array}{ccc}
@@ -169,7 +485,7 @@
 		\end{array}
 		$
 	\end{center}
-	Even though $y$ is Pareto dominated in this example, the social planner might prefer $y$ to $x$. 
+	Even though $y$ is Pareto dominated, the social planner might prefer $y$ to $x$ 
 \end{frame}
 
 
