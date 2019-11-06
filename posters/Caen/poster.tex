@@ -1,0 +1,236 @@
+%nag warns a lot about tikzposter.
+%\RequirePackage[l2tabu, orthodox]{nag}
+\documentclass[blockverticalspace=3cm]{tikzposter}
+\input{preamble/packages}
+%\input{preamble/redac}
+\input{preamble/math_basics}
+\input{preamble/math_mine}
+\input{preamble/draw}
+\usepackage{tabularx}
+\tikzposterlatexaffectionproofoff
+\usepackage{rsc}
+\renewcommand{\bibsection}{}
+\usepackage{pdfpages}
+\usepackage{graphics}
+%\usepackage[backend=bibtex,style=authoryear]{biblatex}
+%\addbibresource{biblio.bib}
+
+\listfiles
+
+\definecolor{myorange}{RGB}{250, 95, 0} 
+\definecolor{myorange2}{RGB}{240, 100, 30} 
+\definecolor{myburgundy}{RGB}{150, 0, 15} 
+
+\colorlet{backgroundcolor}{white}
+\colorlet{framecolor}{orange}
+\colorlet{blocktitlebgcolor}{myorange2}
+
+\newcommand{\profile}{\bm{v}}%(complete) profile
+\newcommand{\pprofile}{{\bm{p}}}%partial profile
+\newcommand{\w}{\bm{w}}
+\newcommand{\W}{\mathcal{W}}
+\newcommand{\Co}{\mathcal{C}}
+\newcommand{\pw}{W}%our knowledge about the weights
+\newcommand{\strat}[1]{\emph{#1}}
+\newcommand{\ppref}{\succ^\text{p}}%partial pref
+\newcommand{\pprefeq}{\succeq^\text{p}}%partial pref
+\newcommand{\pref}{\succ}% pref
+\DeclareMathOperator{\Regret}{Regret}
+\DeclareMathOperator{\SCORE}{Score}
+\DeclareMathOperator{\PMR}{PMR}
+\DeclareMathOperator{\MR}{MR}
+\DeclareMathOperator{\MMR}{MMR}
+
+\newcommand*{\icimg}[1]{%
+	\raisebox{-.3\baselineskip}{%
+		\includegraphics[
+		height=\baselineskip,
+		width=\baselineskip,
+		keepaspectratio,
+		]{#1}%
+	}%
+}
+
+\newcommand*{\icarr}[1]{%
+	\raisebox{-0.4\baselineskip}{%
+		\includegraphics[
+		height=2.5\baselineskip,
+		width=3\baselineskip,
+		keepaspectratio,
+		]{#1}%
+	}%
+}
+
+\makeatletter
+\def\title#1{\gdef\@title{\scalebox{\TP@titletextscale}{%
+			\begin{minipage}[t]{\linewidth}
+				\centering
+				#1
+				\par
+				\vspace{0.5em}
+			\end{minipage}%
+		}}}
+		\makeatother
+%I find these settings useful in draft mode. Should be removed for final versions.
+	%Which line breaks are chosen: accept worse lines, therefore reducing risk of overfull lines. Default = 200.
+%		\tolerance=2000
+	%Accept overfull hbox up to...
+%		\hfuzz=2cm
+	%Reduces verbosity about the bad line breaks.
+%		\hbadness 5000
+	%Reduces verbosity about the underful vboxes.
+%		\vbadness=1300
+
+\title{Simultaneous Elicitation of Committee and \\ Voters' Preferences}
+\institute{$^1$ LAMSADE, Université Paris-Dauphine, Paris, France \\ $^2$ LIP6, Sorbonne Universit\'e, Paris, France}
+\author{B. Napolitano$^1$, O. Cailloux$^1$ and P. Viappiani$^2$}
+
+
+\begin{document}
+%\includepdf[pages=-]{masque.pdf}
+\maketitle[titletotopverticalspace=13cm]
+
+\begin{columns}
+	\column{0.5}
+		\block{Scenario}{
+			\begin{tikzpicture}[remember picture,overlay]
+			\path (current page.north west) ++(1.5cm, -1cm) node[anchor=north west, inner sep=0] (first) {
+				\includegraphics[height=6.5cm]{dauphine_psl2018.png}
+			}; 
+			\path (current page.north east) ++(-1.5cm, -1cm) node[anchor=north east, inner sep=0] {
+				\includegraphics[height=7cm]{LAMSADE95.jpg}
+			};
+			\end{tikzpicture}
+				
+		
+%				\begin{tikzpicture}[remember picture,overlay]
+%					\path (current page.south west) ++(1.5cm, 3cm) node[anchor=south west, text width=35cm] {
+%						Beatrice Napolitano, Olivier Cailloux and Paolo Viappiani. \emph{Simultaneous Elicitation of Committee and Voters' Preferences}. Proceedings of RJCIA 2019.
+%					};
+%				\end{tikzpicture}%
+	
+			\textbf{Incompletely specified profile and positional scoring rule \\}
+			\begin{tikzfigure}
+				\includegraphics[scale=1.097]{setting3.png}
+				%		\caption{.}
+				%		\label{fig:b1}
+			\end{tikzfigure}
+
+			\textbf{Goal}
+			\begin{itemize}
+				\item[] Development of query strategies interleaving questions to the committee and to the voters in order to simultaneously elicit preferences and voting rule
+			\end{itemize}
+		}
+%		\block{Framework}{
+%			\begin{align*}
+%				\color{blue}{|N|=n, |A|=m} \quad &\text{voters, alternatives} \\
+%				\color{blue}{\ppref_j} \quad & \text{partial preference order of the voter $j \in N$} \\
+%				\color{blue}{\Co_W} \quad& \text{set of linear  constraints given by the committee about $\w$} \\
+%			\end{align*}
+%			Given complete voters preferences $\profile$, a specific positional scoring rule, defined by a scoring vector $\w$, attributes a score {\color{blue} $s^{\profile, \w}$} to each alternative.
+%			\bigskip \medskip
+%		}
+		\block{Questions}{
+			$P$ and $W$ exist but they are unknown to us. They can be elicited by asking: 
+			\begin{itemize}
+				\item \textbf{Questions to the voters}
+				\begin{itemize}
+					\item[] Comparison queries that ask a particular voter to compare two alternatives $a, b \in A$
+					\[a \pref_j b \quad ?\]
+				\end{itemize}
+				\item \textbf{Questions to the committee}
+				\begin{itemize}
+					\item[] Queries relating the difference between the importance of ranks $r$ to $r+2$
+					\[ w_{r} - w_{r+1} \geq \lambda (w_{r+1} - w_{r+2}) \quad ? \] 
+				\end{itemize}
+			\end{itemize}
+		}
+			\block{Elicitation strategies}{
+				Given our knowledge so far, what is the next question that should be asked?
+				\begin{itemize}
+					\item \textbf{Random}: it decides, with $1/2$ probability, whether to ask a question to the voters or to the committee, then it equiprobably draws one among the set of the possible questions;
+					
+					\item \textbf{Extreme completions}: it asks a question to the committee or to the voters depending on which uncertainty contributes the most to the regret;
+					
+					\item \textbf{Pessimistic}: it selects the question that leads to minimal regret in the worst case considering, and aggregating, both possible answers to each question; 
+					
+					\item \textbf{Two phase}: it asks a predefined, non adaptive sequence of $m-2$ questions to the committee and then it only asks questions about the voters.
+				\end{itemize}
+			}
+			 
+			
+			\block{References}{
+				\small{
+					\bibliography{biblio}
+					\bibliographystyle{abbrvnat}
+				}
+				\vspace{0.45cm}
+			}
+			
+%			\begin{tikzpicture}[remember picture,overlay]
+%				\path (current page.south west) ++(1.5cm, 1.5cm) node[anchor=south west, text width=27cm] {
+%					Olivier Cailloux and Yves Meinard. \emph{A formal framework for deliberated judgment}. Under revision at Theory and Decision. \href{https://arxiv.org/abs/1801.05644}{arXiv:1801.05644 [cs.AI]}.
+%				};
+%			\end{tikzpicture}
+		
+	\column{0.5}
+		\block{Motivation and approach}{
+				\textbf{Who?}
+				\begin{itemize}
+					\item Imagine to be an \emph{external observer} helping with the voting procedure
+				\end{itemize}
+				\textbf{Why?}
+				\begin{itemize}
+					\item Voters: difficult or costly to order \emph{all} alternatives
+					\item Committee: difficult to \emph{specify} a voting rule precisely and abstractly
+				\end{itemize}
+				\textbf{How?}
+				\begin{itemize}
+					\item \emph{Minimax regret}: given the current knowledge, the alternatives with the lowest worst-case regret are selected as tied winners
+				\end{itemize}		
+				\textbf{Context}
+				\begin{itemize}
+					\item $A$ Alternatives: $|A|=m$
+					\item $N$ Voters: determine a complete preferences profile $P = (\pref_j, \ j \in N ), \ P \in \mathcal{P} $ 
+					\item Committee: has a (convex) scoring vector in mind $W=(\w_r,\ 1\leq r \leq m), \ W \in \mathcal{W}$ 
+					\item $W$ defines a Positional Scoring Rule $f_W(P)\subseteq A$ using scores $s^{W,P}(a), \ \forall \ a \in A$
+				\end{itemize}
+		}
+		\block{Our Knowledge}{
+			The answers to these questions define $C_P$ and $C_W$ that is our knowledge about P and W 
+			\medskip
+			\begin{itemize}
+				\item $C_P \subseteq \mathcal{P}$ constraints on the profile given by the voters
+				\item $C_W \subseteq \mathcal{W}$ constraints on the voting rule given by the committee
+			\end{itemize}
+		}
+	\block{Minimax Regret}{
+		Given $C_P \subseteq \mathcal{P}$ and $C_W \subseteq \mathcal{W}$:
+		\bigskip
+		\coloredbox{the pairwise max regret $\color{red}{\PMR^{C_P,C_W}(a,b)}= \max_{P\in C_P, W \in C_W} s^{P,W}(b)-s^{P,W}(a) $ is the maximum difference of score between $a$ and $b$ under all possible realizations of the full profile {\em and} weights}
+		\medskip
+		We care about the worst case loss: \emph{maximal regret} between a chosen alternative $a$ and best real alternative $b$. \bigskip
+		
+		\centerline{\textbf{We select the alternative which \emph{minimizes} the maximal regret}}
+	}	
+		\block{Pairwise Max Regret Computation}{
+			The computation of $\PMR^{C_P,C_W}( \icimg{salad.png},\icimg{aubergine.png})$ can be seen as a game in which an adversary
+			\begin{itemize}
+				\item \textbf{chooses a complete profile $\mathbf{P \in \mathcal{P}}$}\\
+				\begin{center}
+					\includegraphics[scale=1.03]{completion4.png}
+				\end{center}
+				\medskip
+				\item \textbf{chooses a feasible weight vector $\mathbf{W \in \mathcal{W}}$}\\
+				\centerline{\color{red}$\mathbf{(1,?,0)}$ \icarr{arrow.png} \color{red}$\mathbf{(1,0,0)}$}
+			\end{itemize}
+			\medskip
+			in order to maximize the difference of scores. 
+			\medskip
+		}
+			
+		
+\end{columns}
+
+\end{document}
+
