@@ -104,11 +104,11 @@
 	\begin{itemize}
 		\item<1-> \textbf{Plurality}: selects the alternatives considered as best by the highest number of voters 
 		%	In other words, it insists on a support of first and highest quality, disregarding the quantity of support this may lead to.
-		\item<2-> \textbf{MVR}: picks all alternatives receiving a majority support at the highest possible quality
-		\item<3-> \textbf{MC}: MVR and ties are broken according to the quantity of support these receive
+		\item<2-> \textbf{Median Voting Rule}: picks all alternatives receiving a majority of support at the highest possible quality
+		\item<3-> \textbf{Majoritarian Compromise}: MVR and ties are broken according to the quantity of support these receive
 		%gives up from the quality of support, in order to ensure a majority support behind the selected alternatives.
-		\item<4-> \textbf{FB}: bargainers fall back to less and	less preferred alternatives until they reach a unanimous agreement 
-		\item<5-> \textbf{q-approval FB}: picks the alternatives which receive the support of q voters at the highest possible quality breaking ties according to the quantity of support
+		\item<4-> \textbf{Fallback Bargaining}: bargainers fall back to less and less preferred alternatives until they reach a unanimous agreement 
+		\item<5-> \textbf{q-approval FB}: picks the alternatives which receive the support of q voters at the highest possible quality, breaking ties according to the quantity of support
 		%	Note that MC and FB winners are	particular cases of q-approval compromises, for q being respectively equal to majority and unanimity. Moreover for q = 1, q-approval compromises	coincide with the plurality rule (PR) winners
 	\end{itemize}
 \end{frame}
@@ -232,7 +232,7 @@
 	\begin{description}[$u_i \in U(A) \subseteq \R^A$]
 		\item[$A$] alternatives
 		\item[$N$] voters
-		\item[$u_i \in U(A) \subseteq \R^A$] utility function defined over $A$ by the rank of voter $i$ 
+		\item[$u_i \in \R^A$] utility function depending on the rank of voter $i$ 
 	\end{description}
 	\onslide<2-> \begin{block}{}
 		{\color{blue}$\lambda_{i}^u(x) = \max_{a \in A} u_i(a) - u_{i}(x)$} represents the loss of utility for the voter $i$ if the alternative $x$ is elected instead of her favorite one; and {\color{blue}$\lambda ^{u}(x)$} represents the vector of these losses
@@ -284,13 +284,13 @@ $\sigma : \R_{+}^{N}\longrightarrow \R_{+}$
 \begin{frame}
 	\frametitle{Cardinal Compromise}
 	\begin{description}[$PO(u) \qquad $]
-		\item[$U(A)^N$] set of injective utility functions defined	over A
-		\item[$PO(u)$] set of Pareto optimal alternatives at {\color{blue}$u \in U(A)^N$}
+		\item[$\mathcal{U}$] set of injective utility functions defined	over A
+		\item[$PO(u)$] set of Pareto optimal alternatives at {\color{blue}$u \in \mathcal{U}$}
 		\item[$\lambda ^{u}(x)$] losses vector when electing the alternative $x$
 		\item[$\sigma$] spread measure
 	\end{description}
 	\onslide<2-> \begin{block}{}
-		\[ C^{\sigma }(u) = \argmin_{x \in \paretopt(u)} (\sigma \circ \lambda^u)(x) = \{ x\in \paretopt(u):\sigma (\lambda ^{u}(x))\leq \sigma (\lambda ^{u}(y)),  \forall y\in A\} \]
+		\[ C^{\sigma }(u) = \{ x\in \paretopt(u):\sigma (\lambda ^{u}(x))\leq \sigma (\lambda ^{u}(y)),  \forall y\in A\} \]
 	\end{block}
 \end{frame}
 
@@ -327,7 +327,7 @@ $\sigma : \R_{+}^{N}\longrightarrow \R_{+}$
 			$
 	\end{center}}
 	\onslide<4->{ $\sigma_{avg}(\lambda(a))=99.96, \quad \sigma_{avg}(\lambda(b))=0, \quad \sigma_{avg}(\lambda(c))=100.04$}
-	\onslide<5->{ \[ C^{\sigma_{avg} }(u) = \argmin_{x \in \paretopt(u)} (\sigma \circ \lambda^u)(x) = b \]}
+	\onslide<5->{ \[ C^{\sigma_{avg} }(u) = b \]}
 \end{frame}
 
 \subsection{Ordinal Compromise}
@@ -336,8 +336,8 @@ $\sigma : \R_{+}^{N}\longrightarrow \R_{+}$
 	\begin{description}[$\mathbf{v}: L(A)^N \rightarrow U(A)^N$]
 		\item[$P_i \in L(A)$] linear order over $A$ which represents the preference of $i\in N$
 		\item[$v:\left\{ 1,..., m\right\} \rightarrow \R$] utility assignment
-		\item[$v_{P_{i}}$ $\in U(A)$] utility function for $P_{i}\in L(A)$ induced by $v$
-		\item[$\mathbf{v}: L(A)^N \rightarrow U(A)^N$] function mapping a profile of ordinal preferences to a utility profile 
+		\item[$v_{P_{i}} \in \R^A $] utility function for $P_{i}\in L(A)$ induced by $v$
+		\item[$\mathbf{v}: L(A)^N \rightarrow \mathcal{U}$] function mapping a profile of ordinal preferences to a utility profile 
 	\end{description}
 	\onslide<2-> \begin{block}{}
 		\[(C^{\sigma }\circ \vpr)(\{P_i, i \in N\}) = C^{\sigma}(\{v_{P_i}, i \in N\})\]
