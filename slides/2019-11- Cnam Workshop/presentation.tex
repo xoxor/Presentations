@@ -264,11 +264,15 @@
 	\frametitle{Computing Minimax Regret: Example}
 	\textbf{Weight selection}\\
 	Consider the following constraints on the scoring vector given by the committee 
+	\begin{align*}
+		w_1 &\geq 2 \cdot w_2 \\
+		w_2 &> w_3 \\
+		w_1 - w_2 &\geq w_2 - w_3 
+	\end{align*}
 \end{frame}
 \begin{frame}
 	\frametitle{Computing Minimax Regret: Example}
 	\textbf{Minimax computing}\\
-	Consider the completion number $ $ and the weight vector $ $. 
 	\begin{center}
 		\includegraphics[scale=0.35]{comp.png}
 	\end{center}
