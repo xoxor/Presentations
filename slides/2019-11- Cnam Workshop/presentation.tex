@@ -127,24 +127,24 @@
 \section{Setting}
 \subsection{Scenario}
 
-\begin{frame}
+\begin{frame}[t]
 	\frametitle{Classical Scenario}
 	\textbf{Setting}: Voters specify preferences over alternatives and a committee defines the social choice rule to aggregate them
 	\begin{figure}
-		\includegraphics[scale=0.35]{setting3.png}
+		\includegraphics[scale=0.35]{classset.png}
 		%		\caption{.}
 		%		\label{fig:b1}
 	\end{figure}
 	\onslide<2-> \textbf{Goal}: Find a consensus choice 
 \end{frame}
 
-\begin{frame}
+\begin{frame}[t]
 \frametitle{Our Scenario}
 %\framesubtitle{Robust Winner Determination}
 %	\textbf{Setting}: Two kind of players
-\textbf{Setting}: Incompletely specified preferences and social choice rule
+\textbf{Setting}: Incompletely specified preferences and social choice rule \bigskip
 \begin{figure}
-	\includegraphics[scale=0.35]{setting3.png}
+	\includegraphics[scale=0.35]{ourset.png}
 	%		\caption{.}
 	%		\label{fig:b1}
 \end{figure}
@@ -193,6 +193,7 @@
 		\item We consider \textit{positional scoring rules}, which attach weights to positions according to a scoring vector $w$
 		\item We assume $w$ to be \textit{convex}
 		\[ w_i - w_{i+1} \geq w_{i+1}-w_{i+2} \qquad \forall i\]
+		and that $w_1=1$ and $w_m=0$
 	\end{itemize}	
 \end{frame}
 
@@ -298,7 +299,7 @@
 	\textbf{Profile completion}\\
 	Consider the following partial profile
 	\begin{center}
-		\includegraphics[scale=0.35]{completion2.png}
+		\includegraphics[scale=0.33]{compl.png}
 	\end{center}
 \end{frame}
 \begin{frame}[t]
@@ -314,7 +315,7 @@
 	\frametitle{Computing Minimax Regret: Example}
 	\textbf{Minimax computing}\\
 	\begin{center}
-		\includegraphics[scale=0.35]{comp.png}
+		\includegraphics[scale=0.35]{minmax.png}
 	\end{center}
 \end{frame}
 
@@ -369,10 +370,9 @@
 	
 	\begin{frame}[t]
 		\frametitle{Elicitation strategies}
-		\textbf{Extreme completions Strategy} \\
+		\textbf{Extreme Completions Strategy} \\
 		\medskip
-		\onslide<2-> Let $x^{*}$ be the minimax regret optimal alternative, and $\bar{y}$, $\bar{P}$ and $\bar{W}$ the instantiations that, given the choice of $x^*$, maximize the regret. Define:
-		\onslide<3-> 
+		\onslide<2-> Let $x^{*}$ be the minimax regret optimal alternative, and $\bar{y}$, $\bar{P}$ and $\bar{W}$ the instantiations that maximize the regret when $x^*$ is chosen. \onslide<3-> Define: 
 		\begin{align*}
 		\tau_{W} & = \min_{W \in C_W} s^{\bar{P},W}(\bar{y}) - s^{\bar{P},W}(x^{*}) \\
 		\tau_{P_i} & = \min_{\hat{P_i} \in C_P} s^{\hat{P_i},\bar{W}}(\bar{y}) -  s^{\hat{P_i},\bar{W}}(x^{*})
