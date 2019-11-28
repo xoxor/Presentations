@@ -192,7 +192,7 @@
 	\begin{itemize}
 		\item We consider \textit{positional scoring rules}, which attach weights to positions according to a scoring vector $w$
 		\item We assume $w$ to be \textit{convex}
-		\[ w_i - w_{i+1} \geq w_{i+1}-w_{i+2} \qquad \forall i\]
+		\[ w_r - w_{r+1} \geq w_{r+1}-w_{r+2} \qquad \forall r\]
 		and that $w_1=1$ and $w_m=0$
 	\end{itemize}	
 \end{frame}
@@ -269,9 +269,11 @@
 		is the maximum difference of score between $a$ and $b$ under all possible realizations of the full profile {\em and} weights
 	\end{block}
 	
-	\onslide<2->  We care about the worst case loss: \emph{maximal regret} between a chosen alternative $a$ and best real alternative $b$ \bigskip
-	
+	\onslide<2->  We care about the worst case loss: \emph{maximal regret} between a chosen alternative $a$ and best real alternative $b$
+	\[\MR^{C_P,C_W}(a)= \max_{b\in A} \PMR^{C_P,C_W}(a,b) \]
+	 	
 	\onslide<3-> \centerline{\textbf{We select the alternative which \emph{minimizes} the maximal regret}}
+	\[\MMR^{C_P,C_W}= \min_{a\in A} \MR^{C_P,C_W}(a)\]
 \end{frame}
 
 \subsection{Pairwise Max Regret Computation}
@@ -372,10 +374,10 @@
 		\frametitle{Elicitation strategies}
 		\textbf{Extreme Completions Strategy} \\
 		\medskip
-		\onslide<2-> Let $x^{*}$ be the minimax regret optimal alternative, and $\bar{y}$, $\bar{P}$ and $\bar{W}$ the instantiations that maximize the regret when $x^*$ is chosen. \onslide<3-> Define: 
+		\onslide<2-> Let $a^{*}$ be the minimax regret optimal alternative, and $\bar{b}$, $\bar{P}$ and $\bar{W}$ the instantiations that maximize the regret when $a^*$ is chosen. \onslide<3-> Define: 
 		\begin{align*}
-		\tau_{W} & = \min_{W \in C_W} s^{\bar{P},W}(\bar{y}) - s^{\bar{P},W}(x^{*}) \\
-		\tau_{P_i} & = \min_{\hat{P_i} \in C_P} s^{\hat{P_i},\bar{W}}(\bar{y}) -  s^{\hat{P_i},\bar{W}}(x^{*})
+		\tau_{W} & = \min_{W \in C_W} s^{\bar{P},W}(\bar{b}) - s^{\bar{P},W}(a^{*}) \\
+		\tau_{P_i} & = \min_{\hat{P_i} \in C_P} s^{\hat{P_i},\bar{W}}(\bar{b}) -  s^{\hat{P_i},\bar{W}}(a^{*})
 		\end{align*}
 		where $\hat{P_i}$ is defined as $\bar{P}$ except for $i$ \\
 		\bigskip
