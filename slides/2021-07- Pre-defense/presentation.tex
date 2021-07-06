@@ -152,8 +152,8 @@
 		\item [$\linors$] set of all linear orderings given $\allalts$
 		\item [${\prefi} \in \linors$] preference ranking of voter $i \in \voters$
 		\item [$\prof=(\succ_{1},\dots,\succ_{n}) \in \linors^\voters$] a profile
-		\item [$\powersetz{\allalts}$] possible winners (the non-empty subsets of $\allalts$)
-		\item [$f: \linors^\voters \rightarrow \powersetz{\allalts}$] an SCR
+		\item [$\powersetz{\allalts}$] possible winners (non-empty subsets of $\allalts$)
+		\item [$f: \linors^\voters \rightarrow \powersetz{\allalts}$] a Social Choice Rule
 	\end{description}
 \end{frame}
 
@@ -302,7 +302,7 @@
 	\end{center}
 	\bigskip
 	
-	\[\argmin_{X}(\sigma~\circ~\lambda_P)=\{b\} \quad \forall \sigma \in \Sigma\]
+	\[\argmin_{\allalts}(\sigma~\circ~\lambda_P)=\{b\} \quad \forall \sigma \in \Sigma\]
 \end{frame}
 
 \subsection{Egalitarian Compromise}
@@ -342,10 +342,10 @@
 	\end{center}
 	\[\argmin_{\allalts} (\sigma \circ \lambda_{\prof}) = \{b\} \quad \forall \sigma \in \Sigma\]
 %	\onslide<3>{Egalitarian compromises favor equality over Pareto efficiency}
-	\onslide<3->\begin{theorem}
+	\onslide<2->\begin{theorem}
 		ECC $\cap$ Paretian = $\emptyset$ \hfill {\small (for $n, m \geq 2$)}
 	\end{theorem}
-	\onslide<4-> $f \in \text{ECC} \Rightarrow b \in f(\prof)$, $f \in \text{Paretian} \Rightarrow b \notin f(\prof)$
+	\onslide<3-> $f \in \text{ECC} \Rightarrow b \in f(\prof)$, $f \in \text{Paretian} \Rightarrow b \notin f(\prof)$
 \end{frame}
 
 %\begin{frame}
@@ -374,11 +374,11 @@
 		An SCR $f$ is PCC iff 
 		\[\exists \sigma \in \Sigma \suchthat \forall \prof \in \linors^N: f(\prof) \cap \argmin_{\PO(\prof)} (\sigma \circ \lambda_{\prof}) \neq \emptyset \]
 	\end{block}
-%	{\small Recall:
-%	\begin{block}{Egalitarian compromise compatibility}
-%		An SCR $f$ is ECC iff 
-%		\[\exists \sigma \in \Sigma \suchthat \forall \prof \in \linors^N: f(\prof) \cap \argmin_\allalts (\sigma \circ \lambda_{\prof}) \neq \emptyset\]
-%	\end{block}}
+	\onslide<2->{\small Recall:
+	\begin{block}{Egalitarian compromise compatibility}
+		An SCR $f$ is ECC iff 
+		\[\exists \sigma \in \Sigma \suchthat \forall \prof \in \linors^N: f(\prof) \cap \argmin_\allalts (\sigma \circ \lambda_{\prof}) \neq \emptyset\]
+	\end{block}}
 \end{frame}
 
 \begin{frame}
@@ -842,39 +842,120 @@
 \begin{frame}
 	\frametitle{Context}
 	\framesubtitle{Introducing the problem}
-	\textbf{Setting}: Voters judges a random subset of alternatives and the preferences are aggregated with the Majority Judgment rule \vspace{6mm}
+	\textbf{Setting}: Voters judges a random subset of alternatives and the winner is elected with the Majority Judgment rule \vspace{6mm}
 	
-	\onslide<2->{\textbf{Goal}: Analyse the impact of the randomness in the result and find a more efficient elicitation procedure}
+	\onslide<2->{\textbf{Goal}: Analyse the impact of the randomness in the outcome and find a more efficient elicitation procedure}
 \end{frame}
 
+\subsection{Majority Judgment}
 \begin{frame}
-	\frametitle{Context}
-	\framesubtitle{Majority Judgment}
-		Voters judges candidates assigning grades from an ordinal scale. The winner is the candidate with the highest median of the grades received. \vspace{1cm} \\
+	\frametitle{Majority Judgment}
+		Voters judges candidates assigning grades from an ordinal scale. The winner is the candidate with the highest median of the grades received. (Balinski and Laraki 2011, \cite{Balinski2011}) \vspace{1cm} \\
 	\includegraphics[width=\textwidth]{vector}
 \end{frame}
 
 \begin{frame}
-	\frametitle{\textbf{Current Work:} Preference Elicitation under Majority Judgment}
-	\framesubtitle{Introducing the problem}
-	\onslide<1-> In the last few years MJ has being adopted by a progressively larger number of french political parties including: Le Parti Pirate, Génération(s), LaPrimaire.org, France Insoumise and La République en Marche. \vspace{1cm}
+	\frametitle{Majority Judgment}
+	\framesubtitle{Uses}
+	\onslide<1-> In the last few years MJ has being adopted by a progressively larger number of french political parties including: Le Parti Pirate, Génération(s), LaPrimaire.org, France Insoumise and La République en Marche. \cite{MV} \vspace{1cm}
 	
 	\onslide<2-> LaPrimaire.org is a french political initiative whose goal is to select an independent candidate for the french presidential election using MJ as voting rule.
 \end{frame}
 
 \begin{frame}
-	\frametitle{\textbf{Current Work:} Preference Elicitation under Majority Judgment}
+	\frametitle{Majority Judgment}
 	\framesubtitle{LaPrimaire.org}
 	The procedure consists of two rounds:
 	\begin{itemize}
-		\item[1:]<2-> each voter expresses her judgment on five random candidates. The five ones with the highest medians qualify for the second round. 
+		\item[1:]<2-> each voter expresses her judgment on five random candidates. The five ones with the highest medians qualify for the second round; 
 		\item[2:]<3-> each voter expresses her judgment on all the five finalists. The one with the best median is the winner.
 	\end{itemize}
 \end{frame}
 
+\subsection{Notation}
+\begin{frame}
+	\frametitle{Notation}
+	\begin{description}[$r_i=(r_{i,1} , \dots, r_{i,n} )$]
+		\item [$\Delta = \{ \alpha, \beta, \dots \}$] a \emph{common language} (a set of strictly ordered grades)
+		\item [$\alpha \geq \beta$] indicates that $\alpha$ is a better or equivalent grade than $\beta$
+		\item [$P = \Delta^{m \times n}$] a profile is a $m$ by $n$ matrix of grades
+		\item [$\rho$] ordering function that given a vector of grades returns the vector ordered by decreasing grades
+		\item [$f: \Delta^{m \times n} \rightarrow \Delta^m$] grading function
+	\end{description}
+	\onslide<2->\begin{block}{}
+		 A social grading function (SGF) is a grading function $f$ that is neutral, anonymous, unanimous, monotonic, independent of irrelevant alternatives (IIA) and continuous. 
+	\end{block}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Notation}
+	\begin{block}{}
+		The \emph{majority-grade} is a SGF that associates to a profile $P$ a vector of median grade values
+		\[f_{maj}(P)_i = \rho(P_i)_{\left\lfloor\frac{n}{2}\right\rfloor + 1}, \ \forall i \in \allalts\]
+	\end{block}
+	\onslide<2->\begin{block}{}
+		The winner function $F_{maj}(P)=\text{arg}\max_{i\in \allalts}f_{maj}(P)_i$ selects the alternatives with the highest median grade as winners
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Example}
+	\framesubtitle{Complete Profile}
+	\begin{center}
+	$
+	\begin{array}{cccc}&&\mathbf{P} \\
+		& j_1 & j_2 & j_3 \\
+		a &	Excellent	& Excellent & Inadequate\\
+		b &	Mediocre	& Mediocre	& Mediocre\\
+		c &	Mediocre	& Mediocre & Inadequate\\
+		d &	Average	& Average	& Average\\
+		e &	Average	& Mediocre	& Inadequate \\
+		f &	Average	& Mediocre & Mediocre	  \\
+	\end{array}\qquad%
+	\onslide<2->{\begin{array}{cc} & \mathbf{f_{maj}(P)}\\ \\
+		a &	Excellent \\
+		b &	Mediocre \\
+		c &	Mediocre \\
+		d &	Average	\\
+		e &	Mediocre \\
+		f & Mediocre \\
+	\end{array}}
+	$
+	\end{center}
+	\onslide<3->\[F_{maj}(P)=\{a\}\]
+\end{frame}
+
+\begin{frame}
+	\frametitle{Example}
+	\framesubtitle{Incomplete Profile}
+	\begin{center}
+		$
+		\begin{array}{cccc}&&\mathbf{\bar{P}} \\
+			& j_1 & j_2 & j_3 \\
+			a &	Excellent	&  & Inadequate\\
+			b &	Mediocre	& Mediocre	& Mediocre\\
+			c &	Mediocre	& Mediocre & Inadequate\\
+			d &	Average	& Average	& \\
+			e &	Average	& Mediocre	& Inadequate \\
+			f &		& Mediocre & Mediocre	  \\
+		\end{array}\qquad%
+		\onslide<2->{\begin{array}{cc} & \mathbf{f_{\bar{maj}}(\bar{P})}\\ \\
+				a &	{\color{red}Inadequate} \\
+				b &	Mediocre \\
+				c &	Mediocre \\
+				d &	Average	\\
+				e &	Mediocre \\
+				f & Mediocre \\
+		\end{array}}
+		$
+	\end{center}
+	\onslide<3->\[a \notin F_{\bar{maj}}(\bar{P})\]
+\end{frame}
+
 \subsection{Research Questions}
 \begin{frame}
-	\frametitle{\textbf{Current Work:} Research Questions}
+	\frametitle{Research Questions}
 	\begin{itemize}
 		\item<1-> Does expressing judgment on random candidates influence the result? 
 		\item<2-> Does the number of questions influence the result? 
@@ -882,7 +963,6 @@
 		\item<4-> What is the voting rule applied on the resulting incomplete profile? What are its properties?
 		\item<5-> The random selection of questions is fair in terms of probability of being asked about a certain candidate $i$, but is it fair in terms of $i$ being elected?
 		\item<6-> Can we select the next question using a minimax regret notion instead of randomly selecting a candidate?
-		\item<7-> Suppose that the fraction of candidates that each voter judges is variable, how this rule differ from the previous one? Can a voter manipulate the result by judging only certain candidates?
 	\end{itemize}
 \end{frame}
 
