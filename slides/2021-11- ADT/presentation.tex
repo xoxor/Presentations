@@ -1,0 +1,449 @@
+\documentclass[aspectratio=169]{beamer}
+\usetheme{CambridgeUS}
+\usecolortheme{beaver}
+
+\newcommand\hmmax{0}
+\newcommand\bmmax{0}
+
+\input{preamble/mypackages}
+\input{preamble/math_basics}
+\input{preamble/math_mine}
+\input{preamble/mycommands}
+\input{preamble/mystyle}
+
+
+\titlegraphic{\includegraphics[width=50mm]{logo_dauphine} \hspace*{9cm} \includegraphics[width=7mm]{cnrs}}
+
+\title[]{Simultaneous Elicitation of Scoring Rule and Agent Preferences for Robust Winner Determination}
+%
+%\subtitle{Proposal: ``Elicitation and Explanation for Voting Rules''}
+\institute[]{\textsuperscript{1} Université Paris-Dauphine, Université PSL, CNRS, LAMSADE \\ \textsuperscript{2} LIP6, UMR 7606, CNRS and Sorbonne Universit\'e}
+\author{\texorpdfstring{\textbf{B. Napolitano}\textsuperscript{1}, O. Cailloux\textsuperscript{1} and P. Viappiani\textsuperscript{2}}{}}
+\date{\small{ADT 2021 - 04 November 2021} \\ \includegraphics[width=35mm]{LOGO_LAMSADE} }
+
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\definecolor{darkred}{rgb}{0.8,0,0}
+
+\begin{document}
+
+\beamertemplatenavigationsymbolsempty
+
+\begin{frame}[plain]
+\maketitle
+\end{frame}
+
+\addtocounter{framenumber}{-1}
+
+\begin{frame}
+	\frametitle{Introducing the problem}
+		\vspace{-2em}
+		\small{Agents} $=\{$ \includegraphics[scale=0.05]{assets/v1.png}, \includegraphics[scale=0.05]{assets/v2.png}, \includegraphics[scale=0.05]{assets/v3.png} $\}$, $\ $ \small{Alternatives} $=\{$ \includegraphics[scale=0.025]{assets/d1.png}, \includegraphics[scale=0.025]{assets/d2.png}, \includegraphics[scale=0.025]{assets/d3.png} $\}$, $\ $ \small{Chair} $=$ \includegraphics[scale=0.02]{assets/committee.png} $\Rightarrow$ \small{Positional Scoring Rule}
+		\vspace{2em}
+		\begin{columns}
+			\begin{column}{0.45\textwidth}
+				\begin{figure}
+					\begin{tabular}{ccc}
+						\visible<2->{\subfloat{\includegraphics[scale=0.12]{assets/v1.png}}} &
+						\visible<2->{\subfloat{\includegraphics[scale=0.12]{assets/v2.png}}} &
+						\visible<2->{\subfloat{\includegraphics[scale=0.12]{assets/v3.png}}} \\
+						\visible<3->{\subfloat{\includegraphics[scale=0.05]{assets/d1.png}}} &
+						\visible<4->{\subfloat{\includegraphics[scale=0.05]{assets/d1.png}}} & \\
+						\visible<3->{\subfloat{\includegraphics[scale=0.05]{assets/d2.png}}} &
+						\visible<4->{\subfloat{\includegraphics[scale=0.05]{assets/d2.png}}} & \\
+						\visible<3->{\subfloat{\includegraphics[scale=0.05]{assets/d3.png}}} & & \\
+					\end{tabular}
+				\end{figure}
+			\end{column}
+			\begin{column}{0.45\textwidth}
+				\begin{center}
+					\visible<5->{\includegraphics[width=0.5\textwidth]{assets/committee.png}}\\
+					\vspace{2em}
+					\visible<6->{weight$(1$\textsuperscript{st}$)$ $\geq$ 2 $\cdot$ weight$(2$\textsuperscript{nd}$)$}
+				\end{center}
+				
+			\end{column}
+		\end{columns}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Introducing the problem}
+	\textbf{Setting}: Incompletely specified preferences and social choice rule
+	\onslide<2>{
+		\begin{itemize}
+			\item Agents: difficult or costly to order \emph{all} alternatives
+			\item Chair: difficult to \emph{specify} a voting rule precisely
+		\end{itemize}
+	}
+	\onslide<3-> \textbf{Goal}: Reduce uncertainty, inferring (\textit{eliciting}) incrementally and simultaneously the true preferences of agents and chair to quickly converge to an optimal or a near-optimal alternative \\
+	\vspace{3em}
+	\onslide<4-> \textbf{Approach}:
+	\begin{itemize}
+		\item Develop query strategies that interleave questions to the chair and to the agents
+		\item Use \emph{Minimax regret} to measure the quality of those strategies
+	\end{itemize}
+\end{frame}
+
+\subsection{Related Works}
+\begin{frame}
+	\frametitle{Related Works}
+	\textbf{Incomplete profile}  
+	\begin{itemize}
+		\item and known weights: Minimax regret to produce a robust winner approximation (\textit{Lu and Boutilier 2011}, \cite{Lu2011}; \textit{Boutilier et al. 2006}, \cite{Boutilier2006})
+	\end{itemize}~\\
+	\textbf{Uncertain weights} 
+	\begin{itemize}
+		\item and complete profile: dominance relations derived to eliminate alternatives always less preferred than others (\textit{Stein et al. 1994}, \cite{Stein1994})
+		\item in positional scoring rules (\textit{Viappiani 2018}, \cite{Viappiani2018})
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Assumptions}
+	\begin{itemize}
+		\item We consider \textit{Positional Scoring Rules}, which attach weights to positions according to a scoring vector $W$
+		\item We assume $W$ to be \textit{convex}
+		\[ W_r - W_{r+1} \geq W_{r+1}-W_{r+2}\]
+		for all positions $r$, and that $W_1=1$ and $W_m=0$
+	\end{itemize}	
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Notation}	
+	\begin{description}[$W=(\w_k,\ 1\leq k \leq m), \ W \in \mathcal{W}$]
+		\item [$A$] alternatives, $|A|=m$
+		\item [$N$] agents (\textit{voters})
+		\item [$P = (\pref_j, \ j \in N ), \ P \in \mathcal{P} $] complete preferences profile 
+		\item [$W=(W_r,\ 1\leq r \leq m), \ W \in \mathcal{W}$] (convex) scoring vector that the chair has in mind
+	\end{description}
+	\bigskip
+	\onslide<2-> \begin{block}{}
+		$W$ defines a Positional Scoring Rule $f_W(P)\subseteq A$ using scores \usebeamercolor*[fg]{description item}$s^{W,P}(a), \ \forall \ a \in A$
+	\end{block}
+	\onslide<3-> \begin{block}{}
+		$P$ and $W$ exist in the minds of agents and chair but unknown to us
+	\end{block}
+	
+\end{frame}
+
+
+%%%
+%\begin{frame}
+%	\frametitle{Outline}
+%	\tableofcontents[hideallsubsections, sectionstyle=shaded/show]
+%\end{frame}
+%
+%\AtBeginSection{
+%	\begin{frame}
+%		\frametitle{Outline}
+%		\tableofcontents[currentsection, hideallsubsections]
+%	\end{frame}
+%}
+
+\subsection{Questions}
+\begin{frame}
+	\frametitle{Questions}
+	Two types of questions:\\
+	\vspace{0.5cm}
+	\onslide<2-> \textbf{Questions to the agents}
+	\begin{itemize}
+		\item[] Comparison queries that ask a particular agent $j$ to compare two alternatives $a, b \in \allalts$
+		\color{blue}\[a \pref_j b \quad ?\]
+	\end{itemize}
+	\onslide<3->  \textbf{Questions to the chair}
+	\begin{itemize}
+		\item[] Queries relating the difference between the importance of consecutive ranks from $r$ to $r+2$
+		\color{blue} \[ W_{r} - W_{r+1} \geq \lambda (W_{r+1} - W_{r+2}) \quad ? \] 
+	\end{itemize}
+\end{frame}
+
+\subsection{Current Knowledge}
+\begin{frame}
+	\frametitle{Current Knowledge}
+	The answers to these questions define $C_P$ and $C_W$ that is our knowledge about P and W 
+	\medskip
+	\begin{itemize}
+		\onslide<2->{\item $C_P \subseteq \mathcal{P}$ constraints on the profile given by the agents}
+		\onslide<3->{\item $C_W \subseteq \mathcal{W}$ constraints on the voting rule given by the chair}
+	\end{itemize}
+
+	\def\Pcircle{(0,0) circle (0.6cm)}
+	\def\CPcircle{(0,0) circle (0.2cm)}
+	\def\Wcircle{(0,-1.6) circle (0.6cm)}
+	\def\CWcircle{(0,-1.6) circle (0.2cm)}
+	\def\Allcircle{(3,-0.8) circle (0.6cm)}
+	\def\Currcircle{(3,-0.8) circle (0.2cm)}
+	\def\wcircle{(3,-0.8) circle (0.05cm)}
+	\begin{center}
+		\begin{tikzpicture}
+			\onslide<2->{\draw \Pcircle node[left] at (0,0.7) {\footnotesize$\mathcal{P}$};
+			\filldraw[fill=gray, draw=black] \CPcircle node[above]  at (0,0.07) {\footnotesize$C_P$};}
+			\onslide<3->{\draw \Wcircle node[left] at (0,-0.9) {\footnotesize$\mathcal{W}$};
+			\filldraw[fill=gray, draw=black] \CWcircle node[above]  at (0,-1.5) {\footnotesize$C_W$};}
+			\onslide<4->{\draw [decorate, decoration = {brace, raise=40pt, amplitude=5pt}] (0,0.7) --  (0,-2.3);}
+			\onslide<5->{\draw \Allcircle node[above] at (3,-0.2) {\footnotesize$\powersetz{\allalts} {\scriptstyle \ = \ 2^{\allalts}\setminus \emptyset}$ };}
+			\onslide<5->{\filldraw[fill=gray, draw=black] \Currcircle node[above]  at (3,-0.7){\footnotesize$C_{\mathscr{P}}$};}
+			\onslide<6->{\filldraw[fill=black, draw=black] \wcircle;}
+		\end{tikzpicture}
+	\end{center}
+\end{frame}
+
+\subsection{Minimax Regret}
+\begin{frame}
+	\frametitle{Minimax Regret}
+	Given $C_P \subseteq \mathcal{P}$ and $C_W \subseteq \mathcal{W}$:
+	
+	\begin{block}{}
+		\[\color{red}{\PMR^{C_P,C_W}(a,b)}= \max_{P\in C_P, W \in C_W} s^{P,W}(b)-s^{P,W}(a) \]
+		is the maximum difference of score between $a$ and $b$ under all possible realizations of the full profile {\em and} weights
+	\end{block}
+	
+	\onslide<2->  We care about the worst case loss: \emph{maximal regret} between a chosen alternative $a$ and best real alternative $b$
+	\[\MR^{C_P,C_W}(a)= \max_{b\in \allalts} \PMR^{C_P,C_W}(a,b) \]
+	 	
+	\onslide<3-> \centerline{\textbf{We select the alternative which \emph{minimizes} the maximal regret}}
+	\[\MMR^{C_P,C_W}= \min_{a\in \allalts} \MR^{C_P,C_W}(a)\]
+\end{frame}
+
+\begin{frame}
+	\frametitle{Pairwise Max Regret Computation}
+	The computation of $\PMR^{C_P,C_W}( \icimg{assets/d1.png},\icimg{assets/d3.png})$ can be seen as a game in which an adversary both:\begin{itemize}
+		\onslide<2-> \item \textbf{chooses a complete profile $\mathbf{P \in \mathcal{P}}$}\\
+		\begin{columns}
+			\begin{column}{0.4\textwidth}
+				\begin{figure}
+					\begin{tabular}{ccc}
+						\subfloat{\includegraphics[scale=0.12]{assets/v1.png}} &
+						\subfloat{\includegraphics[scale=0.12]{assets/v2.png}} &
+						\subfloat{\includegraphics[scale=0.12]{assets/v3.png}} \\
+						\subfloat{\includegraphics[scale=0.05]{assets/d1.png}} &
+						\subfloat{\includegraphics[scale=0.05]{assets/d1.png}} & \\
+						\subfloat{\includegraphics[scale=0.05]{assets/d2.png}} &
+						\subfloat{\includegraphics[scale=0.05]{assets/d2.png}} & \\
+						\subfloat{\includegraphics[scale=0.05]{assets/d3.png}} & & \\
+					\end{tabular}
+				\end{figure}
+			\end{column}
+			\begin{column}{0.08\textwidth}
+				\icarr{arrow.png}
+			\end{column}
+			\begin{column}{0.4\textwidth}
+				\begin{figure}
+					\begin{tabular}{ccc}
+						\subfloat{\includegraphics[scale=0.12]{assets/v1.png}} &
+						\subfloat{\includegraphics[scale=0.12]{assets/v2.png}} &
+						\subfloat{\includegraphics[scale=0.12]{assets/v3.png}} \\
+						\subfloat{\includegraphics[scale=0.05]{assets/d1.png}} &
+						\subfloat{\includegraphics[scale=0.05]{assets/d3.png}} & 
+						\subfloat{\includegraphics[scale=0.05]{assets/d3.png}} \\
+						\subfloat{\includegraphics[scale=0.05]{assets/d2.png}} &
+						\subfloat{\includegraphics[scale=0.05]{assets/d1.png}} & 
+						\subfloat{\includegraphics[scale=0.05]{assets/d2.png}} \\
+						\subfloat{\includegraphics[scale=0.05]{assets/d3.png}} &
+						\subfloat{\includegraphics[scale=0.05]{assets/d2.png}} & 
+						\subfloat{\includegraphics[scale=0.05]{assets/d1.png}} \\
+					\end{tabular}
+				\end{figure}
+				
+			\end{column}
+		\end{columns}
+		
+		\onslide<3-> \item \textbf{chooses a feasible weight vector $\mathbf{W \in \mathcal{W}}$}\\
+		\medskip
+		\centerline{\color{red}$\mathbf{(1,?,0)} \qquad$ \icarr{arrow.png} \color{red}$\qquad \mathbf{(1,0,0)}$}
+	\end{itemize}
+	\medskip
+	in order to maximize the difference of scores
+\end{frame}
+	
+	\subsection{Elicitation strategies}
+	\begin{frame}
+		\frametitle{Elicitation strategies}
+		At each step, the strategy selects a question to ask either to one of the agents about her preferences or to the chair about the voting rule \\ \bigskip
+		\onslide<2-> The termination condition could be:
+		\begin{itemize}
+			\item <3-> when the minimax regret is lower than a threshold
+			\item <4-> when the minimax regret is zero
+		\end{itemize}
+		\bigskip
+	\end{frame}
+	
+	\begin{frame}[t]
+		\frametitle{Elicitation strategies}
+		\framesubtitle{Pessimistic Strategy}
+		\onslide<1-> Assume that a question leads to the possible new knowledge states $(C_P^1, C_W^1)$ and $(C_P^2, C_W^2)$ depending on the answer, then the badness of the question in the worst case is:
+		\[\max_{i=1,2} \MMR(C_P^i, C_W^i) \]
+		\onslide<2-> The pessimistic strategy selects the question that leads to minimal regret in the worst case from a set of $n+1$ candidate questions \\
+		\bigskip
+		{\small \onslide<3-> \begin{block}{Note:}
+			if the maximal MMR of two questions are equal, then prefers the one with the lowest MMR values associated to the opposite answer
+		\end{block}}
+	\end{frame}
+	
+	\begin{frame}
+	\frametitle{Elicitation strategies}
+	\framesubtitle{Pessimistic Strategy: Candidate questions}
+	Let $(a^{*}, \bar{b}, \bar{P}, \bar{W})$ be the current solution of the minimax regret \\ \vspace{0.5em}
+	We select $n + 1$	candidate questions:
+	\begin{itemize}
+		\item \textbf{One question per agent:} For each agent $i$, either:  
+			\begin{itemize}
+				\item $a^* \pref^{\bar{P}}_j \bar{b}$ : we ask about an incomparable alternative that can be placed above $a^*$ by the adversary to increase PMR($a^*$,$\bar{b}$)
+				\item $\bar{b} \pref^{\bar{P}}_j a^*$: we ask about an incomparable alternative that can be placed between $a^*$ and $\bar{b}$ by the adversary to increase PMR($a^*$,$\bar{b}$) 
+				\item $a^*$ and $\bar{b}$ are incomparable: we ask to compare them
+		\end{itemize}
+		\item \textbf{One question to the chair:} Consider $W_\tau$ the weight vector that minimize the PMR in the worst case. \\ We ask about the position
+		$r = \argmax\limits_{i= [\![1, m-1]\!] } |\bar{W}(i)-W_\tau(i)|$
+		
+	\end{itemize}
+	\end{frame}
+	
+	\subsection{Empirical Evaluation}
+	\begin{frame}
+		\frametitle{Empirical Evaluation}
+		\framesubtitle{Pessimistic for different datasets}
+		\begin{figure}
+			\centering
+			\caption{Average MMR (normalized by $n$) after $k$ questions with Pessimistic strategy for different datasets.}
+			\label{fig:linearity}
+			\begin{tikzpicture}
+				\pgfplotsset{
+					every axis legend/.append style={
+						at={(0.5,1.1)},
+						anchor=south
+					},
+				}
+				\begin{axis}[
+					y=80,
+					legend columns=3,
+					xlabel=Number of Questions,
+					ylabel=MMR/n,
+					ytick={0,0.5,1},
+					xtick distance=100,
+					xtick pos=left,
+					ymajorgrids=true,
+					enlarge x limits=-1, %hack to plot on the full x-axis scale
+					width=10cm, %set bigger width
+					ytick style={draw=none},
+					ymin=0,
+					ymax=1,
+					xmin=0,
+					xmax=1000,
+					yticklabels={0,0.5,1},
+					legend style={font=\footnotesize}]
+					
+					\addlegendimage{mark=halfsquare right*,brown,mark size=2}
+					\addlegendimage{mark=diamond*,red,mark size=2}
+					\addlegendimage{mark=pentagon*,cyan,mark size=2}
+					\addlegendimage{mark=halfcircle*,violet,mark size=2}
+					\addlegendimage{mark=*,pink,mark size=2}
+					\addlegendimage{mark=triangle*,green,mark size=2}
+					\addlegendimage{mark=halfsquare left*,blue,mark size=2}
+					\addlegendimage{mark=square*,teal,mark size=2}
+					\addlegendimage{mark=halfsquare*,magenta,mark size=2}
+					
+					
+					\addplot[thick, mark=halfsquare right*, mark size = {2}, mark indices = {120}, brown] table [x=k, y=5.20]{data/linearity.dat};
+					\addlegendentry{m=5, n=20}
+					\addplot[thick, mark=diamond*, mark size = {2}, mark indices = {150}, red] table [x=k, y=10.20]{data/linearity.dat};
+					\addlegendentry{m=10, n=20}
+					\addplot[thick, mark=pentagon*, mark size = {2}, mark indices = {240}, cyan] table [x=k, y=11.30]{data/linearity.dat};
+					\addlegendentry{m=11, n=30}
+					\addplot[thick, mark=halfcircle*, mark size = {2}, mark indices = {400}, violet] table [x=k, y=tshirts]{data/linearity.dat};
+					\addlegendentry{tshirts m11n30}
+					\addplot[thick, mark=*, mark size = {2}, mark indices = {400}, pink] table [x=k, y=courses]{data/linearity.dat};
+					\addlegendentry{courses m9n146}
+					\addplot[thick, mark=triangle*, mark size = {2}, mark indices = {400}, green] table [x=k, y=9.146]{data/linearity.dat};
+					\addlegendentry{m=9, n=146}
+					\addplot[thick, mark=halfsquare left*, mark size = {2}, mark indices = {200}, blue] table [x=k, y=14.9]{data/linearity.dat};
+					\addlegendentry{m=14, n=9}
+					\addplot[thick, mark=square*, mark size = {2}, mark indices = {60}, teal] table [x=k, y=skate]{data/linearity.dat};
+					\addlegendentry{skate m14n9}
+					\addplot[thick, mark=halfsquare*, mark size = {2}, mark indices = {400}, magenta] table [x=k, y=15.30]{data/linearity.dat};
+					\addlegendentry{m=15, n=30}
+				\end{axis}
+			\end{tikzpicture}
+		\end{figure}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Empirical Evaluation}
+		\framesubtitle{Pessimistic reaching "low enough" regret}
+		\sisetup{table-number-alignment = center, table-figures-integer=2, table-figures-decimal=1, table-auto-round}
+		\begin{minipage}{\textwidth}
+			\captionof{table}{Questions asked by Pessimistic strategy on several datasets to reach $\frac{n}{10}$ regret, columns 4 and 5, and zero regret, last two columns.}
+			\label{tab:questions}
+			\begin{center}
+			\scalebox{0.8}{
+			\begin{tabular}{cccS[table-number-alignment = center, table-figures-integer=2] S[table-figures-integer=3, table-figures-decimal=1]@{ $\vert$ }S[table-figures-integer=2, table-figures-decimal=1]@{ $\vert$ }S[table-figures-integer=2, table-figures-decimal=1]@{ ]} S[table-number-alignment = center, table-figures-integer=4]S[table-figures-integer=3, table-figures-decimal=1]@{ $\vert$ }S[table-figures-integer=2, table-figures-decimal=1]@{ $\vert$ }S[table-figures-integer=2, table-figures-decimal=1]@{ ]}}
+				\toprule
+				{dataset} & m & n &{$q_{c}^{\scriptscriptstyle{MMR} \leq n/10}$} & \multicolumn{3}{c}{$q_{a}^{\scriptscriptstyle{MMR} \leq n/10}$} & {$q_{c}^{ \scriptscriptstyle{MMR} = 0}$} & \multicolumn{3}{c}{$q_{a}^{ \scriptscriptstyle{MMR} = 0}$} \\
+				\midrule
+				m5n20 & 5&20&0.0&[4.3 &4.95 & 5.84 &5.25&[ \ 5.36 & 6.15 & 7.21\\
+				m10n20&10&20&0.0&[13.85 & 16.1& 18.41&31.95&[19.66 & 21.78 & 24.7\\
+				m11n30&11&30&0.0&[16.55&19.0&22.26&45.15&[23.07&25.7&28.89\\
+				tshirts&11&30&0.0&[13.08&16.6&19.58& 43.15 &[28.22&31.98 &35.62\\
+				courses&9&146&0.0&[6.03 &7.0 &7.0&0.0&[6.81 & 7.0 &7.0\\
+				%m9n146&9&146&0&0&[1.94 &8 &9.25&999.3&0.47&0&0&[1.94&8&9.25&999.3&0.47\\
+				m14n9&14&9&5.4&[30.3&33.45&36.65&64.05&[37.55&40.5&44.3\\
+				skate&14&9&0.0&[11.35&11.6&12.3&0.0&[11.5&11.8&12.75 \\
+				m15n30&15&30&0.0&[24.95&29.5&33.68 \\
+				\bottomrule
+			\end{tabular}}
+		\end{center}
+		\end{minipage}
+	\end{frame}
+
+
+\begin{frame}
+	\frametitle{Empirical Evaluation}
+	\framesubtitle{Pessimistic chair first and then agents (and vice-versa)}
+	\sisetup{table-number-alignment = center, table-figures-integer=2, table-figures-decimal=1, table-auto-round}
+	\begin{minipage}{\textwidth}
+		\centering
+		\captionof{table}{Average MMR in problems of size $(10, 20)$ after $500$ questions, among which $q_c$ to the chair.}
+		\label{tab:twoP500}
+		\scalebox{0.85}{
+			\begin{tabular}{S[table-figures-integer=3, table-figures-decimal=0]S[table-number-alignment = right]@{ ± }S[table-number-alignment = left, table-figures-integer=1]S[table-number-alignment = right]@{ ± }S[table-number-alignment = left, table-figures-integer=1]}
+				\toprule
+				{$q_c$} & {2 ph.\ ca} & {sd} & {2 ph.\ ac} & {sd} \\
+				\midrule		
+				
+				0	&	0.62	&	0.52	&	0.62	&	0.52	\\
+				15	&	0.515	&	0.48	&	0.54	&	0.46	\\
+				30	&	0.345	&	0.47	&	0.325	&	0.425	\\
+				50	&	0.045	&	0.09	&	0.03	&	0.065	\\
+				100	&	0.14	&	0.23	&	0.075	&	0.135	\\
+				200	&	2.305	&	1.36	&	2.145	&	1.845	\\
+				300	&	5.15	&	2.38	&	6.83	&	0.625	\\
+				400	&	10.905	&	0.89	&	12.245	&	0.99	\\
+				500	&	20.0	&	0.0	&	20.0	&	0.0	\\
+				
+				\bottomrule
+			\end{tabular}
+		}
+	\end{minipage}
+\end{frame}
+
+
+
+\addtocounter{framenumber}{-1}
+\begin{frame}[plain]
+	\centering \color{darkred}\LARGE Thank You!
+\end{frame}
+
+
+\bibliographystyle{plain}
+\begin{frame}[plain,allowframebreaks,noframenumbering]
+	\bibliography{biblio}
+\end{frame}
+
+
+
+
+\end{document}
