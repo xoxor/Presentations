@@ -145,7 +145,6 @@
 %	\end{frame}
 %}
 
-\subsection{Questions}
 \begin{frame}
 	\frametitle{Questions}
 	Two types of questions:\\
@@ -153,16 +152,15 @@
 	\onslide<2-> \textbf{Questions to the agents}
 	\begin{itemize}
 		\item[] Comparison queries that ask a particular agent $j$ to compare two alternatives $a, b \in \allalts$
-		\color{blue}\[a \pref_j b \quad ?\]
+		\usebeamercolor*[fg]{description item}\[a \pref_j b \quad ?\]
 	\end{itemize}
 	\onslide<3->  \textbf{Questions to the chair}
 	\begin{itemize}
 		\item[] Queries relating the difference between the importance of consecutive ranks from $r$ to $r+2$
-		\color{blue} \[ W_{r} - W_{r+1} \geq \lambda (W_{r+1} - W_{r+2}) \quad ? \] 
+		\usebeamercolor*[fg]{description item} \[ W_{r} - W_{r+1} \geq \lambda (W_{r+1} - W_{r+2}) \quad ? \] 
 	\end{itemize}
 \end{frame}
 
-\subsection{Current Knowledge}
 \begin{frame}
 	\frametitle{Current Knowledge}
 	The answers to these questions define $C_P$ and $C_W$ that is our knowledge about P and W 
@@ -193,13 +191,12 @@
 	\end{center}
 \end{frame}
 
-\subsection{Minimax Regret}
 \begin{frame}
 	\frametitle{Minimax Regret}
 	Given $C_P \subseteq \mathcal{P}$ and $C_W \subseteq \mathcal{W}$:
 	
 	\begin{block}{}
-		\[\color{red}{\PMR^{C_P,C_W}(a,b)}= \max_{P\in C_P, W \in C_W} s^{P,W}(b)-s^{P,W}(a) \]
+		\[\color{darkred}{\PMR^{C_P,C_W}(a,b)}= \max_{P\in C_P, W \in C_W} s^{P,W}(b)-s^{P,W}(a) \]
 		is the maximum difference of score between $a$ and $b$ under all possible realizations of the full profile {\em and} weights
 	\end{block}
 	
@@ -255,13 +252,12 @@
 		
 		\onslide<3-> \item \textbf{chooses a feasible weight vector $\mathbf{W \in \mathcal{W}}$}\\
 		\medskip
-		\centerline{\color{red}$\mathbf{(1,?,0)} \qquad$ \icarr{arrow.png} \color{red}$\qquad \mathbf{(1,0,0)}$}
+		\centerline{\color{darkred}$\mathbf{(1,?,0)} \qquad$ \icarr{arrow.png} \color{darkred}$\qquad \mathbf{(1,0,0)}$}
 	\end{itemize}
 	\medskip
 	in order to maximize the difference of scores
 \end{frame}
 	
-	\subsection{Elicitation strategies}
 	\begin{frame}
 		\frametitle{Elicitation strategies}
 		At each step, the strategy selects a question to ask either to one of the agents about her preferences or to the chair about the voting rule \\ \bigskip
@@ -303,7 +299,6 @@
 	\end{itemize}
 	\end{frame}
 	
-	\subsection{Empirical Evaluation}
 	\begin{frame}
 		\frametitle{Empirical Evaluation}
 		\framesubtitle{Pessimistic for different datasets}
@@ -437,13 +432,54 @@
 	\centering \color{darkred}\LARGE Thank You!
 \end{frame}
 
-
 \bibliographystyle{plain}
 \begin{frame}[plain,allowframebreaks,noframenumbering]
 	\bibliography{biblio}
 \end{frame}
 
-
+\begin{frame}[plain,noframenumbering]
+	\frametitle{Building concrete questions for the chair}
+	Queries relating the difference between the importance of consecutive ranks
+	\only<1>{{\usebeamercolor*[fg]{description item} \[ W_{r} - W_{r+1} \geq \lambda (W_{r+1} - W_{r+2}) \quad ? \] }}
+	\onslide<2->{{\usebeamercolor*[fg]{description item} \[ W_{2} - W_{3} \geq 2 \ (W_{3} - W_{4}) \quad ? \] }}
+	\onslide<3->{Abstract queries are difficult to answer}
+	{\usebeamercolor*[fg]{description item}
+	\begin{align*}
+		\onslide<4->{W_{2}\ - \ W_{3} &\geq 2 \ W_{3} - 2 \ W_{4} }\\
+		\onslide<5->{W_{2} + 2 \ W_{4} &\geq 3 \ W_{3} }\\
+		\onslide<6->{s(a) &\geq s(b)}
+	\end{align*}
+	}
+	\only<7>{\begin{figure}
+		\begin{center}
+			$
+			\begin{array}{cc}
+				\mathbf{\#1}&\mathbf{\#2} \\
+				-&-\\
+				\mathbf{a}&-\\
+				\mathbf{b}&\mathbf{b}\\
+				-&\mathbf{a}\\
+			\end{array}
+			$
+		\end{center}
+	\end{figure}
+	}
+	\onslide<8->{
+	\begin{figure}
+		\begin{center}
+			$
+			\begin{array}{cccc}
+				\mathbf{\#1}&\mathbf{\#2}&\mathbf{\#3}&\mathbf{\#3} \\
+				c&d&a&b\\
+				\mathbf{a}&c&b&a\\
+				\mathbf{b}&\mathbf{b}&c&d\\
+				d&\mathbf{a}&d&c\\
+			\end{array}
+			$
+		\end{center}
+	\end{figure}
+	}
+\end{frame}
 
 
 \end{document}
