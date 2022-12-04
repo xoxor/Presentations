@@ -1,0 +1,81 @@
+%%Title page
+\makeatletter
+\defbeamertemplate*{title page}{mytitle}[1][]
+{
+	\vbox{}
+	\vfill
+	\begin{centering}
+
+%{\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\par}
+		\begin{beamercolorbox}{titlegraphic}
+				\usebeamerfont{titlegraphic}\inserttitlegraphic
+		\end{beamercolorbox}%
+			\vskip1em\par	
+		\begin{beamercolorbox}[rounded=true, center, shadow=true, sep=8pt,#1]{title}
+			\usebeamerfont{title}\inserttitle\par%
+			\ifx\insertsubtitle\@empty%
+			\else%
+			\vskip0.5em%
+			{\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+			\fi%     
+		\end{beamercolorbox}%
+		\vskip1em\par
+		\begin{beamercolorbox}[sep=8pt,center,#1]{author}
+			\usebeamerfont{author}\insertauthor
+		\end{beamercolorbox}
+		\begin{beamercolorbox}[sep=8pt,center,#1]{institute}
+			\usebeamerfont{institute}\insertinstitute
+		\end{beamercolorbox}
+		\begin{beamercolorbox}[sep=8pt,center,#1]{date}
+			\usebeamerfont{date}\insertdate
+		\end{beamercolorbox}\vskip0.5em
+		\begin{beamercolorbox}[sep=8pt,center,#1]{logo}
+			\insertlogo
+		\end{beamercolorbox}%
+	\end{centering}
+	
+}
+\setbeamertemplate{title page}[mytitle]
+\makeatother
+
+%Footline
+%%CAREFUL! overflow when too many slides
+\makeatletter
+\setbeamercolor{progress bar progress}{use=progress bar,bg=progress bar.fg}
+
+\def\progressbar@progressbar{} % the progress bar
+\newcount\progressbar@tmpcounta% auxiliary counter
+\newcount\progressbar@tmpcountb% auxiliary counter
+\newdimen\progressbar@pbht %progressbar height
+\newdimen\progressbar@pbwd %progressbar width
+\newdimen\progressbar@tmpdim % auxiliary dimension
+\progressbar@pbwd=\paperwidth
+\progressbar@pbht=0.5ex
+% the progress bar
+
+\defbeamertemplate{footline}{progress bar}{
+	\progressbar@tmpcounta= \insertframenumber % max = ?
+	\progressbar@tmpcountb=\inserttotalframenumber      
+	\progressbar@tmpdim=.5\progressbar@pbwd
+	\multiply\progressbar@tmpdim by \progressbar@tmpcounta
+	\divide\progressbar@tmpdim by \progressbar@tmpcountb
+	\progressbar@tmpdim=2\progressbar@tmpdim
+
+	\leavevmode%
+	\begin{beamercolorbox}[wd=\paperwidth,ht=2ex,dp=1ex,right]{bar}
+		\insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+	\end{beamercolorbox}
+	\newline
+	\begin{beamercolorbox}[wd=\paperwidth,ht=1ex,dp=1ex]{progress bar}
+		\begin{beamercolorbox}[wd=\progressbar@tmpdim,ht=1ex,dp=1ex]{progress bar progress}
+		\end{beamercolorbox}%
+	\end{beamercolorbox}%
+	
+	
+}
+\setbeamertemplate{footline}[progress bar]
+\setbeamercolor{progress bar}{fg=red!65!black,bg=white!85!black}
+\makeatother
+
+%Headline empty
+\setbeamertemplate{headline}{}
