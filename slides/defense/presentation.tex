@@ -1119,66 +1119,26 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Conclusions}
-	\only<1>{For at least three voters and no restrictions on $\Sigma$:
-	\vspace{2em} 
-	\begin{center}
-		\begin{tabular}{| c | C{0.15\textwidth} | C{0.15\textwidth} |}
-			\hline
-			& ECC & PCC \\
-			\hline
-			Condorcet procedures & {\color{red}No} & {\color{red}No} \\
-			\hline
-			Scoring rules & {\color{red}No} & {\color{red}No} \\
-			\hline
-			Antiplurality & {\color{red}No} & {\color{mygreen}Yes} \\
-			\hline
-			BK compromises & {\color{red}No} & {\color{red}No} \\
-			\hline
-			Fallback bargaining &  {\color{red}No} & {\color{mygreen}Yes (PC)} \\
-			\hline
-		\end{tabular}
-	\end{center}
-	}
-	\only<2>{For at least three voters and with restrictions on $\Sigma$:
-		\vspace{2em} 
-		\begin{center}
-			\begin{tabular}{| c | C{0.15\textwidth} | C{0.15\textwidth} |}
-				\hline
-				& ECC & PCC \\
-				\hline
-				Condorcet procedures & {\color{red}No} & {\color{red}No} \\
-				\hline
-				Scoring rules & {\color{red}No} & {\color{red}No} \\
-				\hline
-				Antiplurality & {\color{red}No} & {\color{red}No} \\
-				\hline
-				BK compromises & {\color{red}No} & {\color{red}No} \\
-				\hline
-				Fallback bargaining &  {\color{red}No} & {\color{red}No} \\
-				\hline
-			\end{tabular}
-		\end{center}
-	}
-\end{frame}
-
-\begin{frame}
 	\frametitle{Related Works}
 	\begin{itemize}
 		%\item<1-> \textbf{Plurality}: selects the alternatives considered as best by the highest number of voters 
 		%	In other words, it insists on a support of first and highest quality, disregarding the quantity of support this may lead to.
-		\item<2-> \textbf{Median Voting Rule}: picks all alternatives receiving a majority of support at the highest possible quality (Bassett and Persky, 1999 \cite{Bassett1999})
-		\item<3-> \textbf{Majoritarian Compromise}: MVR and ties are broken according to the quantity of support received (Sertel, 1986 \cite{Sertel1986})
+	%	\item<2-> \textbf{Median Voting Rule}: picks all alternatives receiving a majority of support at the highest possible quality (Bassett and Persky, 1999 \cite{Bassett1999})
+		\item<1-> \textbf{Majoritarian Compromise}: picks the alternatives that receive the support of the majority of voters at the highest possible quality, breaking ties according to the quantity of support (Sertel, 1986 \cite{Sertel1986})
 		%gives up from the quality of support, in order to ensure a majority support behind the selected alternatives.
-		\item<4-> \textbf{Fallback Bargaining}: bargainers fall back to less and less preferred alternatives until they reach a unanimous agreement (Brams and Kilgour, 2001 \cite{Brams2001})
-		\item<5-> \textbf{q-approval FB}: picks the alternatives which receive the support of q voters at the highest possible quality, breaking ties according to the quantity of support
+		\item<2-> \textbf{q-approval FB}: picks the alternatives that receive the support of q voters at the highest possible quality, no tie-breaking
+		\item<3-> \textbf{Fallback Bargaining}: q-approval with $q=n$ (Brams and Kilgour, 2001 \cite{Brams2001})
+		%bargainers fall back to less and less preferred alternatives until they reach a unanimous agreement
 		%	Note that MC and FB winners are	particular cases of q-approval compromises, for q being respectively equal to majority and unanimity. Moreover for q = 1, q-approval compromises	coincide with the plurality rule (PR) winners
 	\end{itemize}
+	\vspace{1em}
+	\onslide<4->\begin{block}{}
+		Note: q-approval with $q=1$ corresponds to plurality
+	\end{block}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Context}
-	\framesubtitle{Motivation: A simple example}
+	\frametitle{Motivation}
 	$n=100, \allalts=\{a,b,c\}$
 	\begin{center}
 		$
@@ -1188,70 +1148,58 @@
 		\end{array}
 		$
 	\end{center}
+\only<1-4>{
 	\begin{itemize}
-		\item<2-> Plurality: $\{a\}$
-		\item<3-> MVR: $\{a\}$
-		\item<4-> MC: $\{a\}$
-		\item<5-> FB: $\{b\}$
-		\item<6-> FB$_q$, $q\in \left\{ 1,..., \frac{n}{2} +1\right\} $: $\{a\}$
-	\end{itemize}
-	\vspace{0.5cm}
-	\visible<7->{\centering Does $b$ seem a better compromise?}
-\end{frame}
+		\item<2-4> Plurality: $\{a\}$
+		\item<3-4> MC: $\{a\}$
+		\item<4-4> FB$_q$
+			\begin{itemize}
+				\item $q\in \left\{ 1, \dots, \frac{n}{2} - 1\right\} $: $\{a,c\}$
+				\item $q\in \left\{ \frac{n}{2} , \frac{n}{2} + 1\right\} $: $\{a\}$
+				\item $q\in \left\{ \frac{n}{2} + 2, \dots, n \right\} $: $\{b\}$
+			\end{itemize}	
+	%	\item<5-> FB: $\{b\}$
+	\end{itemize}}
 
-
-\begin{frame}
-	\frametitle{Notation}
-	\framesubtitle{Losses}
-	%Our compromises attempt to equalize “losses”
-	\begin{description}[$\lambda_{\prof}: \allalts \rightarrow \intvl{0, m - 1}^\voters$]
-		\item<1-> [$\lambda_{\prof}: \allalts \rightarrow \intvl{0, m - 1}^\voters$] a loss vector
-	\end{description}
-	\vspace{4cm} 
-	%Thus, the spread of $l$ gets its lowest value $0$ in case of perfect equality and only in this case.
-\end{frame}
-
-\begin{frame}
-	\frametitle{Notation}
-	\framesubtitle{Losses}
-	\begin{center}
-		\begin{tikzpicture}
-			\path node (P) {$\prof$};
-			\path (P.south) node[anchor=north] (profile) {$%
-				\begin{array}{r@{\hspace{1mm} : \hspace{1mm}}l}
-					v_1 & a \pref b \pref c\\%
-					v_2 & c \pref b \pref a\\%
-				\end{array}%
-				$};
-			\path (P.center) ++ (3cm, 0) node (L) {$\lambda_{\prof}$};
-			\path (L.south) node[anchor=north] (losses) {$%
-				\begin{array}{r@{\hspace{1mm} : \hspace{1mm}}l}
-					a & (0, 2)\\%
-					b & (1, 1)\\%
-					c & (2, 0)\\%
-				\end{array}%
-				$};
-		\end{tikzpicture}
-	\end{center}
-	\bigskip
+	\only<5->{\begin{block}{Observations}
+		\begin{itemize}
+			\item $b$ receives unanimous support when each voter falls back one step from his ideal point
+			\item almost all these SCRs impose a willingness to compromise, but do not ensure a compromise
+		\end{itemize}
+	\end{block}}
+	\only<6>{\begin{block}{Thesis}
+		$b$ is a better compromise when egalitarianism is a major concern
+	\end{block}}
+%	\visible<5->{\centering Does $b$ seem a better compromise?}
 	
-	Given $\prof = (\prefi)_{i \in N}$:
-	\begin{itemize}
-		\item $\lambda_{\prefi}(x) = \card{\set{y \in \allalts \suchthat y \prefi x}} \in \intvl{0, m - 1}$ the loss of $i$ when choosing $x \in \allalts$ instead of her favorite alternative
-		\item $\lambda_{\prof}(x)$ associates to each voter her loss when choosing $x$
-	\end{itemize}
 \end{frame}
 
+%The difference between the two is that one,called egalitarian compromise, insists on equality at the expense of Pareto efficiency while the other, called Paretian compromise, is constrained to pick among the Pareto efficient alternatives.
+
 \begin{frame}
-	\frametitle{Notation}
-	\framesubtitle{Losses}
+	\frametitle{Equal loss}
 	%Our compromises attempt to equalize “losses”
-	\begin{description}[$\lambda_{\prof}: \allalts \rightarrow \intvl{0, m - 1}^\voters$]
-		\item<1-> [$\lambda_{\prof}: \allalts \rightarrow \intvl{0, m - 1}^\voters$] a loss vector
-		\item<2-> [$\sigma: \intvl{0, m - 1}^N \rightarrow \R^+$] a spread measure
-	\end{description}
-	\bigskip
-	\onslide<3-> \begin{block}{}
+		\begin{description}[$\lambda_{\prof}: \allalts \rightarrow \intvl{0, m - 1}^\voters$]
+			\item<1-> [$\lambda_{\prof}: \allalts \rightarrow \intvl{0, m - 1}^\voters$] a loss vector
+			\item<3-> [$\sigma: \intvl{0, m - 1}^N \rightarrow \R^+$] a spread measure
+		\end{description}
+	\onslide<2>{
+	\begin{center}
+		$
+		\begin{array}{cccccc}
+			v_1: \quad &a&\succ & b & \succ&c\\
+			v_2: \quad &c&\succ & b & \succ&a\\
+		\end{array}
+		 \qquad
+		\begin{array}{c}
+			\lambda_{\prof}(a)=(0,2)\\
+			\lambda_{\prof}(b)=(1,1) \\
+			\lambda_{\prof}(a)=(2,0)
+		\end{array}
+	$
+	\end{center}
+	}
+	\onslide<4-> \begin{block}{}
 		$\Sigma$ is the set of spread measures $\sigma$ such that 
 		\[ \sigma(l)=0 \iff l_{i}=l_{j}, \ \forall i,j\in N, \quad \forall l\in\alllosses \].
 	\end{block}
@@ -1259,20 +1207,16 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Notation}
-	\framesubtitle{Minimizing losses}
+	\frametitle{Equal loss}
 	\begin{block}{}
-		Given $X \subseteq \allalts$
-		\[ \argmin_{X}(\sigma~\circ~\lambda_P)=\set{x \in X \suchthat \forall y \in X: \sigma(\lambda_P(x)) \leq \sigma(\lambda_P(y))}\]
+		\[ \argmin_{\allalts}(\sigma~\circ~\lambda_P)=\set{a \in \allalts \suchthat \forall b \in \allalts: \sigma(\lambda_P(a)) \leq \sigma(\lambda_P(b))}\]
 	\end{block}
 	\vspace{0.5cm}
-	$\argmin_{X}(\sigma\circ\lambda_{P})$ denotes the alternatives in X whose loss vectors are the most equally distributed according to $\sigma$
-	
+	$\argmin_{\allalts}(\sigma\circ\lambda_{P})$ denotes the alternatives in $\allalts$ whose loss vectors are the most equally distributed according to $\sigma$
 \end{frame}
 
 \begin{frame}
-	\frametitle{Notation}
-	\framesubtitle{Minimizing losses}
+	\frametitle{Equal loss}
 	\begin{center}
 		\begin{tikzpicture}
 			\path node (P) {$\prof$};
@@ -1304,7 +1248,7 @@
 	\begin{block}{Egalitarian compromise compatibility}
 		An SCR $f$ is ECC iff 
 		\[
-		\exists \sigma \in \Sigma \suchthat \forall \prof \in \linors^N: f(\prof) \cap \argmin_\allalts (\sigma \circ \lambda_{\prof}) \neq \emptyset
+		\exists \sigma \in \Sigma \suchthat \forall \prof \in \linors^N: f(\prof) \cap \argmin_{\color{red}{\allalts}} (\sigma \circ \lambda_{\prof}) \neq \emptyset
 		\]
 	\end{block}
 \end{frame}
@@ -1363,95 +1307,185 @@
 	An SCR is Paretian Compromise Compatible iff at each profile, it selects some “less unequal” alternatives \emph{among the Pareto optimal ones}
 	\begin{block}{Paretian compromise compatibility}
 		An SCR $f$ is PCC iff 
-		\[\exists \sigma \in \Sigma \suchthat \forall \prof \in \linors^N: f(\prof) \cap \argmin_{\PO(\prof)} (\sigma \circ \lambda_{\prof}) \neq \emptyset \]
+		\[\exists \sigma \in \Sigma \suchthat \forall \prof \in \linors^N: f(\prof) \cap \argmin_{\color{red}{\PO(\prof)}} (\sigma \circ \lambda_{\prof}) \neq \emptyset \]
 	\end{block}
-	\onslide<2->{\small Recall:
-		\begin{block}{Egalitarian compromise compatibility}
-			An SCR $f$ is ECC iff 
-			\[\exists \sigma \in \Sigma \suchthat \forall \prof \in \linors^N: f(\prof) \cap \argmin_\allalts (\sigma \circ \lambda_{\prof}) \neq \emptyset\]
-	\end{block}}
+%	\onslide<2->{\small Recall:
+%		\begin{block}{Egalitarian compromise compatibility}
+%			An SCR $f$ is ECC iff 
+%			\[\exists \sigma \in \Sigma \suchthat \forall \prof \in \linors^N: f(\prof) \cap \argmin_\allalts (\sigma \circ \lambda_{\prof}) \neq \emptyset\]
+%	\end{block}}
 \end{frame}
 
 \begin{frame}
-	\frametitle{FB and AP are PCC}
-	\begin{theorem}
-		FB and Antiplurality are PCC. \hfill {\small (for $n, m \geq 3$)}
-	\end{theorem}
-	\begin{proof}[Proof sketch]
-		Define $\sigma^\text{discrete}(l) = 1 \iff l$ is not constant.
-		
-		If some $a \in \PO(\prof)$ has a constant loss vector, e.\ g.\ 
-		\\$\begin{array}{l}
-			a_1 \pref a_2 \pref a_3 \pref a_4\\
-			a_3 \pref a_2 \pref a_1 \pref a_4 \\
-		\end{array}$
-		\\there is exactly one such alternative, $FB(\prof) = \set{a}$ and it is never last so $a \in AP(\prof)$.
-		
-		Otherwise, $\sigma$ does not discriminate among $\PO(\prof)$, thus Paretianism suffices.
-	\end{proof}
+	\frametitle{Results}
+	\only<1>{For at least three voters and no restrictions on $\Sigma$:
+		\vspace{2em} 
+		\begin{center}
+			\begin{tabular}{| c | C{0.15\textwidth} | C{0.15\textwidth} |}
+				\hline
+				& ECC & PCC \\
+				\hline
+				Condorcet procedures & {\color{red}No} & {\color{red}No} \\
+				\hline
+				Scoring rules & {\color{red}No} & {\color{red}No} \\
+				\hline
+				Antiplurality & {\color{red}No} & {\color{mygreen}Yes} \\
+				\hline
+				BK compromises & {\color{red}No} & {\color{red}No} \\
+				\hline
+				Fallback bargaining &  {\color{red}No} & {\color{mygreen}Yes} \\
+				\hline
+			\end{tabular}
+		\end{center}
+	}
 \end{frame}
 
 
 \begin{frame}
 	\frametitle{Restricting $\Sigma$}
-	\begin{definition}[Condition $C_{m, n}$]
-		Given $m \geq 4, n \geq \max\set{4, m - 1}$, $\sigma$ satisfies condition $C_{m, n}$ iff $\sigma(m - 3, m - 1, m - 2, …, m - 2) < \sigma(m - 2, m - 3, …, 1, 0, …, 0)$.
-	\end{definition}
+	We consider a restriction $\bar{\Sigma}\subset\Sigma$ such that, for each $\bar{\sigma}\in \bar{\Sigma}$ if
+%	\begin{definition}[Condition $C_{m, n}$]
+%		Given $m \geq 4, n \geq \max\set{4, m - 1}$, $\sigma$ satisfies condition $C_{m, n}$ iff $\sigma(m - 3, m - 1, m - 2, …, m - 2) < \sigma(m - 2, m - 3, …, 1, 0, …, 0)$.
+%	\end{definition}
 	\begin{center}
 		$\begin{array}{r@{\hspace{1mm} : \hspace{1mm}}lllll}
-			v_1 &	&	&x	&y	&a_1\\%
-			v_2 &	&	&y	&	&x\\%
-			v_3 &	&y	&	&x	&a_2\\%
-			v_4 &y	&	&	&x	&a_3\\%
+			v_1 &	&	&\mathbf{a}	&\mathbf{b}	&x_1\\%
+			v_2 &	&	&\mathbf{b}	&	&\mathbf{a}\\%
+			v_3 &	&\mathbf{b}	&	&\mathbf{a}	&x_2\\%
+			v_4 &\mathbf{b}	&	&	&\mathbf{a}	&x_3\\%
 		\end{array}$%
 	\end{center}
-	Requires that:\\
-	$(\sigma \circ \lambda_{\prof})(x) < (\sigma \circ \lambda_{\prof})(y)$
-	
+	then: $(\bar{\sigma} \circ \lambda_{\prof})(a) < (\bar{\sigma} \circ \lambda_{\prof})(b)$
 \end{frame}
 
 \begin{frame}
 	\frametitle{Restricting $\Sigma$}
 	\begin{theorem}
-		Under condition $C_{m, n}$, AP and FB are not PCC.
+		Under $\bar{\Sigma}$, AP and FB are not PCC.
 	\end{theorem}
 	\begin{proof}[Proof for $m = 5, n = 4$]
 		$\begin{array}{r@{\hspace{1mm} : \hspace{1mm}}lllll}
-			v_1 &	&	&x	&y	&a_1\\%
-			v_2 &	&	&y	&	&x\\%
-			v_3 &	&y	&	&x	&a_2\\%
-			v_4 &y	&	&	&x	&a_3\\%
+			v_1 &	&	&a	&b	&x_1\\%
+			v_2 &	&	&b	&	&a\\%
+			v_3 &	&b	&	&a	&x_2\\%
+			v_4 &b	&	&	&a	&x_3\\%
 		\end{array}$%
+		\vspace{1em}
 		\begin{itemize}
-			\item $y$ is the only alternative never last, thus for both rules: $f(\prof) = \set{y}$
-			\item $(\sigma \circ \lambda_{\prof})(x) < (\sigma \circ \lambda_{\prof})(y)$
-			\item and $x \in \PO(\prof)$, thus $y \notin \argmin_{\PO(\prof)}(\sigma \circ \lambda_{\prof})$ \qedhere
+			\item $b$ is the only alternative never last, thus for both rules: $f(\prof) = \set{b}$
+			\item $(\bar{\sigma}\circ \lambda_{\prof})(a) < (\bar{\sigma} \circ \lambda_{\prof})(b)$
+			\item and $a \in \PO(\prof)$, thus $b \notin \argmin_{\PO(\prof)}(\bar{\sigma} \circ \lambda_{\prof})$ \qedhere
 		\end{itemize}
 	\end{proof}
 \end{frame}
 
 
 \begin{frame}
-	\frametitle{Other results}
-	\begin{theorem}
-		Condorcet consistent rules are neither ECC nor PCC \hfill {\small (for $m, n \geq 3$)}
-	\end{theorem}
-	\begin{theorem}
-		Scoring rules,except AP, are neither ECC nor PCC \hfill {\small (for $m \geq 3$ and large enough $n$)}
-	\end{theorem}
-	\begin{theorem}
-		FB$_q$ rules with $q \in \intvl{1, n - 1}$ are neither ECC nor PCC \hfill {\small (for $m, n \geq 3$)}
-	\end{theorem}
+	\frametitle{Results}
+	\only<1>{For at least three voters and \textbf{no} restrictions on $\Sigma$:
+		\vspace{2em} 
+		\begin{center}
+			\begin{tabular}{| c | C{0.15\textwidth} | C{0.15\textwidth} |}
+				\hline
+				& ECC & PCC \\
+				\hline
+				Condorcet procedures & {\color{red}No} & {\color{red}No} \\
+				\hline
+				Scoring rules & {\color{red}No} & {\color{red}No} \\
+				\hline
+				Antiplurality & {\color{red}No} & {\color{mygreen}Yes} \\
+				\hline
+				BK compromises & {\color{red}No} & {\color{red}No} \\
+				\hline
+				Fallback bargaining &  {\color{red}No} & {\color{mygreen}Yes} \\
+				\hline
+			\end{tabular}
+		\end{center}
+	}
+	\only<2->{For at least three voters \textbf{with} restrictions $\bar{\Sigma}$ on $\Sigma$:
+		\vspace{2em} 
+		\begin{center}
+			\begin{tabular}{| c | C{0.15\textwidth} | C{0.15\textwidth} |}
+				\hline
+				& ECC & PCC \\
+				\hline
+				Condorcet procedures & {\color{red}No} & {\color{red}No} \\
+				\hline
+				Scoring rules & {\color{red}No} & {\color{red}No} \\
+				\hline
+				Antiplurality & {\color{red}No} & {\color{red}No} \\
+				\hline
+				BK compromises & {\color{red}No} & {\color{red}No} \\
+				\hline
+				Fallback bargaining &  {\color{red}No} & {\color{red}No} \\
+				\hline
+			\end{tabular}
+		\end{center}
+	}
+	\only<3>{\begin{block}{}
+			Similar results for two voters
+	\end{block}}
 \end{frame}
 
-\section{Conclusions}
-\begin{block}
-	Considering a classical model in which the preferences of a set of voters over a set of alternatives are known, we defined two classes of voting rules able to reflect a notion of compromise in which egalitarianism, in the sense of conceding equally, is a major concern.
-\end{block}
-\begin{block}
-	Moreover, we stepped back from this standard perspective in	which preferences are assumed to be known from the beginning and investigated the problem of preference elicitation in different settings.
-\end{block}
+%\begin{frame}
+%	\frametitle{Other results}
+%	\begin{theorem}
+%		Condorcet consistent rules are neither ECC nor PCC \hfill {\small (for $m, n \geq 3$)}
+%	\end{theorem}
+%	\begin{theorem}
+%		Scoring rules,except AP, are neither ECC nor PCC \hfill {\small (for $m \geq 3$ and large enough $n$)}
+%	\end{theorem}
+%	\begin{theorem}
+%		FB$_q$ rules with $q \in \intvl{1, n - 1}$ are neither ECC nor PCC \hfill {\small (for $m, n \geq 3$)}
+%	\end{theorem}
+%\end{frame}
 
+\section{Conclusions}
+\begin{frame}
+	\frametitle{Conclusions}
+\begin{block}{Considering a classical setting, we:}
+	\begin{itemize}
+		\item revised the concept of compromise on an equal loss perspective
+		\item proved that almost all SCRs fail to ensure a compromise
+		\item defined new classes of voting rules reflection this notion
+	\end{itemize}
+%	Considering a classical model in which the preferences of a set of voters over a set of alternatives are known, we defined two classes of voting rules able to reflect a notion of compromise in which egalitarianism, in the sense of conceding equally, is a major concern.
+\end{block}
+\onslide<2->\begin{block}{Considering incomplete knowledge, we:}
+	\begin{itemize}
+	\item analyzed the elicitation strategy used in a real voting scenario using MJ
+	\item introduced a simultaneous and incremental elicitation approach for agents and chair preferences
+	\item developed several strategies and released our framework for further experiments and improvements
+	\end{itemize}
+%	Moreover, we stepped back from this standard perspective in	which preferences are assumed to be known from the beginning and investigated the problem of preference elicitation in different settings.
+\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Future work}
+	\begin{block}{Considering a classical setting:}
+		\begin{itemize}
+			\item the cardinal setting can be analyzed including intensity of preferences
+			\item new definitions of compromise can be conceived
+			\item the trade-off between equity and efficiency can be explored
+		\end{itemize}
+		%	Considering a classical model in which the preferences of a set of voters over a set of alternatives are known, we defined two classes of voting rules able to reflect a notion of compromise in which egalitarianism, in the sense of conceding equally, is a major concern.
+	\end{block}
+	\onslide<2->\begin{block}{Considering incomplete knowledge using MJ:}
+		\begin{itemize}
+			\item the manipulability of the elicitation process using MJ can be explored
+			\item steps toward explicability and axiomatization can be taken
+		\end{itemize}
+	\end{block}
+	\onslide<3->\begin{block}{Considering incomplete knowledge of agents and chair preferences:}
+		\begin{itemize}
+			\item more strategies with different heuristics can be implemented
+			\item the elicitation of the rule can be expanded to more than scoring rules and the convexity constraint can be relaxed
+			\item the conversion of questions into profiles can be used in other settings
+		\end{itemize}	
+		%	Moreover, we stepped back from this standard perspective in	which preferences are assumed to be known from the beginning and investigated the problem of preference elicitation in different settings.
+	\end{block}
+\end{frame}
 
 \addtocounter{framenumber}{-1}
 \begin{frame}[plain]
@@ -1521,6 +1555,25 @@
 			\end{tabular}
 		}
 	\end{minipage}
+\end{frame}
+
+\begin{frame}
+	\frametitle{FB and AP are PCC}
+	\begin{theorem}
+		FB and Antiplurality are PCC. \hfill {\small (for $n, m \geq 3$)}
+	\end{theorem}
+	\begin{proof}[Proof sketch]
+		Define $\sigma^\text{discrete}(l) = 1 \iff l$ is not constant.
+		
+		If some $a \in \PO(\prof)$ has a constant loss vector, e.\ g.\ 
+		\\$\begin{array}{l}
+			a_1 \pref a_2 \pref a_3 \pref a_4\\
+			a_3 \pref a_2 \pref a_1 \pref a_4 \\
+		\end{array}$
+		\\there is exactly one such alternative, $FB(\prof) = \set{a}$ and it is never last so $a \in AP(\prof)$.
+		
+		Otherwise, $\sigma$ does not discriminate among $\PO(\prof)$, thus Paretianism suffices.
+	\end{proof}
 \end{frame}
 
 \end{document}
