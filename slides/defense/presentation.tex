@@ -220,15 +220,16 @@
 	\begin{columns}
 		\begin{column}{0.45\textwidth}
 			\begin{figure}
-				\begin{tabular}{ccc}
+				\begin{tabular}{cccc}
+					&
 					\visible<1->{\subfloat{\includegraphics[scale=0.12]{assets/v1.png}}} &
 					\visible<1->{\subfloat{\includegraphics[scale=0.12]{assets/v2.png}}} &
 					\visible<1->{\subfloat{\includegraphics[scale=0.12]{assets/v3.png}}} \\
-					\visible<1->{\subfloat{\includegraphics[scale=0.05]{assets/d1.png}}, \color{mygreen}Good} &
-					\visible<1->{\subfloat{\includegraphics[scale=0.05]{assets/d1.png}}, \color{mygreen}Excell.} & \\
-					\visible<1->{\subfloat{\includegraphics[scale=0.05]{assets/d2.png}}, \color{amber}Aver.} &
-					\visible<1->{\subfloat{\includegraphics[scale=0.05]{assets/d2.png}}, \color{red}To rej.} & \\
-					\visible<1->{\subfloat{\includegraphics[scale=0.05]{assets/d3.png}}, \color{orange}Med.} & & \\
+					\visible<1->{\subfloat{\includegraphics[scale=0.05]{assets/d1.png}}} &
+					\visible<1->{\subfloat{\includegraphics[scale=0.5]{assets/votes/exc.png}}} & \visible<1->{\subfloat{\includegraphics[scale=0.5]{assets/votes/avg.png}}} & \visible<1->{\subfloat{\includegraphics[scale=0.5]{assets/votes/med.png}}} \\
+					\visible<1->{\subfloat{\includegraphics[scale=0.05]{assets/d2.png}}} &\visible<1->{\subfloat{\includegraphics[scale=0.5]{assets/votes/good.png}}} & \visible<1->{\subfloat{\includegraphics[scale=0.5]{assets/votes/med.png}}} &  \\
+					\visible<1->{\subfloat{\includegraphics[scale=0.05]{assets/d3.png}}} & \visible<1->{\subfloat{\includegraphics[scale=0.5]{assets/votes/inad.png}}} & 
+					& \visible<1->{\subfloat{\includegraphics[scale=0.5]{assets/votes/vg.png}}} \\
 				\end{tabular}
 			\end{figure}
 		\end{column}
@@ -408,11 +409,11 @@
 		\item [$W=(W_r,\ 1\leq r \leq m), \ W \in \mathcal{W}$] \textbf{convex} scoring vector that the chair has in mind
 	\end{description}
 	\bigskip
-	\onslide<2-> \begin{block}{}
+	\onslide<1-> \begin{block}{}
 		$W$ defines a \textbf{Positional Scoring Rule} $f_W(P)\subseteq A$ 
 		%using scores \usebeamercolor*[fg]{description item}$s^{W,P}(a), \ \forall \ a \in A$
 	\end{block}
-	\onslide<3-> \begin{block}{}
+	\onslide<1-> \begin{block}{}
 		$P$ and $W$ exist in the minds of agents and chair but unknown to us
 	\end{block}	
 	
@@ -849,7 +850,7 @@
 \begin{frame}
 	\frametitle{Majority Judgment}
 	\framesubtitle{Uses}
-	\onslide<1-> In the last few years MJ has being adopted by a progressively larger number of french political parties including: Le Parti Pirate, Génération(s), LaPrimaire.org, France Insoumise and La République en Marche. \cite{MV} \vspace{1cm}
+	\onslide<1-> In the last few years MJ has being adopted by a progressively larger number of french political parties including: Le Parti Pirate, Génération(s), LaPrimaire.org, France Insoumise and La République en Marche. \vspace{1cm}
 	
 	\onslide<1-> LaPrimaire.org is a french political initiative whose goal is to select an independent candidate for the french presidential election using MJ as voting rule.
 \end{frame}
@@ -878,7 +879,7 @@
 		If a winner of the complete profile is among the k finalists then it will also be a winner of the incomplete profile
 	\end{remark}
 	\begin{theorem}
-		There exist an incomplete profile and one of its completion that do not share the same sets of winners
+		If $k<m$, there exist an incomplete profile and one of its completion that do not share the same sets of winners
 	\end{theorem}
 \vspace{-1em}
 	\begin{columns}
@@ -997,7 +998,6 @@
 					ymax=0.8,
 					xmin=1,
 					xmax=5,
-					yticklabels={0,2,4,6,8,10},
 					legend style={font=\scriptsize}
 					]
 					
@@ -1101,7 +1101,7 @@
 	
 	\vspace{1em}
 
-	\onslide<2->\textbf{Goal}:Find a procedure determining a collective choice that promotes a notion of compromise \\
+	\onslide<2->\textbf{Goal}: Find a procedure determining a collective choice that promotes a notion of compromise \\
 	\vspace{1em}
 	\onslide<3-> \textbf{Approach}:
 	\vspace{-0.5em}
@@ -1131,10 +1131,6 @@
 		%bargainers fall back to less and less preferred alternatives until they reach a unanimous agreement
 		%	Note that MC and FB winners are	particular cases of q-approval compromises, for q being respectively equal to majority and unanimity. Moreover for q = 1, q-approval compromises	coincide with the plurality rule (PR) winners
 	\end{itemize}
-	\vspace{1em}
-	\onslide<4->\begin{block}{}
-		Note: q-approval with $q=1$ corresponds to plurality
-	\end{block}
 \end{frame}
 
 \begin{frame}
@@ -1148,29 +1144,53 @@
 		\end{array}
 		$
 	\end{center}
-\only<1-4>{
+
 	\begin{itemize}
 		\item<2-4> Plurality: $\{a\}$
 		\item<3-4> MC: $\{a\}$
 		\item<4-4> FB$_q$
 			\begin{itemize}
-				\item $q\in \left\{ 1, \dots, \frac{n}{2} - 1\right\} $: $\{a,c\}$
-				\item $q\in \left\{ \frac{n}{2} , \frac{n}{2} + 1\right\} $: $\{a\}$
-				\item $q\in \left\{ \frac{n}{2} + 2, \dots, n \right\} $: $\{b\}$
+				\item $q\in \left\{ 1, \dots, 49\right\} $: $\{a,c\}$
+				\item $q\in \left\{ 50 , 51 \right\} $: $\{a\}$
+				\item $q\in \left\{ 52, \dots, 100 \right\} $: $\{b\}$
 			\end{itemize}	
 	%	\item<5-> FB: $\{b\}$
-	\end{itemize}}
+	\end{itemize}
 
-	\only<5->{\begin{block}{Observations}
-		\begin{itemize}
-			\item $b$ receives unanimous support when each voter falls back one step from his ideal point
-			\item almost all these SCRs impose a willingness to compromise, but do not ensure a compromise
-		\end{itemize}
-	\end{block}}
-	\only<6>{\begin{block}{Thesis}
-		$b$ is a better compromise when egalitarianism is a major concern
-	\end{block}}
+%	\only<5->{\begin{block}{Observations}
+%		\begin{itemize}
+%			\item $b$ receives unanimous support when each voter falls back one step from her ideal point
+%			\item almost all these SCRs impose a willingness to compromise, but do not ensure a compromise
+%		\end{itemize}
+%	\end{block}}
+%	\only<6>{\begin{block}{Thesis}
+%		$b$ is a better compromise when egalitarianism is a major concern
+%	\end{block}}
 %	\visible<5->{\centering Does $b$ seem a better compromise?}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Motivation}
+	$n=100, \allalts=\{a,b,c\}$
+	\begin{center}
+		$
+		\begin{array}{cccccc}
+			\mathbf{51} \quad &a&\succ & b & \succ&c\\
+			\mathbf{49} \quad &c&\succ & b & \succ&a\\
+		\end{array}
+		$
+	\end{center}
+	\onslide<1->{\begin{block}{Observations}
+			\begin{itemize}
+				\item $b$ receives unanimous support when each voter falls back one step from her ideal point
+				\item almost all these SCRs impose a willingness to compromise, but do not ensure a compromise
+			\end{itemize}
+	\end{block}}
+	\onslide<2->{\begin{block}{Thesis}
+			$b$ is a better compromise when egalitarianism is a major concern
+	\end{block}}
+	%	\visible<5->{\centering Does $b$ seem a better compromise?}
 	
 \end{frame}
 
@@ -1495,7 +1515,7 @@
 
 
 \begin{frame}[plain,allowframebreaks,noframenumbering]
-	\scriptsize \bibliography{biblio}
+	\vspace{-1em}\tiny \bibliography{biblio}
 \end{frame}
 
 \begin{frame}[plain,noframenumbering]
