@@ -1206,24 +1206,25 @@
 \begin{frame}
 	\frametitle{Motivation}
 	\vspace{-1cm}
-	$n=100, \allalts=\{a,b,c\}$
+	$\allalts =\{$ \includegraphics[scale=0.025]{assets/d1.png}, \includegraphics[scale=0.025]{assets/d2.png}, \includegraphics[scale=0.025]{assets/d3.png} $\}$
+	$n=100$
 	\begin{center}
 		$
 		\begin{array}{cccccc}
-			\mathbf{51} \quad &a&\succ & b & \succ&c\\
-			\mathbf{49} \quad &c&\succ & b & \succ&a\\
+			\mathbf{51} \quad &\includegraphics[scale=0.025]{assets/d1.png}&\succ & \includegraphics[scale=0.025]{assets/d2.png} & \succ&\includegraphics[scale=0.025]{assets/d3.png}\\
+			\mathbf{49} \quad &\includegraphics[scale=0.025]{assets/d3.png}&\succ & \includegraphics[scale=0.025]{assets/d2.png} & \succ&\includegraphics[scale=0.025]{assets/d1.png}\\
 		\end{array}
 		$
 	\end{center}
 
 	\begin{itemize}
-		\item<2-4> Plurality: $\{a\}$
-		\item<3-4> MC: $\{a\}$
+		\item<2-4> Plurality: $\{$\includegraphics[scale=0.025]{assets/d1.png}$\}$
+		\item<3-4> MC: $\{$\includegraphics[scale=0.025]{assets/d1.png}$\}$
 		\item<4-4> FB$_q$
 			\begin{itemize}
-				\item $q\in \left\{ 1, \dots, 49\right\} $: $\{a,c\}$
-				\item $q\in \left\{ 50 , 51 \right\} $: $\{a\}$
-				\item $q\in \left\{ 52, \dots, 100 \right\} $: $\{b\}$
+				\item $q\in \left\{ 1, \dots, 49\right\} $: $\{$\includegraphics[scale=0.025]{assets/d1.png},\includegraphics[scale=0.025]{assets/d3.png}$\}$
+				\item $q\in \left\{ 50 , 51 \right\} $: $\{$\includegraphics[scale=0.025]{assets/d1.png}$\}$
+				\item $q\in \left\{ 52, \dots, 100 \right\} $: $\{$\includegraphics[scale=0.025]{assets/d2.png}$\}$
 			\end{itemize}	
 	%	\item<5-> FB: $\{b\}$
 	\end{itemize}
@@ -1243,23 +1244,24 @@
 
 \begin{frame}[t]
 	\frametitle{Motivation}
-	$n=100, \allalts=\{a,b,c\}$
+	$\allalts =\{$ \includegraphics[scale=0.025]{assets/d1.png}, \includegraphics[scale=0.025]{assets/d2.png}, \includegraphics[scale=0.025]{assets/d3.png} $\}$
+	 $n=100$
 	\begin{center}
 		$
 		\begin{array}{cccccc}
-			\mathbf{51} \quad &a&\succ & b & \succ&c\\
-			\mathbf{49} \quad &c&\succ & b & \succ&a\\
+			\mathbf{51} \quad &\includegraphics[scale=0.025]{assets/d1.png}&\succ & \includegraphics[scale=0.025]{assets/d2.png} & \succ&\includegraphics[scale=0.025]{assets/d3.png}\\
+			\mathbf{49} \quad &\includegraphics[scale=0.025]{assets/d3.png}&\succ & \includegraphics[scale=0.025]{assets/d2.png} & \succ&\includegraphics[scale=0.025]{assets/d1.png}\\
 		\end{array}
 		$
 	\end{center}
 	\onslide<1->{\begin{block}{Observations}
 			\begin{itemize}
-				\item $b$ receives unanimous support when each voter falls back one step from her ideal point
+				\item \includegraphics[scale=0.025]{assets/d2.png} receives unanimous support when each voter falls back one step from her ideal point
 				\item almost all the SCRs studied impose a willingness to compromise, but do not ensure a compromise
 			\end{itemize}
 	\end{block}}
 	\onslide<2->{\begin{block}{Thesis}
-			$b$ is a better compromise when egalitarianism is a major concern
+			\includegraphics[scale=0.025]{assets/d2.png} is a better compromise when egalitarianism is a major concern
 	\end{block}}
 	%	\visible<5->{\centering Does $b$ seem a better compromise?}
 	
@@ -1278,14 +1280,14 @@
 	\begin{center}
 		$
 		\begin{array}{cccccc}
-			v_1: \quad &a&\succ & b & \succ&c\\
-			v_2: \quad &c&\succ & b & \succ&a\\
+			\mathbf{51} \quad &\includegraphics[scale=0.025]{assets/d1.png}&\succ & \includegraphics[scale=0.025]{assets/d2.png} & \succ&\includegraphics[scale=0.025]{assets/d3.png}\\
+			\mathbf{49} \quad &\includegraphics[scale=0.025]{assets/d3.png}&\succ & \includegraphics[scale=0.025]{assets/d2.png} & \succ&\includegraphics[scale=0.025]{assets/d1.png}\\
 		\end{array}
 		 \qquad
 		\begin{array}{c}
-			\lambda_{\prof}(a)=(0,2)\\
-			\lambda_{\prof}(b)=(1,1) \\
-			\lambda_{\prof}(a)=(2,0)
+			\lambda_{\prof}(\includegraphics[scale=0.025]{assets/d1.png})=(0,2)\\
+			\lambda_{\prof}(\includegraphics[scale=0.025]{assets/d2.png})=(1,1) \\
+			\lambda_{\prof}(\includegraphics[scale=0.025]{assets/d3.png})=(2,0)
 		\end{array}
 	$
 	\end{center}
@@ -1313,23 +1315,23 @@
 			\path node (P) {$\prof$};
 			\path (P.south) node[anchor=north] (profile) {$%
 				\begin{array}{r@{\hspace{1mm} : \hspace{1mm}}l}
-					v_1 & a \pref b \pref c\\%
-					v_2 & c \pref b \pref a\\%
+					\includegraphics[scale=0.06]{assets/v1.png} & \includegraphics[scale=0.025]{assets/d1.png} \pref \includegraphics[scale=0.025]{assets/d2.png} \pref \includegraphics[scale=0.025]{assets/d3.png}\\%
+					\includegraphics[scale=0.06]{assets/v2.png} & \includegraphics[scale=0.025]{assets/d3.png} \pref \includegraphics[scale=0.025]{assets/d2.png} \pref \includegraphics[scale=0.025]{assets/d1.png}\\%
 				\end{array}%
 				$};
 			\path (P.center) ++ (3cm, 0) node (L) {$\lambda_{\prof}$};
 			\path (L.south) node[anchor=north] (losses) {$%
 				\begin{array}{r@{\hspace{1mm} : \hspace{1mm}}l}
-					a & (0, 2)\\%
-					b & (1, 1)\\%
-					c & (2, 0)\\%
+					\includegraphics[scale=0.025]{assets/d1.png} & (0, 2)\\%
+					\includegraphics[scale=0.025]{assets/d2.png} & (1, 1)\\%
+					\includegraphics[scale=0.025]{assets/d3.png} & (2, 0)\\%
 				\end{array}%
 				$};
 		\end{tikzpicture}
 	\end{center}
 	\bigskip
 	
-	\[\argmin_{\allalts}(\sigma~\circ~\lambda_P)=\{b\} \quad \forall \sigma \in \Sigma\]
+	\[\argmin_{\allalts}(\sigma~\circ~\lambda_P)=\{\includegraphics[scale=0.025]{assets/d1.png}\} \quad \forall \sigma \in \Sigma\]
 \end{frame}
 
 
@@ -1352,26 +1354,26 @@
 			\path node (P) {$\prof$};
 			\path (P.south) node[anchor=north] (profile) {$%
 				\begin{array}{r@{\hspace{1mm} : \hspace{1mm}}l}
-					v_1 & a \pref c \pref b\\%
-					v_2 & c \pref a \pref b\\%
+					\includegraphics[scale=0.06]{assets/v1.png} & \includegraphics[scale=0.025]{assets/d1.png} \pref \includegraphics[scale=0.025]{assets/d3.png} \pref \includegraphics[scale=0.025]{assets/d2.png}\\%
+					\includegraphics[scale=0.06]{assets/v2.png} & \includegraphics[scale=0.025]{assets/d3.png} \pref \includegraphics[scale=0.025]{assets/d1.png} \pref \includegraphics[scale=0.025]{assets/d2.png}\\%
 				\end{array}%
 				$};
 			\path (P.center) ++ (3cm, 0) node (L) {$\lambda_{\prof}$};
 			\path (L.south) node[anchor=north] (losses) {$%
 				\begin{array}{r@{\hspace{1mm} : \hspace{1mm}}l}
-					a & (0, 1)\\%
-					b & (2, 2)\\%
-					c & (1, 0)\\%
+					\includegraphics[scale=0.025]{assets/d1.png} & (0, 1)\\%
+					\includegraphics[scale=0.025]{assets/d2.png} & (2, 2)\\%
+					\includegraphics[scale=0.025]{assets/d3.png} & (1, 0)\\%
 				\end{array}%
 				$};
 		\end{tikzpicture}
 	\end{center}
-	\[\argmin_{\allalts} (\sigma \circ \lambda_{\prof}) = \{b\} \quad \forall \sigma \in \Sigma\]
+	\[\argmin_{\allalts} (\sigma \circ \lambda_{\prof}) = \{\includegraphics[scale=0.025]{assets/d2.png}\} \quad \forall \sigma \in \Sigma\]
 	%	\onslide<3>{Egalitarian compromises favor equality over Pareto efficiency}
 	\onslide<2->\begin{theorem}
 		ECC $\cap$ Paretian = $\emptyset$ \hfill {\small (for $n, m \geq 2$)}
 	\end{theorem}
-	\onslide<3-> $f \in \text{ECC} \Rightarrow b \in f(\prof)$, $f \in \text{Paretian} \Rightarrow b \notin f(\prof)$
+	\onslide<3-> $f \in \text{ECC} \Rightarrow \includegraphics[scale=0.025]{assets/d2.png} \in f(\prof)$, $f \in \text{Paretian} \Rightarrow \includegraphics[scale=0.025]{assets/d2.png} \notin f(\prof)$
 \end{frame}
 
 %\begin{frame}
@@ -1463,23 +1465,23 @@
 	\begin{proof}[Proof for $m = 5, n = 4$]
 		\begin{center}
 		$\begin{array}{r@{\hspace{1mm} : \hspace{1mm}}lllll}
-			v_1 &	&	&a	&b	&x_1\\%
-			v_2 &	&	&b	&	&a\\%
-			v_3 &	&b	&	&a	&x_2\\%
-			v_4 &b	&	&	&a	&x_3\\%
+			v_1 &	&	&\includegraphics[scale=0.025]{assets/d2.png}	&\includegraphics[scale=0.025]{assets/d1.png}	&x_1\\%
+			v_2 &	&	&\includegraphics[scale=0.025]{assets/d1.png}	&	&\includegraphics[scale=0.025]{assets/d2.png}\\%
+			v_3 &	&\includegraphics[scale=0.025]{assets/d1.png}	&	&\includegraphics[scale=0.025]{assets/d2.png}	&x_2\\%
+			v_4 &\includegraphics[scale=0.025]{assets/d1.png}	&	&	&\includegraphics[scale=0.025]{assets/d2.png}	&x_3\\%
 		\end{array}
 		\qquad
 		\begin{array}{c}
-			\lambda_{P}(a)=(2,4,3,3) \\
-			\lambda_{P}(b)=(3,2,1,0)
+			\lambda_{P}(\includegraphics[scale=0.025]{assets/d1.png})=(2,4,3,3) \\
+			\lambda_{P}(\includegraphics[scale=0.025]{assets/d2.png})=(3,2,1,0)
 		\end{array}
 		$%
 	\end{center}
 		\vspace{1em}
 		\begin{itemize}
-			\item $b$ is the only alternative never last, thus for both rules: $f(\prof) = \set{b}$
-			\item $(\bar{\sigma}\circ \lambda_{\prof})(a) < (\bar{\sigma} \circ \lambda_{\prof})(b)$, $\forall \bar{\sigma} \in \bar{\Sigma}$
-			\item and $a \in \PO(\prof)$, thus $b \notin \argmin_{\PO(\prof)}(\bar{\sigma} \circ \lambda_{\prof})$ \qedhere
+			\item \includegraphics[scale=0.025]{assets/d1.png} is the only alternative never last, thus for both rules: $f(\prof) = \set{\includegraphics[scale=0.025]{assets/d1.png}}$
+			\item $(\bar{\sigma}\circ \lambda_{\prof})(\includegraphics[scale=0.025]{assets/d2.png}) < (\bar{\sigma} \circ \lambda_{\prof})(\includegraphics[scale=0.025]{assets/d1.png})$, $\forall \bar{\sigma} \in \bar{\Sigma}$
+			\item and $\includegraphics[scale=0.025]{assets/d2.png} \in \PO(\prof)$, thus $\includegraphics[scale=0.025]{assets/d1.png} \notin \argmin_{\PO(\prof)}(\bar{\sigma} \circ \lambda_{\prof})$ \qedhere
 		\end{itemize}
 	\end{proof}
 \end{frame}
