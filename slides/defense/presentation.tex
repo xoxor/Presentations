@@ -1,5 +1,5 @@
-%\documentclass[aspectratio=169]{beamer}
-\documentclass{beamer}
+\documentclass[aspectratio=169]{beamer}
+%\documentclass{beamer}
 \usetheme{CambridgeUS}
 \usecolortheme{beaver}
 
@@ -12,13 +12,13 @@
 \input{preamble/mycommands}
 \input{preamble/mystyle}
 
-\titlegraphic{\includegraphics[width=50mm]{logo_dauphine}\hspace*{5.5cm} \includegraphics[width=7mm]{cnrs}}
+\titlegraphic{\includegraphics[width=50mm]{logo_dauphine}\hspace*{9cm} \includegraphics[width=7mm]{cnrs}}
 
 \title[]{Compromise and elicitation in social choice}
 %
 \subtitle{A study of egalitarianism and incomplete information in voting}
 %\institute[]{Université Paris-Dauphine, Université PSL, CNRS, LAMSADE}
-\author{Beatrice Napolitano}
+\author{Beatrice Napolitano \\ {\small \vspace{0.2em} \color{darkgray}Supervisors: Remzi Sanver, Olivier Cailloux}}
 \date{\small{Ph.D. Thesis Defense, 09 December 2022} \\ \includegraphics[width=35mm]{LOGO_LAMSADE} }
 
 \usepackage{tikz}
@@ -37,7 +37,7 @@
 \beamertemplatenavigationsymbolsempty
 
 \begin{frame}[plain]
-	\bibliographystyle{plain}
+	\bibliographystyle{apalike}
 	\nobibliography*
 	\maketitle
 \end{frame}
@@ -45,10 +45,12 @@
 \addtocounter{framenumber}{-1}
 
 
-\begin{frame}
+\begin{frame}[t]
 	\frametitle{Classical setting}
-%	\vspace{-2em}
-	\footnotesize{Agents} $=\{$ \includegraphics[scale=0.05]{assets/v1.png}, \includegraphics[scale=0.05]{assets/v2.png}, \includegraphics[scale=0.05]{assets/v3.png} $\}$, $\ $ \footnotesize{Altern.} $=\{$ \includegraphics[scale=0.025]{assets/d1.png}, \includegraphics[scale=0.025]{assets/d2.png}, \includegraphics[scale=0.025]{assets/d3.png} $\}$, $\ $ \footnotesize{Chair} $=$ \includegraphics[scale=0.02]{assets/committee.png} $\Rightarrow$ \footnotesize{Voting Rule}
+	\vspace{0.5cm}
+	\footnotesize{Alternatives} $=\{$ \includegraphics[scale=0.025]{assets/d1.png}, \includegraphics[scale=0.025]{assets/d2.png}, \includegraphics[scale=0.025]{assets/d3.png} $\}$ $\xleftarrow{prefers}$
+	\footnotesize{Agents} $=\{$ \includegraphics[scale=0.05]{assets/v1.png}, \includegraphics[scale=0.05]{assets/v2.png}, \includegraphics[scale=0.05]{assets/v3.png} $\}$ $\ $
+	\footnotesize{Chair} $=$ \includegraphics[scale=0.02]{assets/committee.png} $\Rightarrow$ \footnotesize{Voting Rule}
 	\vspace{2em}
 	\begin{columns}
 		\begin{column}{0.45\textwidth}
@@ -79,18 +81,20 @@
 			
 		\end{column}
 	\end{columns}
-	\begin{center}
-		\visible<8->{winner: \includegraphics[scale=0.05]{assets/d1.png}}
-	\end{center}
+		\begin{center}
+			\visible<8->{winner: \includegraphics[scale=0.05]{assets/d1.png}}
+		\end{center}
 	
 \end{frame}
 
 
 
-\begin{frame}
+\begin{frame}[t]
 	\frametitle{Incomplete knowledge about profile}
-	\vspace{-0.8em}
-	\footnotesize{Agents} $=\{$ \includegraphics[scale=0.05]{assets/v1.png}, \includegraphics[scale=0.05]{assets/v2.png}, \includegraphics[scale=0.05]{assets/v3.png} $\}$, $\ $ \footnotesize{Altern.} $=\{$ \includegraphics[scale=0.025]{assets/d1.png}, \includegraphics[scale=0.025]{assets/d2.png}, \includegraphics[scale=0.025]{assets/d3.png} $\}$, $\ $ \footnotesize{Chair} $=$ \includegraphics[scale=0.02]{assets/committee.png} $\Rightarrow$ \footnotesize{Voting Rule}
+	\vspace{0.5cm}
+	\footnotesize{Alternatives} $=\{$ \includegraphics[scale=0.025]{assets/d1.png}, \includegraphics[scale=0.025]{assets/d2.png}, \includegraphics[scale=0.025]{assets/d3.png} $\}$ $\xleftarrow{prefers}$
+	\footnotesize{Agents} $=\{$ \includegraphics[scale=0.05]{assets/v1.png}, \includegraphics[scale=0.05]{assets/v2.png}, \includegraphics[scale=0.05]{assets/v3.png} $\}$ $\ $
+	\footnotesize{Chair} $=$ \includegraphics[scale=0.02]{assets/committee.png} $\Rightarrow$ \footnotesize{Voting Rule}
 	\vspace{2em}
 	\begin{columns}
 		\begin{column}{0.45\textwidth}
@@ -117,9 +121,12 @@
 			
 		\end{column}
 	\end{columns}
-	\begin{center}
-		\visible<1->{winner: ?}
-	\end{center}
+	\vspace{0.5cm}
+		\begin{center}
+			\visible<1->{winner: \hspace{1em}?}
+		\end{center}
+
+	
 \end{frame}
 
 %\begin{frame}
@@ -136,10 +143,12 @@
 %%	\end{itemize}
 %\end{frame}
 
-\begin{frame}
+\begin{frame}[t]
 	\frametitle{Incomplete knowledge about voting rule}
-	\vspace{-0.8em}
-	\footnotesize{Agents} $=\{$ \includegraphics[scale=0.05]{assets/v1.png}, \includegraphics[scale=0.05]{assets/v2.png}, \includegraphics[scale=0.05]{assets/v3.png} $\}$, $\ $ \footnotesize{Altern.} $=\{$ \includegraphics[scale=0.025]{assets/d1.png}, \includegraphics[scale=0.025]{assets/d2.png}, \includegraphics[scale=0.025]{assets/d3.png} $\}$, $\ $ \footnotesize{Chair} $=$ \includegraphics[scale=0.02]{assets/committee.png} $\Rightarrow$ \footnotesize{Voting Rule}
+	\vspace{0.5cm}
+	\footnotesize{Alternatives} $=\{$ \includegraphics[scale=0.025]{assets/d1.png}, \includegraphics[scale=0.025]{assets/d2.png}, \includegraphics[scale=0.025]{assets/d3.png} $\}$ $\xleftarrow{prefers}$
+	\footnotesize{Agents} $=\{$ \includegraphics[scale=0.05]{assets/v1.png}, \includegraphics[scale=0.05]{assets/v2.png}, \includegraphics[scale=0.05]{assets/v3.png} $\}$ $\ $
+	\footnotesize{Chair} $=$ \includegraphics[scale=0.02]{assets/committee.png} $\Rightarrow$ \footnotesize{Voting Rule}
 	\vspace{2em}
 	\begin{columns}
 		\begin{column}{0.45\textwidth}
@@ -170,16 +179,18 @@
 			
 		\end{column}
 	\end{columns}
+\vspace{0.5cm}
 	\begin{center}
-		\visible<1->{winner: ?}
+		\visible<1->{winner: \hspace{1em}?}
 	\end{center}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[t]
 	\frametitle{Research Question I:}
 	\framesubtitle{Incomplete knowledge about profile and voting rule}
-	\vspace{-0.8em}
-	\footnotesize{Agents} $=\{$ \includegraphics[scale=0.05]{assets/v1.png}, \includegraphics[scale=0.05]{assets/v2.png}, \includegraphics[scale=0.05]{assets/v3.png} $\}$, $\ $ \footnotesize{Altern.} $=\{$ \includegraphics[scale=0.025]{assets/d1.png}, \includegraphics[scale=0.025]{assets/d2.png}, \includegraphics[scale=0.025]{assets/d3.png} $\}$, $\ $ \footnotesize{Chair} $=$ \includegraphics[scale=0.02]{assets/committee.png} $\Rightarrow$ \footnotesize{Voting Rule}
+	\footnotesize{Alternatives} $=\{$ \includegraphics[scale=0.025]{assets/d1.png}, \includegraphics[scale=0.025]{assets/d2.png}, \includegraphics[scale=0.025]{assets/d3.png} $\}$ $\xleftarrow{prefers}$
+	\footnotesize{Agents} $=\{$ \includegraphics[scale=0.05]{assets/v1.png}, \includegraphics[scale=0.05]{assets/v2.png}, \includegraphics[scale=0.05]{assets/v3.png} $\}$ $\ $
+	\footnotesize{Chair} $=$ \includegraphics[scale=0.02]{assets/committee.png} $\Rightarrow$ \footnotesize{Voting Rule}
 	\vspace{2em}
 	\begin{columns}
 		\begin{column}{0.45\textwidth}
@@ -206,30 +217,32 @@
 			
 		\end{column}
 	\end{columns}
+\vspace{0.5cm}
 	\begin{center}
-		\visible<1->{winner: ?}
+		\visible<1->{winner: \hspace{1em}?}
 	\end{center}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[t]
 	\frametitle{Research Question II:}
 	\framesubtitle{Incomplete knowledge under Majority Judgment}
-	\vspace{-0.8em}
-	\footnotesize{Agents} $=\{$ \includegraphics[scale=0.05]{assets/v1.png}, \includegraphics[scale=0.05]{assets/v2.png}, \includegraphics[scale=0.05]{assets/v3.png} $\}$, $\ $ \footnotesize{Altern.} $=\{$ \includegraphics[scale=0.025]{assets/d1.png}, \includegraphics[scale=0.025]{assets/d2.png}, \includegraphics[scale=0.025]{assets/d3.png} $\}$, $\ $ \footnotesize{Chair} $=$ \includegraphics[scale=0.02]{assets/committee.png} $\Rightarrow$ \footnotesize{Voting Rule}
+	\footnotesize{Alternatives} $=\{$ \includegraphics[scale=0.025]{assets/d1.png}, \includegraphics[scale=0.025]{assets/d2.png}, \includegraphics[scale=0.025]{assets/d3.png} $\}$ $\xleftarrow{prefers}$
+	\footnotesize{Agents} $=\{$ \includegraphics[scale=0.05]{assets/v1.png}, \includegraphics[scale=0.05]{assets/v2.png}, \includegraphics[scale=0.05]{assets/v3.png} $\}$ $\ $
+	\footnotesize{Chair} $=$ \includegraphics[scale=0.02]{assets/committee.png} $\Rightarrow$ \footnotesize{Voting Rule}
 	\vspace{2em}
 	\begin{columns}
 		\begin{column}{0.45\textwidth}
 			\begin{figure}
-				\begin{tabular}{cccc}
+				 \hspace*{-1cm}\begin{tabular}{cccc}
 					&
 					\visible<1->{\subfloat{\includegraphics[scale=0.12]{assets/v1.png}}} &
 					\visible<1->{\subfloat{\includegraphics[scale=0.12]{assets/v2.png}}} &
 					\visible<1->{\subfloat{\includegraphics[scale=0.12]{assets/v3.png}}} \\
 					\visible<1->{\subfloat{\includegraphics[scale=0.05]{assets/d1.png}}} &
-					\visible<1->{\subfloat{\includegraphics[scale=0.5]{assets/votes/exc.png}}} & \visible<1->{\subfloat{\includegraphics[scale=0.5]{assets/votes/avg.png}}} & \visible<1->{\subfloat{\includegraphics[scale=0.5]{assets/votes/med.png}}} \\
-					\visible<1->{\subfloat{\includegraphics[scale=0.05]{assets/d2.png}}} &\visible<1->{\subfloat{\includegraphics[scale=0.5]{assets/votes/good.png}}} & \visible<1->{\subfloat{\includegraphics[scale=0.5]{assets/votes/med.png}}} &  \\
-					\visible<1->{\subfloat{\includegraphics[scale=0.05]{assets/d3.png}}} & \visible<1->{\subfloat{\includegraphics[scale=0.5]{assets/votes/inad.png}}} & 
-					& \visible<1->{\subfloat{\includegraphics[scale=0.5]{assets/votes/vg.png}}} \\
+					\visible<1->{\subfloat{\includegraphics[scale=0.4]{assets/votes/exc.png}}} & \visible<1->{\subfloat{\includegraphics[scale=0.4]{assets/votes/avg.png}}} & \visible<1->{\subfloat{\includegraphics[scale=0.4]{assets/votes/med.png}}} \\
+					\visible<1->{\subfloat{\includegraphics[scale=0.05]{assets/d2.png}}} &\visible<1->{\subfloat{\includegraphics[scale=0.4]{assets/votes/good.png}}} & \visible<1->{\subfloat{\includegraphics[scale=0.4]{assets/votes/med.png}}} &  \\
+					\visible<1->{\subfloat{\includegraphics[scale=0.05]{assets/d3.png}}} & \visible<1->{\subfloat{\includegraphics[scale=0.4]{assets/votes/inad.png}}} & 
+					& \visible<1->{\subfloat{\includegraphics[scale=0.4]{assets/votes/vg.png}}} \\
 				\end{tabular}
 			\end{figure}
 		\end{column}
@@ -243,16 +256,18 @@
 			
 		\end{column}
 	\end{columns}
+\vspace{0.5cm}
 	\begin{center}
-		\visible<1->{winner: ?}
+		\visible<1->{winner: \hspace{1em}?}
 	\end{center}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[t]
 	\frametitle{Research Question III:}
 	\framesubtitle{Compromise from an equal-loss perspective}
-	\vspace{-0.8em}
-	\footnotesize{Agents} $=\{$ \includegraphics[scale=0.05]{assets/v1.png}, \includegraphics[scale=0.05]{assets/v2.png}, \includegraphics[scale=0.05]{assets/v3.png} $\}$, $\ $ \footnotesize{Altern.} $=\{$ \includegraphics[scale=0.025]{assets/d1.png}, \includegraphics[scale=0.025]{assets/d2.png}, \includegraphics[scale=0.025]{assets/d3.png} $\}$, $\ $ \footnotesize{Chair} $=$ \includegraphics[scale=0.02]{assets/committee.png} $\Rightarrow$ \footnotesize{Voting Rule}
+	\footnotesize{Alternatives} $=\{$ \includegraphics[scale=0.025]{assets/d1.png}, \includegraphics[scale=0.025]{assets/d2.png}, \includegraphics[scale=0.025]{assets/d3.png} $\}$ $\xleftarrow{prefers}$
+	\footnotesize{Agents} $=\{$ \includegraphics[scale=0.05]{assets/v1.png}, \includegraphics[scale=0.05]{assets/v2.png}, \includegraphics[scale=0.05]{assets/v3.png} $\}$ $\ $
+	\footnotesize{Chair} $=$ \includegraphics[scale=0.02]{assets/committee.png} $\Rightarrow$ \footnotesize{Voting Rule}
 	\vspace{2em}
 	\begin{columns}
 		\begin{column}{0.45\textwidth}
@@ -302,16 +317,17 @@
 
 \section{Notation}
 \begin{frame}
-	\frametitle{Notation}	
-	\begin{description}[$\prof=(\succ_{1},\dots,\succ_{n}) \in \linors^\voters$]
-		\item [$\allalts$] set of alternatives, $|\allalts|=m$
-		\item [$\voters$] set of voters, $|\voters|=n$
-		\item [$\linors$] set of all linear orderings given $\allalts$
-		\item [${\prefi} \in \linors$] preference ranking of voter $i \in \voters$
-		\item [$\prof=(\succ_{1},\dots,\succ_{n}) \in \linors^\voters$] a profile
-		\item [$\powersetz{\allalts}$] possible winners (non-empty subsets of $\allalts$)
-		\item [$f: \linors^\voters \rightarrow \powersetz{\allalts}$] a Social Choice Rule
-	\end{description}
+	\frametitle{Notation}
+		\begin{description}[$\prof=(\succ_{1},\dots,\succ_{n}) \in \linors^\voters \hspace{2cm}$]
+			\item [$\allalts$] set of alternatives, $|\allalts|=m$
+			\item [$\voters$] set of voters, $|\voters|=n$
+			\item [$\linors$] set of all linear orderings given $\allalts$
+			\item [${\prefi} \in \linors$] preference ranking of voter $i \in \voters$
+			\item [$\prof=(\succ_{1},\dots,\succ_{n}) \in \linors^\voters$] a profile
+			\item [$\powersetz{\allalts}$] possible winners (non-empty subsets of $\allalts$)
+			\item [$f: \linors^\voters \rightarrow \powersetz{\allalts}$] a Social Choice Rule
+		\end{description}	
+	
 \end{frame}
 
 \section[Simultaneous Elicitation of PSR and Agent Preferences]{Simultaneous Elicitation of Scoring Rule and Agent Preferences for Robust Winner Determination}
@@ -328,7 +344,11 @@
 %			\item Chair: difficult to \emph{specify} a voting rule precisely
 %		\end{itemize}
 %	}
-	\onslide<2->\textbf{Goal}: Reduce uncertainty, inferring (\textit{eliciting}) incrementally and simultaneously the true preferences of agents and chair to quickly converge to an optimal or a near-optimal alternative \\
+	\onslide<2->{\textbf{Goal}: Reduce uncertainty
+	\begin{itemize}
+		\item eliciting pref. of agents and chair incrementally and simultaneously
+		\item quickly converge to an optimal or a near-optimal alternative
+	\end{itemize}}
 	\vspace{1em}
 	\onslide<3-> \textbf{Approach}:
 	\vspace{-0.5em}
@@ -340,7 +360,7 @@
 		\includegraphics[scale=0.035]{assets/article.png} {\footnotesize \bibentry{Napolitano2021}}
 	\end{block}
 	\begin{itemize}
-		\item Develop query strategies that interleave questions to the chair and to the agents
+		\item Develop strategies interleaving questions to the chair and agents
 		\item Use \emph{Minimax regret} to measure the quality of those strategies
 	\end{itemize}
 \end{frame}
@@ -349,12 +369,12 @@
 	\frametitle{Related Works}
 	\textbf{Incomplete profile}  
 	\begin{itemize}
-		\item and known rule: Minimax regret to produce a robust winner approximation (\textit{Lu and Boutilier 2011}, \cite{Lu2011}; \textit{Boutilier et al. 2006}, \cite{Boutilier2006})
+		\item and known rule: Minimax regret to produce a robust winner approximation \cite{Lu2011,Boutilier2006}
 	\end{itemize}~\\
 	\textbf{Uncertain rule} 
 	\begin{itemize}
-		\item and complete profile: dominance relations derived to eliminate alternatives always less preferred than others (\textit{Stein et al. 1994}, \cite{Stein1994})
-		\item considering positional scoring rules (\textit{Viappiani 2018}, \cite{Viappiani2018})
+		\item and complete profile: dominance relations derived to eliminate alternatives always less preferred than others \cite{Stein1994}
+		\item considering positional scoring rules \cite{Viappiani2018}
 	\end{itemize}
 \end{frame}
 
@@ -405,17 +425,18 @@
 	\begin{description}[$W=(\w_k,\ 1\leq k \leq m), \ W \in \mathcal{W}$]
 %		\item [$A$] alternatives, $|A|=m$
 %		\item [$N$] agents (\textit{voters})
-		\item [$P = (\pref_i, \ i \in N ), \ P \in \mathcal{P} $] complete preferences profile unknown to us
-		\item [$W=(W_r,\ 1\leq r \leq m), \ W \in \mathcal{W}$] \textbf{convex} scoring vector that the chair has in mind
+		\item [$P = (\pref_i, \ i \in N ) \in \mathcal{P} $] complete preferences profile \hspace{2em} \includegraphics[scale=0.05]{assets/v1.png}, \includegraphics[scale=0.05]{assets/v2.png}, \includegraphics[scale=0.05]{assets/v3.png} 
+		\item [$W=(W_r,\ 1\leq r \leq m) \in \mathcal{W}$] \textbf{convex} scoring vector \hspace{5.5em} \includegraphics[scale=0.025]{assets/committee.png}
 	\end{description}
 	\bigskip
+	\onslide<1-> \begin{block}{}
+		$P$ and $W$ exist in the minds of agents and chair but unknown to us
+	\end{block}	
 	\onslide<1-> \begin{block}{}
 		$W$ defines a \textbf{Positional Scoring Rule} $f_W(P)\subseteq A$ 
 		%using scores \usebeamercolor*[fg]{description item}$s^{W,P}(a), \ \forall \ a \in A$
 	\end{block}
-	\onslide<1-> \begin{block}{}
-		$P$ and $W$ exist in the minds of agents and chair but unknown to us
-	\end{block}	
+	
 	
 \end{frame}
 
@@ -435,21 +456,27 @@
 
 \begin{frame}
 	\frametitle{Questions}
-	Two types of questions:\\
-	\vspace{1.5em}
-	\onslide<2-> \textbf{Questions to the agents}
+	\onslide<1-> \textbf{Questions to the agents}
 	\begin{itemize}
-		\item[] Comparison queries that ask a particular agent $i$ to compare two alternatives $a, b \in \allalts$
+		\item[] Comparison queries that ask a particular agent to compare two alternatives in $\allalts$ \\
+		\begin{center}
+			\vspace{0.5em}
+			\includegraphics[scale=0.05]{assets/v1.png} : \includegraphics[scale=0.03]{assets/d1.png} $\pref$ \includegraphics[scale=0.03]{assets/d2.png} ?
+		\end{center}
+		
 %		\usebeamercolor*[fg]{description item}\[a \pref_j b \quad ?\]
 	\end{itemize}
-	\vspace{2em}
-	\onslide<3->  \textbf{Questions to the chair}
+	\onslide<1->  \textbf{Questions to the chair}
 	\begin{itemize}
 		\item[] Queries relating the difference between the importance of consecutive ranks from $r$ to $r+2$
+		\begin{center}
+			\vspace{0.5em}
+			\includegraphics[scale=0.025]{assets/committee.png} : $W_{r_1} \rightarrow W_{r_2}  > W_{r_2} \rightarrow W_{r_3}$ ?
+		\end{center}
 %		\usebeamercolor*[fg]{description item} \[ W_{r} - W_{r+1} \geq \lambda (W_{r+1} - W_{r+2}) \quad ? \] 
 	\end{itemize}
 	\vspace{1em}
-	\onslide<4->{The answers to these questions define $\mathbf{C_P}$ and $\mathbf{C_W}$ that is our knowledge about P and W }
+	\onslide<1->{The answers to these questions define $\mathbf{C_P}$ and $\mathbf{C_W}$ that is our knowledge about P and W }
 \end{frame}
 
 %\begin{frame}
@@ -494,6 +521,52 @@
 		This can be seen as a game in which an adversary selects a completion of the profile and weights in order to maximize the regret of choosing $a$
 	\end{block}
 
+	\onslide<3->
+		\begin{columns}
+			\begin{column}{0.4\textwidth}
+				\begin{figure}
+					\scalebox{0.8}{
+					\begin{tabular}{ccc}
+						\visible<1->{\subfloat{\includegraphics[scale=0.12]{assets/v1.png}}} &
+						\visible<1->{\subfloat{\includegraphics[scale=0.12]{assets/v2.png}}} &
+						\visible<1->{\subfloat{\includegraphics[scale=0.12]{assets/v3.png}}} \\
+						\visible<1->{\subfloat{\includegraphics[scale=0.05]{assets/d1.png}}} &
+						\visible<1->{\subfloat{\includegraphics[scale=0.05]{assets/d1.png}}} & \\
+						\visible<1->{\subfloat{\includegraphics[scale=0.05]{assets/d2.png}}} &
+						\visible<1->{\subfloat{\includegraphics[scale=0.05]{assets/d2.png}}} & \\
+						\visible<1->{\subfloat{\includegraphics[scale=0.05]{assets/d3.png}}} & & \\
+					\end{tabular}
+				}
+				\end{figure}
+		
+			\end{column}
+			\begin{column}{0.1\textwidth}
+				\begin{center}
+					\includegraphics[scale=0.1]{arrow.png}
+				\end{center}
+			\end{column}
+			\begin{column}{0.4\textwidth}
+				\begin{figure}
+					\scalebox{0.8}{
+					\begin{tabular}{ccc}
+						\visible<1->{\subfloat{\includegraphics[scale=0.12]{assets/v1.png}}} &
+						\visible<1->{\subfloat{\includegraphics[scale=0.12]{assets/v2.png}}} &
+						\visible<1->{\subfloat{\includegraphics[scale=0.12]{assets/v3.png}}} \\
+						\visible<1->{\subfloat{\includegraphics[scale=0.05]{assets/d1.png}}} &
+						\visible<1->{\subfloat{\includegraphics[scale=0.05]{assets/d1.png}}} & 
+						\visible<1->{\subfloat{\includegraphics[scale=0.05]{assets/d1.png}}} \\
+						\visible<1->{\subfloat{\includegraphics[scale=0.05]{assets/d2.png}}} &
+						\visible<1->{\subfloat{\includegraphics[scale=0.05]{assets/d2.png}}} &
+						\visible<1->{\subfloat{\includegraphics[scale=0.05]{assets/d2.png}}} \\
+						\visible<1->{\subfloat{\includegraphics[scale=0.05]{assets/d3.png}}} & 
+						\visible<1->{\subfloat{\includegraphics[scale=0.05]{assets/d3.png}}}& 
+						\visible<1->{\subfloat{\includegraphics[scale=0.05]{assets/d3.png}}}\\
+					\end{tabular}
+					}
+				\end{figure}
+			\end{column}
+		\end{columns}
+	
 %	\begin{block}{}
 %		\[\color{darkred}{\PMR^{C_P,C_W}(a,b)}= \max_{P\in C_P, W \in C_W} s^{P,W}(b)-s^{P,W}(a) \]
 %		is the maximum difference of score between $a$ and $b$ under all possible realizations of the full profile {\em and} weights
@@ -502,18 +575,18 @@
 %	\onslide<2->  We care about the worst case loss: \emph{maximum regret} between a chosen alternative $a$ and best real alternative $b$
 %	\[\MR^{C_P,C_W}(a)= \max_{b\in \allalts} \PMR^{C_P,C_W}(a,b) \]
 %	 	
-	\onslide<3->
-	\[\color{darkred}\MMR^{C_P,C_W} = \min_{a\in \allalts} \MR^{C_P,C_W}(a)\]
+%	\onslide<3->
+%	\[\color{darkred}\MMR^{C_P,C_W} = \min_{a\in \allalts} \MR^{C_P,C_W}(a)\]
 %	\onslide<3-> \centerline{\textbf{We select the alternative that \emph{minimizes} the maximum regret}}
 \end{frame}
 
 	\begin{frame}
 	\frametitle{Minimax Regret}
 	
-		The alternative that \emph{minimizes} the maximum regret is used:
+		The alternative that currently minimizes the maximum regret is used:
 		\begin{itemize}
-			\item \onslide<2-> as winner recommendation when the elicitation process stops
-			\item \onslide<3-> to guide elicitation strategies
+			\item \onslide<1-> as winner recommendation when the elicitation process stops
+			\item \onslide<1-> to guide elicitation strategies
 			%intuitively, we try to reduce this regret by asking for more information about this alternative
 		\end{itemize}
 		
@@ -573,11 +646,23 @@
 	
 	\begin{frame}
 		\frametitle{Elicitation strategies}
-		At each step, the strategy selects a question to ask either to one of the agents about her preferences or to the chair about the voting rule \\ \bigskip
-		\onslide<1-> The termination condition could be:
+		At each step, the strategy selects a question to ask either to one of the agents about her preferences or to the chair about the voting rule \\
+		\begin{center}
+		\begin{tikzpicture}[scale=0.5]
+			\node[shape=circle,draw=white] (A) at (0,0) {\small strategy};
+			\node[inner sep=4pt] (D) at (7,3) {\includegraphics[scale=0.05]{assets/v1.png} : \includegraphics[scale=0.03]{assets/d1.png} $\pref$ \includegraphics[scale=0.03]{assets/d2.png} ?};
+			\node[inner sep=4pt] (E) at (7,0) {{\includegraphics[scale=0.05]{assets/v2.png} : \includegraphics[scale=0.03]{assets/d2.png} $\pref$ \includegraphics[scale=0.03]{assets/d3.png} ?}};
+			\node[inner sep=4pt] (F) at (9.5,-3) {\includegraphics[scale=0.025]{assets/committee.png} : \scriptsize $W_{r_1} \rightarrow W_{r_2}  > W_{r_2} \rightarrow W_{r_3}$ ?} ;
+			
+			\path [->] (A) edge (D.west);
+			\path [->](A) edge (E);
+			\path [->](A) edge (F.west);
+		\end{tikzpicture}
+		\end{center}
+		\onslide<2-> Termination:
 		\begin{itemize}
-			\item <1-> when the minimax regret is lower than a threshold
-			\item <1-> when the minimax regret is zero
+			\item <2-> when the minimax regret is lower than a threshold
+			\item <2-> when the minimax regret is zero
 		\end{itemize}
 		\bigskip
 	\end{frame}
@@ -596,8 +681,7 @@
 %	\end{frame}
 	
 	\begin{frame}[t]
-		\frametitle{Elicitation strategies}
-		\framesubtitle{Pessimistic Strategy}
+		\frametitle{Elicitation strategies: Pessimistic Strategy}
 		\vspace{1em}
 		\begin{itemize}
 			\item It selects first $n+(m-2)$ candidate questions: one per each agent and one per each rank (excluding the first and the last one which are known)
@@ -617,11 +701,10 @@
 	
 	
 	\begin{frame}
-		\frametitle{Empirical Evaluation}
-		\framesubtitle{Pessimistic for different datasets}
+		\frametitle{Empirical Evaluation: Pessimistic for different datasets}
 		\begin{figure}
 			\centering
-			\caption{Average MMR (normalized by $n$) after $k$ questions with Pessimistic strategy for different datasets.}
+			\caption{Average MMR (normalized by $n$) after $k$ questions with Pessimistic strategy for different datasets (some from PrefLib)}
 			\label{fig:linearity}
 			\begin{tikzpicture}
 				\pgfplotsset{
@@ -683,62 +766,29 @@
 		\end{figure}
 	\end{frame}
 
-\begin{frame}
-	\frametitle{Building concrete questions for the chair}
-	Queries relating the difference between the importance of consecutive ranks
-%	\only<1>{{\usebeamercolor*[fg]{description item} \[ W_{r} - W_{r+1} \geq \lambda (W_{r+1} - W_{r+2}) \quad ? \] }}
-	\onslide<1->{{\usebeamercolor*[fg]{description item} \[ W_{2} - W_{3} \geq 2 \ (W_{3} - W_{4}) \quad ? \] }}
-	\onslide<2->{Abstract queries are difficult to answer}
-	{\usebeamercolor*[fg]{description item}
-		\begin{align*}
-			\onslide<4->{W_{2}\ - \ W_{3} &\geq 2 \ W_{3} - 2 \ W_{4} }\\
-			\onslide<5->{W_{2} + 2 \ W_{4} &\geq 3 \ W_{3} }\\
-			\onslide<6->{s(a) &\geq s(b)}
-		\end{align*}
-	}
-	\only<6>{\begin{figure}
-			\begin{center}
-				$
-				\begin{array}{cc}
-					\mathbf{\#1}&\mathbf{\#2} \\
-					-&-\\
-					\mathbf{a}&-\\
-					\mathbf{b}&\mathbf{b}\\
-					-&\mathbf{a}\\
-				\end{array}
-				$
-			\end{center}
-		\end{figure}
-	}
-	\onslide<7->{
-		\begin{figure}
-			\begin{center}
-				$
-				\begin{array}{cccc}
-					\mathbf{\#1}&\mathbf{\#2}&\mathbf{\#3}&\mathbf{\#3} \\
-					c&d&a&b\\
-					\mathbf{a}&c&b&a\\
-					\mathbf{b}&\mathbf{b}&c&d\\
-					d&\mathbf{a}&d&c\\
-				\end{array}
-				$
-			\end{center}
-		\end{figure}
-	}
-\end{frame}
-
 
 \section{Majority Judgment winner determination under incomplete information}
 
 \begin{frame}
 	\frametitle{Incomplete knowledge: profile}
 	\vspace{-2em}
-	\footnotesize{Agents} $=\{$ \includegraphics[scale=0.05]{assets/v1.png}, \includegraphics[scale=0.05]{assets/v2.png}, \includegraphics[scale=0.05]{assets/v3.png} $\}$, $\ $ \footnotesize{Altern.} $=\{$ \includegraphics[scale=0.025]{assets/d1.png}, \includegraphics[scale=0.025]{assets/d2.png}, \includegraphics[scale=0.025]{assets/d3.png} $\}$, $\ $ \footnotesize{Chair} $=$ \includegraphics[scale=0.02]{assets/committee.png} $\Rightarrow$ \footnotesize{Voting Rule}
+	\footnotesize{Alternatives} $=\{$ \includegraphics[scale=0.025]{assets/d1.png}, \includegraphics[scale=0.025]{assets/d2.png}, \includegraphics[scale=0.025]{assets/d3.png} $\}$ $\xleftarrow{prefers}$
+	\footnotesize{Agents} $=\{$ \includegraphics[scale=0.05]{assets/v1.png}, \includegraphics[scale=0.05]{assets/v2.png}, \includegraphics[scale=0.05]{assets/v3.png} $\}$ $\ $
+	\footnotesize{Chair} $=$ \includegraphics[scale=0.02]{assets/committee.png} $\Rightarrow$ \footnotesize{Voting Rule}
 	\vspace{2em}
 	\begin{columns}
 		\begin{column}{0.45\textwidth}
 			\begin{figure}
-				\begin{tabular}{ccc}
+				\begin{tabular}{cccc}
+					&
+					\visible<1->{\subfloat{\includegraphics[scale=0.12]{assets/v1.png}}} &
+					\visible<1->{\subfloat{\includegraphics[scale=0.12]{assets/v2.png}}} &
+					\visible<1->{\subfloat{\includegraphics[scale=0.12]{assets/v3.png}}} \\
+					\visible<1->{\subfloat{\includegraphics[scale=0.05]{assets/d1.png}}} &
+					\visible<1->{\subfloat{\includegraphics[scale=0.5]{assets/votes/exc.png}}} & \visible<1->{\subfloat{\includegraphics[scale=0.5]{assets/votes/avg.png}}} & \visible<1->{\subfloat{\includegraphics[scale=0.5]{assets/votes/med.png}}} \\
+					\visible<1->{\subfloat{\includegraphics[scale=0.05]{assets/d2.png}}} &\visible<1->{\subfloat{\includegraphics[scale=0.5]{assets/votes/good.png}}} & \visible<1->{\subfloat{\includegraphics[scale=0.5]{assets/votes/med.png}}} &  \\
+					\visible<1->{\subfloat{\includegraphics[scale=0.05]{assets/d3.png}}} & \visible<1->{\subfloat{\includegraphics[scale=0.5]{assets/votes/inad.png}}} & 
+					& \visible<1->{\subfloat{\includegraphics[scale=0.5]{assets/votes/vg.png}}} \\
 				\end{tabular}
 			\end{figure}
 		\end{column}
@@ -756,7 +806,7 @@
 
 \begin{frame}
 	\frametitle{Majority Judgment}
-	Voters judges candidates assigning grades from an ordinal scale. The winner is the candidate with the highest median of the grades received. (Balinski and Laraki 2011, \cite{Balinski2011}) \vspace{1cm} \\
+	Voters judges candidates assigning grades from an ordinal scale. The winner is the candidate with the highest median of the grades received. \cite{Balinski2011} \vspace{1cm} \\
 	\begin{center}
 		\includegraphics[width=0.8\textwidth]{assets/vector.png}		
 	\end{center}
@@ -764,7 +814,9 @@
 
 \begin{frame}
 	\frametitle{Majority Judgment}
-	\footnotesize{Agents} $=\{$ \includegraphics[scale=0.05]{assets/v1.png}, \includegraphics[scale=0.05]{assets/v2.png}, \includegraphics[scale=0.05]{assets/v3.png} $\}$, $\ $ \footnotesize{Altern.} $=\{$ \includegraphics[scale=0.025]{assets/d1.png}, \includegraphics[scale=0.025]{assets/d2.png}, \includegraphics[scale=0.025]{assets/d3.png} $\}$, $\ $ \footnotesize{Chair} $=$ \includegraphics[scale=0.02]{assets/committee.png} $\Rightarrow$ \footnotesize{Majority Judgment}
+	\footnotesize{Alternatives} $=\{$ \includegraphics[scale=0.025]{assets/d1.png}, \includegraphics[scale=0.025]{assets/d2.png}, \includegraphics[scale=0.025]{assets/d3.png} $\}$ $\xleftarrow{prefers}$
+	\footnotesize{Agents} $=\{$ \includegraphics[scale=0.05]{assets/v1.png}, \includegraphics[scale=0.05]{assets/v2.png}, \includegraphics[scale=0.05]{assets/v3.png} $\}$ $\ $
+	\footnotesize{Chair} $=$ \includegraphics[scale=0.02]{assets/committee.png} $\Rightarrow$ \footnotesize{Majority Judgment}
 	\vspace{2em}
 	\begin{columns}
 		\begin{column}{0.45\textwidth}
@@ -807,7 +859,9 @@
 
 \begin{frame}
 	\frametitle{Majority Judgment: Incomplete Knowledge}
-	\footnotesize{Agents} $=\{$ \includegraphics[scale=0.05]{assets/v1.png}, \includegraphics[scale=0.05]{assets/v2.png}, \includegraphics[scale=0.05]{assets/v3.png} $\}$, $\ $ \footnotesize{Altern.} $=\{$ \includegraphics[scale=0.025]{assets/d1.png}, \includegraphics[scale=0.025]{assets/d2.png}, \includegraphics[scale=0.025]{assets/d3.png} $\}$, $\ $ \footnotesize{Chair} $=$ \includegraphics[scale=0.02]{assets/committee.png} $\Rightarrow$ \footnotesize{Majority Judgment}
+	\footnotesize{Alternatives} $=\{$ \includegraphics[scale=0.025]{assets/d1.png}, \includegraphics[scale=0.025]{assets/d2.png}, \includegraphics[scale=0.025]{assets/d3.png} $\}$ $\xleftarrow{prefers}$
+	\footnotesize{Agents} $=\{$ \includegraphics[scale=0.05]{assets/v1.png}, \includegraphics[scale=0.05]{assets/v2.png}, \includegraphics[scale=0.05]{assets/v3.png} $\}$ $\ $
+	\footnotesize{Chair} $=$ \includegraphics[scale=0.02]{assets/committee.png} $\Rightarrow$ \footnotesize{Majority Judgment}
 	\vspace{2em}
 	\begin{columns}
 		\begin{column}{0.45\textwidth}
@@ -848,22 +902,20 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Majority Judgment}
-	\framesubtitle{Uses}
+	\frametitle{Majority Judgment: Uses}
 	\onslide<1-> In the last few years MJ has being adopted by a progressively larger number of french political parties including: Le Parti Pirate, Génération(s), LaPrimaire.org, France Insoumise and La République en Marche. \vspace{1cm}
 	
 	\onslide<1-> LaPrimaire.org is a french political initiative whose goal is to select an independent candidate for the french presidential election using MJ as voting rule.
 \end{frame}
 
 \begin{frame}
-	\frametitle{Majority Judgment}
-	\framesubtitle{Generalizing LaPrimaire.org}
+	\frametitle{Majority Judgment: Generalizing LaPrimaire.org}
 	The procedure consists of two rounds:
 	\vspace{1em}
 	\only<1>{\begin{itemize}
-		\item[1:] each voter expresses her judgment on five random candidates. The five ones with the highest medians qualify for the second round 
+		\item[1:] each voter expresses her judgment on 5 random candidates. The 5 ones with the highest medians qualify for the second round 
 		\vspace{1em}
-		\item[2:] each voter expresses her judgment on all the five finalists. The one with the best median is the winner
+		\item[2:] each voter expresses her judgment on all the 5 finalists. The one with the best median is the winner
 	\end{itemize}}
 	\only<2->{
 	\begin{itemize}
@@ -878,116 +930,132 @@
 	\begin{remark}
 		If a winner of the complete profile is among the k finalists then it will also be a winner of the incomplete profile
 	\end{remark}
-	\begin{theorem}
-		If $k<m$, there exist an incomplete profile and one of its completion that do not share the same sets of winners
-	\end{theorem}
-\vspace{-1em}
-	\begin{columns}
-		\begin{column}{0.45\textwidth}
-			\begin{figure}
-				\begin{tabular}{ccccc}
-					&
-					\visible<2->{\subfloat{\includegraphics[scale=0.07]{assets/v1.png}}} &
-					\visible<2->{\subfloat{\includegraphics[scale=0.07]{assets/v2.png}}} &
-					\visible<2->{$\dots$} &
-					\visible<2->{\subfloat{\includegraphics[scale=0.07]{assets/v3.png}}} \\
-					\visible<2->{\subfloat{\includegraphics[scale=0.04]{assets/d1.png}}} &
-					\visible<2>{\subfloat{\includegraphics[scale=0.3]{assets/votes/exc.png}}} & \visible<2>{\subfloat{\includegraphics[scale=0.3]{assets/votes/exc.png}}} & \visible<2>{\subfloat{\includegraphics[scale=0.3]{assets/votes/exc.png}}} & \visible<2>{\subfloat{\includegraphics[scale=0.3]{assets/votes/exc.png}}} \\
-					\visible<2->{\subfloat{\includegraphics[scale=0.04]{assets/d2.png}}} &\visible<2->{\subfloat{\includegraphics[scale=0.3]{assets/votes/med.png}}} & \visible<2->{\subfloat{\includegraphics[scale=0.3]{assets/votes/med.png}}} & \visible<2->{\subfloat{\includegraphics[scale=0.3]{assets/votes/med.png}}} & \visible<2->{\subfloat{\includegraphics[scale=0.3]{assets/votes/med.png}}} \\
-					\visible<2->{$\dots$} & \visible<2->{$\dots$} & \visible<2->{$\dots$} & \visible<2->{$\dots$} \\
-					\visible<2->{\subfloat{\includegraphics[scale=0.04]{assets/d3.png}}} &
-					\visible<2->{\subfloat{\includegraphics[scale=0.3]{assets/votes/med.png}}} & \visible<2->{\subfloat{\includegraphics[scale=0.3]{assets/votes/med.png}}} & \visible<2->{\subfloat{\includegraphics[scale=0.3]{assets/votes/med.png}}} & \visible<2->{\subfloat{\includegraphics[scale=0.3]{assets/votes/med.png}}} \\
-				\end{tabular}
-			\end{figure}
-		\end{column}
-		\begin{column}{0.45\textwidth}
-			\vspace{0.8em}
-			\begin{center}
-				\visible<2->{\textbf{Median}}
-			\end{center}
-			\begin{figure}
-				\begin{tabular}{cc}
-					\visible<2->{\subfloat{\includegraphics[scale=0.04]{assets/d1.png}}} &
-					\visible<2>{\subfloat{\includegraphics[scale=0.3]{assets/votes/exc.png}}} \\
-					\visible<2->{\subfloat{\includegraphics[scale=0.04]{assets/d2.png}}} &\visible<2->{\subfloat{\includegraphics[scale=0.3]{assets/votes/med.png}}} \\
-					 \visible<2->{$\dots$} & \visible<2->{$\dots$} \\
-					\visible<2->{\subfloat{\includegraphics[scale=0.04]{assets/d3.png}}} &
-					\visible<2->{\subfloat{\includegraphics[scale=0.3]{assets/votes/med.png}}}\\
-				\end{tabular}
-			\end{figure}
-			
-		\end{column}
-	\end{columns}
-	%\visible<3->{winner: \includegraphics[scale=0.05]{assets/d1.png}}
-	\visible<3->{}
-	%simmilar results yealds for profiles where we ask each agent k questions
 \end{frame}
 
 \begin{frame}
 	\frametitle{Probability of missing the winner}
-	\begin{theorem}
-		By asking each voter to evaluate k equiprobably picked alternatives, the probability that an alternative $j$ is never asked about is $(1-\frac{k}{m})^n$
-	\end{theorem}
-	\visible<2>{\begin{center}
-			For $k=3$, $n=m=10$ this is $0.7^{10} \approx 0.0282\%$
-		\end{center} }
-	\visible<3->{
-		\begin{center}
-			\textbf{What about real scenarios?}
-	\end{center}}
+	\begin{block}{}
+		The probability of asking a voter $i$ to evaluate the alternative $j$ in $k$ questions is:
+		\[\mathcal{P}(i_j)= \frac{\binom{m-1}{k-1}}{\binom{m}{k}}=\frac{k}{m}\]
+	\end{block}
+	
+	\begin{block}{}
+		After asking k questions to each voter the average size of grades known for each alternative is \[n \cdot \frac{k}{m}\]
+	\end{block}
 \end{frame}
 
-\begin{frame}
+%	\begin{theorem}
+%		If $k<m$, there exist an incomplete profile and one of its completion that do not share the same sets of winners
+%	\end{theorem}
+%\vspace{-1em}
+%	\begin{columns}
+%		\begin{column}{0.45\textwidth}
+%			\begin{figure}
+%				\begin{tabular}{ccccc}
+%					&
+%					\visible<2->{\subfloat{\includegraphics[scale=0.07]{assets/v1.png}}} &
+%					\visible<2->{\subfloat{\includegraphics[scale=0.07]{assets/v2.png}}} &
+%					\visible<2->{$\dots$} &
+%					\visible<2->{\subfloat{\includegraphics[scale=0.07]{assets/v3.png}}} \\
+%					\visible<2->{\subfloat{\includegraphics[scale=0.04]{assets/d1.png}}} &
+%					\visible<2>{\subfloat{\includegraphics[scale=0.3]{assets/votes/exc.png}}} & \visible<2>{\subfloat{\includegraphics[scale=0.3]{assets/votes/exc.png}}} & \visible<2>{\subfloat{\includegraphics[scale=0.3]{assets/votes/exc.png}}} & \visible<2>{\subfloat{\includegraphics[scale=0.3]{assets/votes/exc.png}}} \\
+%					\visible<2->{\subfloat{\includegraphics[scale=0.04]{assets/d2.png}}} &\visible<2->{\subfloat{\includegraphics[scale=0.3]{assets/votes/med.png}}} & \visible<2->{\subfloat{\includegraphics[scale=0.3]{assets/votes/med.png}}} & \visible<2->{\subfloat{\includegraphics[scale=0.3]{assets/votes/med.png}}} & \visible<2->{\subfloat{\includegraphics[scale=0.3]{assets/votes/med.png}}} \\
+%					\visible<2->{$\dots$} & \visible<2->{$\dots$} & \visible<2->{$\dots$} & \visible<2->{$\dots$} \\
+%					\visible<2->{\subfloat{\includegraphics[scale=0.04]{assets/d3.png}}} &
+%					\visible<2->{\subfloat{\includegraphics[scale=0.3]{assets/votes/med.png}}} & \visible<2->{\subfloat{\includegraphics[scale=0.3]{assets/votes/med.png}}} & \visible<2->{\subfloat{\includegraphics[scale=0.3]{assets/votes/med.png}}} & \visible<2->{\subfloat{\includegraphics[scale=0.3]{assets/votes/med.png}}} \\
+%				\end{tabular}
+%			\end{figure}
+%		\end{column}
+%		\begin{column}{0.45\textwidth}
+%			\vspace{0.8em}
+%			\begin{center}
+%				\visible<2->{\textbf{Median}}
+%			\end{center}
+%			\begin{figure}
+%				\begin{tabular}{cc}
+%					\visible<2->{\subfloat{\includegraphics[scale=0.04]{assets/d1.png}}} &
+%					\visible<2>{\subfloat{\includegraphics[scale=0.3]{assets/votes/exc.png}}} \\
+%					\visible<2->{\subfloat{\includegraphics[scale=0.04]{assets/d2.png}}} &\visible<2->{\subfloat{\includegraphics[scale=0.3]{assets/votes/med.png}}} \\
+%					 \visible<2->{$\dots$} & \visible<2->{$\dots$} \\
+%					\visible<2->{\subfloat{\includegraphics[scale=0.04]{assets/d3.png}}} &
+%					\visible<2->{\subfloat{\includegraphics[scale=0.3]{assets/votes/med.png}}}\\
+%				\end{tabular}
+%			\end{figure}
+%			
+%		\end{column}
+%	\end{columns}
+%	%\visible<3->{winner: \includegraphics[scale=0.05]{assets/d1.png}}
+%	\visible<3->{}
+%	%simmilar results yealds for profiles where we ask each agent k questions
+
+
+%\begin{frame}
+%	\frametitle{Probability of missing the winner}
+%	\begin{theorem}
+%		By asking each voter to evaluate k equiprobably picked alternatives, the probability that an alternative $j$ is never asked about is $(1-\frac{k}{m})^n$
+%	\end{theorem}
+%	\visible<2>{\begin{center}
+%			For $k=3$, $n=m=10$ this is $0.7^{10} \approx 0.0282\%$
+%		\end{center} }
+%	\visible<3->{
+%		\begin{center}
+%			\textbf{What about real scenarios?}
+%	\end{center}}
+%\end{frame}
+
+\begin{frame}[t]
 	\frametitle{Experimental results}
 	\begin{figure}
 		\centering
-		\begin{subfigure}[b]{0.45\textwidth}
+		\caption{Avg probability of missing the winner under uniform distribution of preferences, for $n=100$, $m=50$ and $k\in \intvl{1,25}$}
+		\label{fig:MJelicitationIC}
+		\begin{tikzpicture}[scale=0.75]
+			\begin{axis}[
+				%	y=8,
+				xlabel=$k/m$,
+				ylabel=Avg. Prob. of Miss.,
+				table/col sep=comma,
+				%	ytick={0,2,4,6,8,10},
+				%	xtick distance=10,
+				%	ytick distance=2,
+				%	xtick pos=left,
+				ymajorgrids=true,
+				ytick style={draw=none},
+				ymin=0,
+				ymax=0.64,
+				xmin=0.02,
+				xmax=0.5,
+				%	yticklabels={0,2,4,6,8,10},
+				%	legend style={font=\scriptsize}
+				]
+				
+				\addplot[thick, red] table [x=kom, y=ProbOfMiss]{data/table.dat};
+				
+			\end{axis}
+		\end{tikzpicture}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Experimental results}
+		\begin{figure}
 			\centering
-			\caption{\scriptsize{Avg prob. of missing the winner under uniform distribution of preferences, for $n=100, m=50$ and $k\in \intvl{1,25}$}\vspace{2.6em}}
-			\label{fig:MJelicitationIC}
-			\begin{tikzpicture}[scale=0.65]
-				\begin{axis}[
-					%	y=8,
-					xlabel=$k/m$,
-					ylabel=Avg. Prob. of Miss.,
-					table/col sep=comma,
-					%	ytick={0,2,4,6,8,10},
-					%	xtick distance=10,
-					%	ytick distance=2,
-					%	xtick pos=left,
-					ymajorgrids=true,
-					ytick style={draw=none},
-					ymin=0,
-					ymax=0.64,
-					xmin=0.02,
-					xmax=0.5,
-					%	yticklabels={0,2,4,6,8,10},
-					%	legend style={font=\scriptsize}
-					]
-					
-					\addplot[thick, red] table [x=kom, y=ProbOfMiss]{data/table.dat};
-					
-				\end{axis}
-			\end{tikzpicture}
-		\end{subfigure}
-		\hfill
-		\begin{subfigure}[b]{0.45\textwidth}
-			\centering
-			\caption{\scriptsize{Avg prob. of missing the winner using a real case distribution of preferences, given $m=12$ several $n$ and $k\in \intvl{1,5}$}}
+			\caption{Avg probability of missing the winner using a real case distribution of preferences, given $m=12$ and $k\in \intvl{1,5}$}
 			\label{fig:MJelicitationUAV}
-			\begin{tikzpicture}[scale=0.65]
+			\begin{tikzpicture}[scale=0.75]
 				\pgfplotsset{
 					every axis legend/.append style={
 						at={(0.5,1.1)},
-						anchor=south
+					%	anchor=north east
 					},
-				}
+				}\hspace{0.7cm}
 				\begin{axis}[
 					%	y=8,
 					xlabel=$k$,
 					ylabel=Avg. Prob. of Miss.,
 					table/col sep=comma,
-					legend columns=3,
+					legend columns=1,
 					%	ytick={0,2,4,6,8,10},
 					%	xtick distance=10,
 					%	ytick distance=2,
@@ -998,7 +1066,10 @@
 					ymax=0.8,
 					xmin=1,
 					xmax=5,
-					legend style={font=\scriptsize}
+					legend style={font=\scriptsize},
+					legend pos=outer north east,
+					% (so the legend looks a bit better)
+					legend cell align={left}
 					]
 					
 					\addlegendimage{mark=halfsquare right*,brown,mark size=2}
@@ -1031,7 +1102,6 @@
 					
 				\end{axis}
 			\end{tikzpicture}
-		\end{subfigure}
 	\end{figure}
 	
 \end{frame}
@@ -1041,7 +1111,7 @@
 %\begin{frame}
 %	\frametitle{Majority Judgment}
 %	\framesubtitle{LaPrimaire.org}
-%	\footnotesize{Agents} $=\{$ \includegraphics[scale=0.05]{assets/v1.png}, \includegraphics[scale=0.05]{assets/v2.png}, \includegraphics[scale=0.05]{assets/v3.png} $\}$, $\ $ \footnotesize{Altern.} $=\{$ \includegraphics[scale=0.025]{assets/d1.png}, \includegraphics[scale=0.025]{assets/d2.png}, \includegraphics[scale=0.025]{assets/d3.png} $\}$, $\ $ \footnotesize{Chair} $=$ \includegraphics[scale=0.02]{assets/committee.png} $\Rightarrow$ \footnotesize{Majority Judgment}
+%	\footnotesize{Agents} $=\{$ \includegraphics[scale=0.05]{assets/v1.png}, \includegraphics[scale=0.05]{assets/v2.png}, \includegraphics[scale=0.05]{assets/v3.png} $\}$, $\ $ \footnotesize{Alternatives} $=\{$ \includegraphics[scale=0.025]{assets/d1.png}, \includegraphics[scale=0.025]{assets/d2.png}, \includegraphics[scale=0.025]{assets/d3.png} $\}$, $\ $ \footnotesize{Chair} $=$ \includegraphics[scale=0.02]{assets/committee.png} $\Rightarrow$ \footnotesize{Majority Judgment}
 %	\vspace{2em}
 %	\begin{columns}
 %		\begin{column}{0.45\textwidth}
@@ -1124,10 +1194,10 @@
 		%\item<1-> \textbf{Plurality}: selects the alternatives considered as best by the highest number of voters 
 		%	In other words, it insists on a support of first and highest quality, disregarding the quantity of support this may lead to.
 	%	\item<2-> \textbf{Median Voting Rule}: picks all alternatives receiving a majority of support at the highest possible quality (Bassett and Persky, 1999 \cite{Bassett1999})
-		\item<1-> \textbf{Majoritarian Compromise}: picks the alternatives that receive the support of the majority of voters at the highest possible quality, breaking ties according to the quantity of support (Sertel, 1986 \cite{Sertel1986})
+		\item<1-> \textbf{Majoritarian Compromise}: picks the alternatives that receive the support of the majority of voters at the highest possible quality, breaking ties according to the quantity of support \cite{Sertel1986}
 		%gives up from the quality of support, in order to ensure a majority support behind the selected alternatives.
 		\item<2-> \textbf{q-approval FB}: picks the alternatives that receive the support of q voters at the highest possible quality, no tie-breaking
-		\item<3-> \textbf{Fallback Bargaining}: q-approval with $q=n$ (Brams and Kilgour, 2001 \cite{Brams2001})
+		\item<3-> \textbf{Fallback Bargaining}: q-approval with $q=n$ \cite{Brams2001}
 		%bargainers fall back to less and less preferred alternatives until they reach a unanimous agreement
 		%	Note that MC and FB winners are	particular cases of q-approval compromises, for q being respectively equal to majority and unanimity. Moreover for q = 1, q-approval compromises	coincide with the plurality rule (PR) winners
 	\end{itemize}
@@ -1135,6 +1205,7 @@
 
 \begin{frame}
 	\frametitle{Motivation}
+	\vspace{-1cm}
 	$n=100, \allalts=\{a,b,c\}$
 	\begin{center}
 		$
@@ -1170,7 +1241,7 @@
 	
 \end{frame}
 
-\begin{frame}
+\begin{frame}[t]
 	\frametitle{Motivation}
 	$n=100, \allalts=\{a,b,c\}$
 	\begin{center}
@@ -1184,7 +1255,7 @@
 	\onslide<1->{\begin{block}{Observations}
 			\begin{itemize}
 				\item $b$ receives unanimous support when each voter falls back one step from her ideal point
-				\item almost all these SCRs impose a willingness to compromise, but do not ensure a compromise
+				\item almost all the SCRs studied impose a willingness to compromise, but do not ensure a compromise
 			\end{itemize}
 	\end{block}}
 	\onslide<2->{\begin{block}{Thesis}
@@ -1196,10 +1267,10 @@
 
 %The difference between the two is that one,called egalitarian compromise, insists on equality at the expense of Pareto efficiency while the other, called Paretian compromise, is constrained to pick among the Pareto efficient alternatives.
 
-\begin{frame}
+\begin{frame}[t]
 	\frametitle{Equal loss}
 	%Our compromises attempt to equalize “losses”
-		\begin{description}[$\lambda_{\prof}: \allalts \rightarrow \intvl{0, m - 1}^\voters$]
+		\begin{description}[$\lambda_{\prof}: \allalts \rightarrow \intvl{0, m - 1}^\voters \hspace{4.5cm}$]
 			\item<1-> [$\lambda_{\prof}: \allalts \rightarrow \intvl{0, m - 1}^\voters$] a loss vector
 			\item<3-> [$\sigma: \intvl{0, m - 1}^N \rightarrow \R^+$] a spread measure
 		\end{description}
@@ -1232,7 +1303,7 @@
 		\[ \argmin_{\allalts}(\sigma~\circ~\lambda_P)=\set{a \in \allalts \suchthat \forall b \in \allalts: \sigma(\lambda_P(a)) \leq \sigma(\lambda_P(b))}\]
 	\end{block}
 	\vspace{0.5cm}
-	$\argmin_{\allalts}(\sigma\circ\lambda_{P})$ denotes the alternatives in $\allalts$ whose loss vectors are the most equally distributed according to $\sigma$
+	$\argmin_{\allalts}(\sigma\circ\lambda_{P})$ denotes the "most egalitarian" alternatives, i.e. those in $\allalts$ whose loss vectors are the most equally distributed according to $\sigma$
 \end{frame}
 
 \begin{frame}
@@ -1264,7 +1335,7 @@
 
 \begin{frame}
 	\frametitle{Egalitarian compromises}
-	An SCR is Egalitarian Compromise Compatible iff at each profile, it selects some “less unequal” alternatives
+	An SCR is Egalitarian Compromise Compatible iff at each profile, it selects some “most egalitarian” alternatives
 	\begin{block}{Egalitarian compromise compatibility}
 		An SCR $f$ is ECC iff 
 		\[
@@ -1324,7 +1395,7 @@
 
 \begin{frame}
 	\frametitle{Paretian compromises}
-	An SCR is Paretian Compromise Compatible iff at each profile, it selects some “less unequal” alternatives \emph{among the Pareto optimal ones}
+	An SCR is Paretian Compromise Compatible iff at each profile, it selects some “most egalitarian” alternatives \emph{among the Pareto optimal ones}
 	\begin{block}{Paretian compromise compatibility}
 		An SCR $f$ is PCC iff 
 		\[\exists \sigma \in \Sigma \suchthat \forall \prof \in \linors^N: f(\prof) \cap \argmin_{\color{red}{\PO(\prof)}} (\sigma \circ \lambda_{\prof}) \neq \emptyset \]
@@ -1363,19 +1434,25 @@
 
 \begin{frame}
 	\frametitle{Restricting $\Sigma$}
-	We consider a restriction $\bar{\Sigma}\subset\Sigma$ such that, for each $\bar{\sigma}\in \bar{\Sigma}$ if
+	We consider a restriction $\bar{\Sigma}\subset\Sigma$ imposing a minimal condition for which \vspace{1em} 
+	\begin{center}
+		$(m-3, m-1, m-2, \dots, m-2)$ \\ \vspace{1em} is more equal than \\ \vspace{1em} $(m-2, m-3, \dots, 1, 0, \dots, 0)$ 
+	\end{center}
+	
 %	\begin{definition}[Condition $C_{m, n}$]
 %		Given $m \geq 4, n \geq \max\set{4, m - 1}$, $\sigma$ satisfies condition $C_{m, n}$ iff $\sigma(m - 3, m - 1, m - 2, …, m - 2) < \sigma(m - 2, m - 3, …, 1, 0, …, 0)$.
 %	\end{definition}
-	\begin{center}
-		$\begin{array}{r@{\hspace{1mm} : \hspace{1mm}}lllll}
-			v_1 &	&	&\mathbf{a}	&\mathbf{b}	&x_1\\%
-			v_2 &	&	&\mathbf{b}	&	&\mathbf{a}\\%
-			v_3 &	&\mathbf{b}	&	&\mathbf{a}	&x_2\\%
-			v_4 &\mathbf{b}	&	&	&\mathbf{a}	&x_3\\%
-		\end{array}$%
-	\end{center}
-	then: $(\bar{\sigma} \circ \lambda_{\prof})(a) < (\bar{\sigma} \circ \lambda_{\prof})(b)$
+%	\begin{center}
+%		$\begin{array}{r@{\hspace{1mm} : \hspace{1mm}}lllll}
+%			v_1 &	&	&\mathbf{a}	&\mathbf{b}	&x_1\\%
+%			v_2 &	&	&\mathbf{b}	&	&\mathbf{a}\\%
+%			v_3 &	&\mathbf{b}	&	&\mathbf{a}	&x_2\\%
+%			v_4 &\mathbf{b}	&	&	&\mathbf{a}	&x_3\\%
+%			v_5 &\mathbf{b}	&	&	&\mathbf{a}	&x_4\\%
+%			\dots&\dots&&&\dots&
+%		\end{array}$%
+%	\end{center}
+%	then: $(\bar{\sigma} \circ \lambda_{\prof})(a) < (\bar{\sigma} \circ \lambda_{\prof})(b)$
 \end{frame}
 
 \begin{frame}
@@ -1384,16 +1461,24 @@
 		Under $\bar{\Sigma}$, AP and FB are not PCC.
 	\end{theorem}
 	\begin{proof}[Proof for $m = 5, n = 4$]
+		\begin{center}
 		$\begin{array}{r@{\hspace{1mm} : \hspace{1mm}}lllll}
 			v_1 &	&	&a	&b	&x_1\\%
 			v_2 &	&	&b	&	&a\\%
 			v_3 &	&b	&	&a	&x_2\\%
 			v_4 &b	&	&	&a	&x_3\\%
-		\end{array}$%
+		\end{array}
+		\qquad
+		\begin{array}{c}
+			\lambda_{P}(a)=(2,4,3,3) \\
+			\lambda_{P}(b)=(3,2,1,0)
+		\end{array}
+		$%
+	\end{center}
 		\vspace{1em}
 		\begin{itemize}
 			\item $b$ is the only alternative never last, thus for both rules: $f(\prof) = \set{b}$
-			\item $(\bar{\sigma}\circ \lambda_{\prof})(a) < (\bar{\sigma} \circ \lambda_{\prof})(b)$
+			\item $(\bar{\sigma}\circ \lambda_{\prof})(a) < (\bar{\sigma} \circ \lambda_{\prof})(b)$, $\forall \bar{\sigma} \in \bar{\Sigma}$
 			\item and $a \in \PO(\prof)$, thus $b \notin \argmin_{\PO(\prof)}(\bar{\sigma} \circ \lambda_{\prof})$ \qedhere
 		\end{itemize}
 	\end{proof}
@@ -1442,7 +1527,7 @@
 			\end{tabular}
 		\end{center}
 	}
-	\only<3>{\begin{block}{}
+	\onslide<3>{\begin{block}{}
 			Similar results for two voters
 	\end{block}}
 \end{frame}
@@ -1463,33 +1548,34 @@
 \section{Conclusions}
 \begin{frame}
 	\frametitle{Conclusions}
-\begin{block}{Considering a classical setting, we:}
+\onslide<1->\begin{block}{Considering incomplete knowledge, we:}
 	\begin{itemize}
-		\item revised the concept of compromise on an equal loss perspective
-		\item proved that almost all SCRs fail to ensure a compromise
-		\item defined new classes of voting rules reflection this notion
-	\end{itemize}
-%	Considering a classical model in which the preferences of a set of voters over a set of alternatives are known, we defined two classes of voting rules able to reflect a notion of compromise in which egalitarianism, in the sense of conceding equally, is a major concern.
-\end{block}
-\onslide<2->\begin{block}{Considering incomplete knowledge, we:}
-	\begin{itemize}
-	\item analyzed the elicitation strategy used in a real voting scenario using MJ
 	\item introduced a simultaneous and incremental elicitation approach for agents and chair preferences
 	\item developed several strategies and released our framework for further experiments and improvements
+	\item analyzed the elicitation strategy used in a real voting scenario using MJ
 	\end{itemize}
 %	Moreover, we stepped back from this standard perspective in	which preferences are assumed to be known from the beginning and investigated the problem of preference elicitation in different settings.
 \end{block}
+\onslide<2->\begin{block}{Considering a classical setting, we:}
+	\begin{itemize}
+		\item revised the concept of compromise on an equal loss perspective
+		\item proved that almost all SCRs fail to ensure a compromise
+		\item defined new classes of voting rules reflecting this notion
+	\end{itemize}
+\end{block}
+%	Considering a classical model in which the preferences of a set of voters over a set of alternatives are known, we defined two classes of voting rules able to reflect a notion of compromise in which egalitarianism, in the sense of conceding equally, is a major concern.
 \end{frame}
 
 \begin{frame}
 	\frametitle{Future work}
-	\begin{block}{Considering a classical setting:}
+	\vspace{-0.5em}
+	\onslide<1->\begin{block}{Considering incomplete knowledge of agents and chair preferences:}
 		\begin{itemize}
-			\item the cardinal setting can be analyzed including intensity of preferences
-			\item new definitions of compromise can be conceived
-			\item the trade-off between equity and efficiency can be explored
-		\end{itemize}
-		%	Considering a classical model in which the preferences of a set of voters over a set of alternatives are known, we defined two classes of voting rules able to reflect a notion of compromise in which egalitarianism, in the sense of conceding equally, is a major concern.
+			\item more strategies with different heuristics can be implemented
+			\item the elicitation of the rule can be expanded to more than scoring rules and the convexity constraint can be relaxed
+			\item the conversion of questions into profiles can be used in other settings
+		\end{itemize}	
+		%	Moreover, we stepped back from this standard perspective in	which preferences are assumed to be known from the beginning and investigated the problem of preference elicitation in different settings.
 	\end{block}
 	\onslide<2->\begin{block}{Considering incomplete knowledge using MJ:}
 		\begin{itemize}
@@ -1497,13 +1583,14 @@
 			\item steps toward explicability and axiomatization can be taken
 		\end{itemize}
 	\end{block}
-	\onslide<3->\begin{block}{Considering incomplete knowledge of agents and chair preferences:}
+	
+	\onslide<3->\begin{block}{Considering a notion of compromise:}
 		\begin{itemize}
-			\item more strategies with different heuristics can be implemented
-			\item the elicitation of the rule can be expanded to more than scoring rules and the convexity constraint can be relaxed
-			\item the conversion of questions into profiles can be used in other settings
-		\end{itemize}	
-		%	Moreover, we stepped back from this standard perspective in	which preferences are assumed to be known from the beginning and investigated the problem of preference elicitation in different settings.
+			\item the cardinal setting can be analyzed including intensity of preferences
+			\item new definitions of compromise can be conceived
+			\item the trade-off between equity and efficiency can be explored
+		\end{itemize}
+		%	Considering a classical model in which the preferences of a set of voters over a set of alternatives are known, we defined two classes of voting rules able to reflect a notion of compromise in which egalitarianism, in the sense of conceding equally, is a major concern.
 	\end{block}
 \end{frame}
 
@@ -1515,7 +1602,53 @@
 
 
 \begin{frame}[plain,allowframebreaks,noframenumbering]
-	\vspace{-1em}\tiny \bibliography{biblio}
+	\begin{multicols}{2}
+		\scriptsize \bibliography{biblio}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}[plain,noframenumbering]
+	\frametitle{Building concrete questions for the chair}
+	Queries relating the difference between the importance of consecutive ranks
+	%	\only<1>{{\usebeamercolor*[fg]{description item} \[ W_{r} - W_{r+1} \geq \lambda (W_{r+1} - W_{r+2}) \quad ? \] }}
+	\onslide<1->{{\usebeamercolor*[fg]{description item} \[ W_{2} - W_{3} \geq 2 \ (W_{3} - W_{4}) \quad ? \] }}
+	\onslide<2->{Abstract queries are difficult to answer}
+	{\usebeamercolor*[fg]{description item}
+		\begin{align*}
+			\onslide<3->{W_{2}\ - \ W_{3} &\geq 2 \ W_{3} - 2 \ W_{4} }\\
+			\onslide<4->{W_{2} + 2 \ W_{4} &\geq 3 \ W_{3} }\\
+			\onslide<5->{s(a) &\geq s(b)}
+		\end{align*}
+	}
+	\only<6>{\begin{figure}
+			\begin{center}
+				$
+				\begin{array}{cc}
+					\mathbf{\#1}&\mathbf{\#2} \\
+					-&-\\
+					\mathbf{a}&-\\
+					\mathbf{b}&\mathbf{b}\\
+					-&\mathbf{a}\\
+				\end{array}
+				$
+			\end{center}
+		\end{figure}
+	}
+	\onslide<7->{
+		\begin{figure}
+			\begin{center}
+				$
+				\begin{array}{cccc}
+					\mathbf{\#1}&\mathbf{\#2}&\mathbf{\#3}&\mathbf{\#3} \\
+					c&d&a&b\\
+					\mathbf{a}&c&b&a\\
+					\mathbf{b}&\mathbf{b}&c&d\\
+					d&\mathbf{a}&d&c\\
+				\end{array}
+				$
+			\end{center}
+		\end{figure}
+	}
 \end{frame}
 
 \begin{frame}[plain,noframenumbering]
@@ -1577,7 +1710,7 @@
 	\end{minipage}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[plain,noframenumbering]
 	\frametitle{FB and AP are PCC}
 	\begin{theorem}
 		FB and Antiplurality are PCC. \hfill {\small (for $n, m \geq 3$)}
