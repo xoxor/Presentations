@@ -346,7 +346,7 @@
 %	}
 	\onslide<2->{\textbf{Goal}: Reduce uncertainty
 	\begin{itemize}
-		\item eliciting pref. of agents and chair incrementally and simultaneously
+		\item eliciting preferences of agents and chair incrementally and simultaneously
 		\item quickly converge to an optimal or a near-optimal alternative
 	\end{itemize}}
 	\vspace{1em}
@@ -1278,23 +1278,28 @@
 		\end{description}
 	\onslide<2>{
 	\begin{center}
-		$
-		\begin{array}{cccccc}
-			\mathbf{51} \quad &\includegraphics[scale=0.025]{assets/d1.png}&\succ & \includegraphics[scale=0.025]{assets/d2.png} & \succ&\includegraphics[scale=0.025]{assets/d3.png}\\
-			\mathbf{49} \quad &\includegraphics[scale=0.025]{assets/d3.png}&\succ & \includegraphics[scale=0.025]{assets/d2.png} & \succ&\includegraphics[scale=0.025]{assets/d1.png}\\
-		\end{array}
-		 \qquad
-		\begin{array}{c}
-			\lambda_{\prof}(\includegraphics[scale=0.025]{assets/d1.png})=(0,2)\\
-			\lambda_{\prof}(\includegraphics[scale=0.025]{assets/d2.png})=(1,1) \\
-			\lambda_{\prof}(\includegraphics[scale=0.025]{assets/d3.png})=(2,0)
-		\end{array}
-	$
+		\begin{tikzpicture}
+			\path node (P) {$\prof$};
+			\path (P.south) node[anchor=north] (profile) {$%
+				\begin{array}{r@{\hspace{1mm} : \hspace{1mm}}l}
+					\includegraphics[scale=0.06]{assets/v1.png} & \includegraphics[scale=0.025]{assets/d1.png} \pref \includegraphics[scale=0.025]{assets/d2.png} \pref \includegraphics[scale=0.025]{assets/d3.png}\\%
+					\includegraphics[scale=0.06]{assets/v2.png} & \includegraphics[scale=0.025]{assets/d3.png} \pref \includegraphics[scale=0.025]{assets/d2.png} \pref \includegraphics[scale=0.025]{assets/d1.png}\\%
+				\end{array}%
+				$};
+			\path (P.center) ++ (3cm, 0) node (L) {$\lambda_{\prof}$};
+			\path (L.south) node[anchor=north] (losses) {$%
+				\begin{array}{r@{\hspace{1mm} : \hspace{1mm}}l}
+					\includegraphics[scale=0.025]{assets/d1.png} & (0, 2)\\%
+					\includegraphics[scale=0.025]{assets/d2.png} & (1, 1)\\%
+					\includegraphics[scale=0.025]{assets/d3.png} & (2, 0)\\%
+				\end{array}%
+				$};
+		\end{tikzpicture}
 	\end{center}
 	}
 	\onslide<4-> \begin{block}{}
 		$\Sigma$ is the set of spread measures $\sigma$ such that 
-		\[ \sigma(l)=0 \iff l_{i}=l_{j}, \ \forall i,j\in N, \quad \forall l\in\alllosses \].
+		\[ \sigma(l)=0 \iff l_{i}=l_{j}, \ \forall i,j\in N, \quad \forall l\in\alllosses \]
 	\end{block}
 	%Thus, the spread of $l$ gets its lowest value $0$ in case of perfect equality and only in this case.
 \end{frame}
@@ -1331,7 +1336,7 @@
 	\end{center}
 	\bigskip
 	
-	\[\argmin_{\allalts}(\sigma~\circ~\lambda_P)=\{\includegraphics[scale=0.025]{assets/d1.png}\} \quad \forall \sigma \in \Sigma\]
+	\[\argmin_{\allalts}(\sigma~\circ~\lambda_P)=\{\includegraphics[scale=0.025]{assets/d2.png}\} \quad \forall \sigma \in \Sigma\]
 \end{frame}
 
 
@@ -1373,7 +1378,7 @@
 	\onslide<2->\begin{theorem}
 		ECC $\cap$ Paretian = $\emptyset$ \hfill {\small (for $n, m \geq 2$)}
 	\end{theorem}
-	\onslide<3-> $f \in \text{ECC} \Rightarrow \includegraphics[scale=0.025]{assets/d2.png} \in f(\prof)$, $f \in \text{Paretian} \Rightarrow \includegraphics[scale=0.025]{assets/d2.png} \notin f(\prof)$
+	\onslide<2-> $f \in \text{ECC} \Rightarrow \includegraphics[scale=0.025]{assets/d2.png} \in f(\prof)$, $f \in \text{Paretian} \Rightarrow \includegraphics[scale=0.025]{assets/d2.png} \notin f(\prof)$
 \end{frame}
 
 %\begin{frame}
@@ -1472,8 +1477,8 @@
 		\end{array}
 		\qquad
 		\begin{array}{c}
-			\lambda_{P}(\includegraphics[scale=0.025]{assets/d1.png})=(2,4,3,3) \\
-			\lambda_{P}(\includegraphics[scale=0.025]{assets/d2.png})=(3,2,1,0)
+			\lambda_{P}(\includegraphics[scale=0.025]{assets/d2.png})=(2,4,3,3) \\
+			\lambda_{P}(\includegraphics[scale=0.025]{assets/d1.png})=(3,2,1,0)
 		\end{array}
 		$%
 	\end{center}
@@ -1560,7 +1565,7 @@
 \end{block}
 \onslide<2->\begin{block}{Considering a classical setting, we:}
 	\begin{itemize}
-		\item revised the concept of compromise on an equal loss perspective
+		\item revised the concept of compromise from an equal loss perspective
 		\item proved that almost all SCRs fail to ensure a compromise
 		\item defined new classes of voting rules reflecting this notion
 	\end{itemize}
